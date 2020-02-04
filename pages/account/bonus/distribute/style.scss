@@ -1,0 +1,79 @@
+.distribute{
+  padding: 30rpx;
+  .submits{
+    margin-top: 60rpx;
+    button{
+      width: 350rpx;
+      background: #d14b64;
+      color: #fff;
+      height: 80rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .1s;
+      border: 0;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .coin_money{
+    color: $fontColor;
+    font-size: 22rpx;
+    line-height: 50rpx;
+  }
+  .coin_number{
+    height: 105rpx;
+    background: $maskBg;
+    border-radius: 6rpx;
+    padding-left: 30rpx;
+    font-size: 26rpx;
+    color: $fontColor;
+    .fl{
+      height: 105rpx;
+      display: flex;
+      align-items: center;
+      width: 200rpx;
+    }
+    .fr{
+      width: calc(100% - 200rpx);
+      height: 105rpx;
+      display: flex;
+      align-items: center;
+      .inputs{
+        text-align: right;
+        width: 60%;
+        float: left;
+        height: 50rpx;
+        padding-right: 20rpx;
+        font-size: 26rpx;
+      }
+      .select{
+        position: relative;
+        float: left;
+        width: 40%;
+        picker {
+          .uni-input {
+            height: 100%;
+            line-height: 80upx;
+            padding: 0;
+            font-size: 26upx;
+            background: none;
+          }
+        }
+        .downs {
+          position: absolute;
+          top: 0;
+          right: 16upx;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

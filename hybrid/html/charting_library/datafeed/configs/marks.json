@@ -1,0 +1,58 @@
+{
+  "id": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "time": [
+    1516752000,
+    1516406400,
+    1516147200,
+    1516147200,
+    1515456000,
+    1514160000
+  ],
+  "color": [
+    "red",
+    "blue",
+    "green",
+    "red",
+    "blue",
+    "green"
+  ],
+  "text": [
+    "Today",
+    "4 days back",
+    "7 days back + Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "7 days back once again",
+    "15 days back",
+    "30 days back"
+  ],
+  "label": [
+    "A",
+    "B",
+    "CORE",
+    "D",
+    "EURO",
+    "F"
+  ],
+  "labelFontColor": [
+    "black",
+    "black",
+    "red",
+    "#ccc",
+    "black",
+    "#fff"
+  ],
+  "minSize": [
+    14,
+    28,
+    7,
+    40,
+    7,
+    14
+  ]
+}

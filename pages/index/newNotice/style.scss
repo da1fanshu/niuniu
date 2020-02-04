@@ -1,0 +1,98 @@
+.newNotice_main {
+  padding: 14upx 20upx 20upx;
+  .newNotice_main_main {
+    background: $maskBg;
+    border-radius: 8upx;
+    padding: 0 23upx;
+    .newNotice_main_title {
+      color: #fff;
+      height: 78upx;
+      display: flex;
+      align-items: center;
+      font-size: 26upx;;
+      position: relative;
+      &::before {
+        content: '';
+        height: 1upx;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        background-color: #979aa0;
+        transform: scaleY(0.5);
+      }
+      .fl{
+        margin-right: 30rpx;
+        height: 50rpx;
+        line-height: 50rpx;
+        padding: 0 20rpx;
+        border: 1rpx solid transparent;
+        &.active{
+          border: 1rpx solid #03bcc0;
+          color: #03bcc0;
+          border-radius: 6rpx;
+        }
+      }
+    }
+  }
+  .newNotice_news {
+    padding: 20upx 0;
+    .uni-timeline {
+      margin: 0;
+      .uni-timeline-item {
+        padding-bottom: 20upx;
+        width: 100%;
+        &:last-child {
+          padding-bottom: 0;
+        }
+        &:active {
+          opacity: 0.6;
+        }
+        .uni-timeline-item-divider {
+          background-color: #03bcc0;
+          width: 18upx;
+          height: 18upx;
+          &::before,
+          &::after {
+            background: #fff;
+            left: 9upx;
+          }
+        }
+        .uni-timeline-item-content {
+          padding-left: 24upx;
+          width: calc(100% - 38upx);
+          .datetime {
+            font-size: 23upx;
+            line-height: 23upx;
+            color: #acaeb1;
+          }
+          .title {
+            color: #fff;
+            font-size: 28upx;;
+            line-height: 1.5;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .text {
+            color: #9fa0a4;
+            font-size: 23upx;
+            line-height: 30upx;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
+          .more {
+            color: #14868d;
+            text-align: right;
+            &:active {
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+}

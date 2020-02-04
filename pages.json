@@ -1,0 +1,551 @@
+{
+  // 开发快速启动页
+  "condition": {
+    "current": 0,
+    "list": [{
+      "path": "pages/account/bonus/bonus"
+    }]
+  },
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "app-plus": {
+          "titleNView": false
+        },
+        "h5": {
+          "titleNView": false
+        }
+      }
+    }, {
+      "path": "pages/exchange/exchange",
+      "style": {
+        "h5": {
+          "titleNView": false
+        }
+      }
+    }, {
+      "path": "pages/assets/assets",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "资产预估",
+        "navigationBarBackgroundColor": "#2e3441",
+        "app-plus": {
+          "titleNView": {
+            // "buttons": [{
+            //   "float": "right",
+            //   "text": "总记录",
+            //   "width": "auto",
+            //   "fontSize": "14px"
+            // }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            // "titleSize": "14px",
+            // "buttons": [{
+            //   "float": "right",
+            //   "text": "总记录",
+            //   "width": "auto",
+            //   "fontSize": "14px"
+            // }]
+          }
+        }
+      }
+    }, {
+      "path": "pages/account/account",
+      "style": {
+        "h5": {
+          "titleNView": false
+        }
+      }
+    }, {
+      "path": "pages/assets/allAssets/allAssets",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "总资产记录",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/account/securitySetting/securitySetting",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "安全设置",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/index/newInfo/newInfo",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "最新活动",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2c",
+      "style": {}
+    }, {
+      "path": "pages/index/newNotice/newNotice",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "公告资讯",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/login/login",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "登录",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        }
+      }
+    }, {
+      "path": "pages/index/newInfo/newDetails/newDetails",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "资讯详情",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent",
+            "buttons": [{
+              "type": "share"
+            }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent",
+            "buttons": [{
+              "type": "share"
+            }]
+          }
+        }
+      }
+    }, {
+      "path": "pages/register/register",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "注册",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        }
+      }
+    }, {
+      "path": "pages/register/agreement/agreement",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "用户注册协议",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/reset/reset",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "找回密码",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        }
+      }
+    }, {
+      "path": "pages/authentication/authentication",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "实名认证",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/assets/deposit/deposit",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "充值",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/assets/withdraw/withdraw",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "提币",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/assets/transfer/transfer",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "划转",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/assets/record/record",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "记录",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cOrder/c2cOrder",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "C2C交易记录",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cOrder/appeal/appeal",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "我要申诉",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cCreated/c2cCreated",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "发布订单",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cCreated/createdDetailed/createdDetailed",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "发布订单",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/exchange/quotation/quotation",
+      "style": {}
+    }, {
+      "path": "pages/exchange/kline/kline",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/account/message/message",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "消息提醒",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/account/message/msgInfo/msgInfo",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "消息详情",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cDetails/c2cDetails",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "C2C挂单信息",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/c2c/c2cDetails/c2cSuccess/c2cSuccess",
+      "style": {}
+    }, {
+      "path": "pages/c2c/c2cAgent/c2cAgent",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "会员信息",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/index/power/power",
+      "style": {
+        "navigationStyle":"default",
+		"navigationBarTitleText": "比特算力",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "float": "right",
+              "text": "LKEX首页",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        }
+      }
+    },{
+      "path": "pages/index/activity/activityMain/activityMain",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "早起打鸟",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "float": "right",
+              "text": "登录",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "buttons": [{
+              "float": "right",
+              "text": "登录",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        }
+      }
+    }, {
+      "path": "pages/account/community/community",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "加入社群",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/account/invitation/invitation",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "我的邀请",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "type": "share"
+            }, {
+              "float": "right",
+              "text": "邀请记录",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "buttons": [{
+                "float": "right",
+                "text": "邀请记录",
+                "width": "auto",
+                "fontSize": "14px"
+              },
+              {
+                "type": "share"
+              }
+            ]
+          }
+        }
+      }
+    }, {
+      "path": "pages/account/invitation/inviteList/inviteList",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "邀请记录",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },
+	{
+	  "path": "pages/assets/withdraw/withdrawAddress/withdrawAddress",
+	  "style": {
+	    "navigationStyle": "default",
+	    "navigationBarTitleText": "选择地址",
+	    "app-plus": {
+	      "titleNView": {}
+	    }
+	  }
+	}, 
+    {
+      "path": "pages/account/thaw/thaw",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "解冻记录",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/activation/activation",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "账户激活",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },
+    {
+      "path": "pages/downloadApp/downloadApp",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "下载APP",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        }
+      }
+    }, {
+      "path": "pages/account/bonus/bonus",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "红包记录",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "float": "right",
+              "text": "发红包",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "titleSize": "14px",
+            "buttons": [{
+              "float": "right",
+              "text": "发红包",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
+          }
+        }
+      }
+    }, {
+      "path": "pages/account/bonus/distribute/distribute",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "派发红包",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/luckDraw/luckDraw",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "领取红包",
+        "navigationBarTextStyle":"black",
+        "navigationBarBackgroundColor":"#FFFFFF",
+        "app-plus": {
+          "titleNView": {
+            "type": "transparent"
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "type": "transparent",
+            "backgroundColor":"#FFFFFF"
+          }
+        }
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "LKEX交易所官网 - 区块链行业数字资产交易、比特币云算力-",
+    "navigationBarBackgroundColor": "#191e2a",
+    "backgroundColor": "#191e2a",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#636363",
+    "borderStyle": "white",
+    "backgroundColor": "#191e2a",
+    "selectedColor": "#03bcc0",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/nav/hm_h.png",
+        "selectedIconPath": "static/nav/hm_l.png"
+      },
+      {
+        "pagePath": "pages/exchange/exchange",
+        "text": "行情",
+        "iconPath": "static/nav/bj_h.png",
+        "selectedIconPath": "static/nav/bj_l.png"
+      },
+      {
+        "pagePath": "pages/c2c/c2c",
+        "text": "C2C",
+        "iconPath": "static/nav/c2c_h.png",
+        "selectedIconPath": "static/nav/c2c_l.png"
+      },
+      {
+        "pagePath": "pages/assets/assets",
+        "text": "资产",
+        "iconPath": "static/nav/zc_h.png",
+        "selectedIconPath": "static/nav/zc_l.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "我的",
+        "iconPath": "static/nav/ac_l.png",
+        "selectedIconPath": "static/nav/ac_h.png"
+      }
+    ]
+  }
+}

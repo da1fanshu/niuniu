@@ -1,0 +1,198 @@
+.c2c {
+  padding: 0 20upx;
+  .c2c_list {
+    .c2c_record {
+      .c_r_main {
+        overflow: hidden;
+        background: $maskBg;
+        padding: 0 20upx;
+        border-radius: 8upx;
+        margin-bottom: 20upx;
+        &.c_r_main_title {
+          background: none;
+          margin-bottom: 0;
+          .c_r_main_item {
+            height: 70upx;
+            line-height: 70upx;
+          }
+        }
+        .c_r_main_item {
+          transition: all 0.2s;
+          &:active {
+            opacity: 0.5;
+          }
+          height: 80upx;
+          padding: 0 24upx;
+          position: relative;
+          &::before {
+            position: absolute;
+            content: '';
+            display: block;
+            bottom: 0;
+            left: 0upx;
+            right: 0upx;
+            height: 1upx;
+            background: #6d717a;
+            transform: scaleY(0.5);
+          }
+          &:last-child {
+            &::before {
+              display: none;
+            }
+          }
+          .fl {
+            color: #03bcc0;
+            line-height: 80upx;
+            font-size: 26upx;;
+          }
+          .fr {
+            height: 80upx;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+    .c2c_list_item {
+      background: $maskBg;
+      border-radius: 8upx;
+      padding: 24upx;
+      margin-bottom: 20upx;
+      .item_type {
+        .fl {
+          color: #03bcc0;
+          line-height: 40upx;
+          font-size: 26upx;;
+          text {
+            float: left;
+          }
+          .iconfont {
+            font-size: 38upx;
+            margin-right: 15upx;
+          }
+        }
+        .fr {
+          height: 40upx;
+          line-height: 40upx;
+          font-size: 26upx;;
+          width: 113upx;
+          border: 0;
+          background: #03bcc0;
+          color: #191e2a;
+          border-radius: 8upx;
+          text-align: center;
+          padding: 0;
+          &::after {
+            display: none;
+          }
+        }
+      }
+      .item_number {
+        color: #03bcc0;
+        font-size: 26upx;;
+        line-height: 36upx;
+        margin-bottom: 10upx;
+        .fr {
+          text {
+            font-weight: 700;
+            color: #f0c61e;
+            font-size: 36upx;
+            line-height: 36upx;
+          }
+        }
+      }
+      .item_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10upx;
+        .icons {
+          width: 27upx;
+          height: 27upx;
+          line-height: 27upx;
+          border-radius: 27upx;
+          text-align: center;
+          font-size: 17upx;
+          background: #03bcc0;
+          color: #191e2a;
+        }
+        .name {
+          font-weight: 700;
+          font-size: 26upx;;
+          margin: 0 11upx;
+          color: #03bcc0;
+        }
+        image {
+          margin-left: 11upx;
+          width: 40upx;
+          height: 26upx;
+        }
+      }
+    }
+  }
+  .c2c_type {
+    display: flex;
+    margin: 20upx 0;
+    background: $maskBg;
+    border-radius: 8upx;
+    button {
+      flex: 1;
+      border: 0;
+      height: 65upx;
+      line-height: 65upx;
+      border-radius: 8upx;
+      font-size: 26upx;;
+      padding: 0;
+      text-align: center;
+      background: none;
+      color: #03bcc0;
+      transition: all 0.1s;
+      &::after {
+        display: none;
+      }
+      &.active {
+        background: #03bcc0;
+        color: #191e2a;
+      }
+    }
+  }
+  .c2c_nav {
+    display: flex;
+    position: relative;
+    padding: 20upx 0;
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      bottom: 0;
+      left: -20upx;
+      right: -20upx;
+      height: 1upx;
+      background: #353944;
+      transform: scaleY(0.5);
+    }
+    button {
+      flex: 1;
+      max-width: 120upx;
+      border: 1rpx solid #03bcc0;
+      background: none;
+      color: #03bcc0;
+      margin: 0;
+      height: 40upx;
+      line-height: 38upx;
+      border-radius: 8upx;
+      font-size: 26upx;;
+      padding: 0;
+      text-align: center;
+      margin-right: 20upx;
+      transition: all 0.1s;
+      &::after {
+        display: none;
+      }
+      &.active {
+        background: #03bcc0;
+        color: #191e2a;
+      }
+    }
+  }
+}

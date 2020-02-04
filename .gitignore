@@ -1,0 +1,9 @@
+package-lock.json
+yarn.lock
+yarn-error.log
+manifest.json
+node_modules
+unpackage
+../.idea/
+.idea/
+.vscode/launch.json

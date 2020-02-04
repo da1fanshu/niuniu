@@ -1,0 +1,31 @@
+.fixed_nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	display: flex;
+	z-index: 999;
+}
+.fixed_nav .btn {
+    flex: 1;
+    height: 40px;
+    font-size: 12px;
+    box-shadow: none;
+	min-width: 88px;
+	line-height: 40px;
+	border-radius: 2px;
+	font-size: 32upx;
+	color: #fff;
+	text-align: center;
+	z-index: 9999;
+}
+.buyTo {
+	background-color: #4caf50;
+}
+.sellTo {
+	background-color: rgb(250, 87, 87);
+}
+.goback {
+	background-color: rgb(66, 66, 66);
+}

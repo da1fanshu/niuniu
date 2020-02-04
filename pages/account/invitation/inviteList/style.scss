@@ -1,0 +1,61 @@
+.inviteList{
+  padding: 20rpx;
+  .inviteList_list{
+    .list_main{
+       padding: 0 26rpx;
+       background: #2e3441;
+       border-radius: 8rpx;
+      .item{
+        display: flex;
+        font-size: 22rpx;
+        position: relative;
+        &:last-child{
+          &::after{
+            display: none;
+          }
+        }
+        &::after{
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1rpx;
+          background: #c7c7c8;
+        }
+        .flex{
+          flex: 1;
+          height: 96rpx;
+          line-height: 96rpx;
+          color: #fff;
+        }
+      }
+    }
+    .list_nav{
+      display: flex;
+      padding: 0 26rpx;
+      font-size: 24rpx;
+      .flex{
+        flex: 1;
+        height: 80rpx;
+        line-height: 80rpx;
+        color: #fff;
+      }
+    }
+  }
+  .i_header{
+    height: 230rpx;
+    background: #03bcc0;
+    border-radius: 8rpx;
+    padding: 1rpx 27rpx;
+    .header_number{
+      margin-top: 45rpx;
+      line-height: 1;
+    }
+    .header_title{
+      font-size: 28rpx;
+      line-height: 1;
+      color: #191e2a;
+      margin-top: 50rpx;
+    }
+  }
+}

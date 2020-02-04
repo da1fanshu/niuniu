@@ -1,0 +1,200 @@
+.index{
+  .index_news {
+    margin-top: 20upx;
+    padding: 0 20upx;
+    margin-bottom: 20upx;
+    .index_title {
+      font-size: 23upx;
+      line-height: 36upx;
+      color: #fff;
+    }
+    .uni-timeline {
+      margin: 0;
+      padding: 23upx;
+      background: $maskBg;
+      border-radius: 6upx;
+      .uni-timeline-item {
+        padding-bottom: 30upx;
+        &:last-child {
+          padding-bottom: 0;
+        }
+        .uni-timeline-item-divider {
+          background-color: #03bcc0;
+          width: 18upx;
+          height: 18upx;
+          &::before,
+          &::after {
+            background: #fff;
+            left: 9upx;
+          }
+        }
+        .uni-timeline-item-content {
+          padding-left: 24upx;
+          .datetime {
+            font-size: 23upx;
+            line-height: 23upx;
+            color: #acaeb1;
+          }
+          .title {
+            color: #fff;
+            font-size: 28upx;;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+          }
+          .text {
+            color: #9fa0a4;
+            font-size: 23upx;
+            line-height: 30upx;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+  .index_ban {
+	  padding: 0 10px;
+	  image  {
+		  width: 100%;
+		  height: 140upx;
+		  margin-top: 20upx;
+		  margin-bottom: -4upx;
+	  }
+  }
+  .index_fun {
+    margin-top: 58upx;
+    padding: 0 20upx;
+    .fun_mian {
+      background:$maskBg;
+      border-radius: 6upx;
+      // padding: 41upx 0;
+      .f_m_item {
+        display: flex;
+        .i_flex {
+          flex: 1;
+          transition: all 0.2s;
+          padding: 20upx 0;
+          &:active {
+            background: #191e2a;
+          }
+          image {
+            display: block;
+            height: 35upx;
+            width: 32upx;
+            margin: 0 auto;
+          }
+          text {
+            display: block;
+            color: #fff;
+            font-size: 23upx;
+            line-height: 34upx;
+            text-align: center;
+            margin-top: 5upx;
+          }
+        }
+        &.wImg {
+          .i_flex {
+            image {
+              width: 40upx;
+              height: 30upx;
+            }
+          }
+        }
+      }
+    }
+  }
+  .index_banner {
+    position: relative;
+    background: #03bcc0;
+    .banner_hot {
+      position: absolute;
+      bottom: -40upx;
+      left: 20upx;
+      right: 20upx;
+      background: $maskBg;
+      height: 60upx;
+      border-radius: 6upx;
+      .b_h_left {
+        float: left;
+        height: 44upx;
+        width: 84upx;
+        margin-top: 8upx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &::after{
+          content: "";
+          display: block;
+          /* #ifdef H5 */
+           width: 2upx;
+          /* #endif */
+          /* #ifdef APP-PLUS */
+          width: 1upx;
+          /* #endif */
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          transform: scaleY(0.7);
+          background: #fff;
+        }
+      }
+      .b_h_list {
+        float: left;
+        margin-top: 8upx;
+        height: 44upx;
+        width: calc(100% - 86upx);
+        padding: 0 30upx;
+        box-sizing: border-box;
+        .swiper-item {
+          line-height: 44upx;
+          color: #fff;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 26upx;;
+        }
+      }
+    }
+  }
+  .index_header {
+    height: 88upx;
+    background: #191e2a;
+    padding: 0 20upx;
+    .i_h_logo {
+      flex: 1;
+      height: 88upx;
+      max-width: 300upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      float: left;
+    }
+    .i_h_login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 88upx;
+      float: right;
+      button,
+      image {
+        float: left;
+      }
+      button {
+        height: 55upx;
+        line-height: 52upx;
+        font-size: 26upx;;
+        background: none;
+        color: #fff;
+        border: 1upx solid #fff;
+      }
+    }
+  }
+  
+}

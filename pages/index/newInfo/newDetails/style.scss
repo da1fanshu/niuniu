@@ -1,0 +1,31 @@
+uni-page-body {
+	display: block!important
+}
+.newDetails {
+  min-height: 100vh;
+  background: #fff;
+  .banner {
+    height: 360upx;
+    overflow: hidden;
+    position: relative;
+    background-color: #ccc;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 360upx;
+  }
+
+  .banner-title {
+    overflow: hidden;
+    padding: 20rpx;
+    font-size: 32upx;
+    font-weight: 400;
+    color: #000;
+    text-indent: 2em;
+  }
+  .newDetails_main {
+    padding: 20rpx 40upx 40rpx;
+    overflow-x: hidden;
+  }
+}

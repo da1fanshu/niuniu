@@ -1,0 +1,71 @@
+.reset {
+  height: 100%;
+  /* #ifdef APP-PLUS */
+  height: calc(100% - var(--status-bar-height));
+  /* #endif */
+  width: 100%;
+  background: url(../../static/login_bg.gif) no-repeat;
+  background-size: 100% 100%;
+  padding: 1upx 94upx 94upx;
+  box-sizing: border-box;
+  .item {
+    background: $maskBg;
+    height: 59upx;
+    border-radius: 59upx;
+    margin-bottom: 27upx;
+    &.submit {
+      button {
+        height: 60upx;
+        line-height: 60upx;
+        border-radius: 60upx;
+        background: #12abb0;
+        border: 0;
+        color: #191e2a;
+        font-size: 26upx;;
+        transition: all 0.2s;
+        &:active {
+          background: #191e2a;
+        }
+      }
+    }
+    .fl {
+      width: 72upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .fr {
+      color: #12abb0;
+      width: calc(100% - 72upx);
+      height: 100%;
+      box-sizing: border-box;
+      padding-right: 24upx;
+      font-size: 28upx;
+      line-height: 59upx;
+    }
+    &.imgCode{
+      .fr{
+        width: calc(100% - 232upx);
+      }
+      .code{
+        float: right;
+        width: 160upx;
+        height: 100%;
+        padding-right: 30upx;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+          font-size: 24upx;;
+          padding: 0;
+          width: 100%;
+          background: none;
+          border: 0;
+          color: #12abb0;
+        }
+      }
+    }
+  }
+}

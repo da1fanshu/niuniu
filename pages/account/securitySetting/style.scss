@@ -1,0 +1,73 @@
+.accountSet_main_list {
+  background: $maskBg;
+  padding: 0 20upx;
+  margin-top: 12upx;
+  &:first-child {
+    margin-top: 0;
+  }
+  border-radius: 8upx;
+  .accountSet_main_list_item {
+    transition: all 0.1s;
+    height: 80upx;
+    position: relative;
+    &::before{
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1upx;
+      background: #6d717a;
+      transform: scaleY(0.5);
+    }
+    &:last-child {
+      &::before{
+        display: none;
+      }
+    }
+    .fl {
+      color: #fff;
+      height: 80upx;
+      font-size: 23upx;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      image {
+        height: 34upx;
+        width: 34upx;
+      }
+      text {
+        margin-left: 13upx;
+      }
+    }
+    .fr {
+      height: 80upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .btn_default,
+      .btn_active {
+        height: 100%;
+        line-height: 80upx;
+        color: #acaeb1;
+        background: none;
+        border: none;
+        padding: 0 19upx;
+        width: inherit;
+        font-size: 23upx;
+        transition: all 0.1s;
+        &:active {
+          background: #191e2a;
+        }
+        &::after,
+        &::before {
+          display: none;
+        }
+      }
+      .btn_active {
+        color: $fontColor;
+      }
+    }
+  }
+}

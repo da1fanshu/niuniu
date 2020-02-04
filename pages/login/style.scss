@@ -1,0 +1,114 @@
+.login_mian {
+  height: 100%;
+  /* #ifdef APP-PLUS */
+  height: calc(100% - var(--status-bar-height));
+  /* #endif */
+  width: 100%;
+  background: url(../../static/login_bg.gif) no-repeat;
+  background-size: 100% 100%;
+  padding: 1upx 94upx 94upx;
+  box-sizing: border-box;
+  .login_form {
+    margin-top: 59upx;
+    .mark{
+      display: flex;
+      align-items: center;
+      padding-left: 24rpx;
+      height: 59upx;
+      color: #999999;
+      margin-bottom: 26upx;
+      .agreement_main{
+        color: #12abb0;
+      }
+      text{
+        margin: 0 8upx;
+      }
+      .checkbox {
+        height: 20upx;
+        width: 20upx;
+        border: 1upx solid #0a878e;
+        color: #fff;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3upx;
+        .uni-icon {
+          font-size: 30upx !important;
+        }
+      }
+    }
+    .footer {
+      button {
+        border: 0;
+        color: #999999;
+        height: 60upx;
+        line-height: 60upx;
+        font-size: 26upx;;
+      }
+    }
+    .item {
+      background: $maskBg;
+      height: 59upx;
+      border-radius: 59upx;
+      margin-bottom: 26upx;
+      &.submit {
+        button {
+          height: 60upx;
+          line-height: 60upx;
+          border-radius: 60upx;
+          background: #12abb0;
+          border: 0;
+          color: #191e2a;
+          font-size: 26upx;;
+          transition: all 0.2s;
+          &:active {
+            background: #191e2a;
+          }
+        }
+      }
+      .fl {
+        width: 72upx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .fr {
+        color: #12abb0;
+        width: calc(100% - 72upx);
+        height: 100%;
+        box-sizing: border-box;
+        padding-right: 24upx;
+        font-size: 28upx;
+        line-height: 59upx;
+        uni-input div {
+          width: 100%;
+        }
+      }
+      &.imgCode{
+        .fr{
+          width: calc(100% - 212upx);
+        }
+        .code{
+          float: right;
+          width: 140upx;
+          height: 100%;
+          padding-right: 30upx;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          button{
+            font-size: 24upx;;
+            padding: 0;
+            width: 100%;
+            background: none;
+            border: 0;
+            color: #12abb0;
+          }
+        }
+      }
+    }
+  }
+}

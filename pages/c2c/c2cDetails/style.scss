@@ -1,0 +1,129 @@
+.c2cDetails{
+  padding: 0 20upx;
+  .tips{
+    margin-top: 40upx;
+    padding: 0 25upx;
+    text{
+      font-size: 24upx;;
+      line-height: 41upx;
+      margin-bottom: 7upx;
+      color: #ccc;
+      display: block;
+    }
+  }
+  .submits{
+    margin-top: 40upx;
+    button{
+      background: #03bcc0;
+      border-radius: 8upx;
+      border: 0;
+      font-size: 26upx;;
+      color: #1e2432;
+      height: 60upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition:  all .1s;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .Remarks{
+    height: 100upx;
+    border: 1px solid #03bcc0;
+    border-radius: 8upx;
+    margin-top: 20upx;
+    padding: 15upx 40upx;
+    color: #03bcc0;
+  }
+  .number_money{
+    background: #2e3441;
+    color: #03bcc0;
+    border-radius: 8upx;
+    padding: 25upx 40upx;
+    font-size: 26upx;;
+    .item{
+      margin-bottom: 20upx;
+      .fl{
+        width: 126upx;
+        line-height: 50upx;
+      }
+      .fr{
+        width: calc(100% - 126upx);
+        height: 50upx;
+        background: #1e2432;
+        border-radius: 6upx;
+        display: flex;
+        padding:0 20upx;
+        box-sizing: border-box;
+        .input{
+          flex: 1;
+          line-height: 50upx;
+          color: #f0c61e;
+        }
+        .coin{
+          flex: 1;
+          max-width:130upx; 
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          box-sizing: border-box;
+          font-size: 24upx;;
+        }
+      }
+      &.payType{
+        .fr{
+          background: none;
+          display: flex;
+          .flex {
+            flex: 1;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            .checkbox{
+              width: 28upx;
+              height: 28upx;
+              border-radius: 28upx;
+              border: 1upx solid #03bcc0;
+              margin-right: 10upx;
+              transition: all .1s;
+              display:flex;
+              justify-content: center;
+              align-items: center;
+            }
+            &.active{
+              .checkbox{
+                background: #03bcc0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .fee{
+    height: 63upx;
+    line-height: 63upx;
+    color: #03bcc0;
+    padding: 0 40upx;
+    font-size: 26upx;;
+  }
+  .header{
+    margin-top: 20upx;
+    background: #2e3441;
+    color: #03bcc0;
+    border-radius: 8upx;
+    padding: 10upx 40upx;
+    font-size: 26upx;;
+    .item{
+      line-height: 52upx;
+      text{
+        color: #f0c61e;
+      }
+    }
+  }
+}

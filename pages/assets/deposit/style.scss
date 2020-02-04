@@ -1,0 +1,82 @@
+.deposit {
+  padding: 20upx;
+  .deposit_sync{
+    margin-bottom: 20rpx;
+    button{
+      height: 60rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8rpx;
+      font-size: 28rpx;
+      background: $fontColor;
+      color: #191e2a;
+      transition: all .1s;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .deposit_main {
+    padding: 1upx 25upx 58upx;
+    background: $maskBg;
+    border-radius: 8upx;
+    margin-bottom: 20upx;
+    .deposit_tips_one,.deposit_tips_two{
+      color: #d2b916;
+      font-size: 24upx;
+    }
+    .deposit_tips_two{
+      color: #fff;
+    }
+    .deposit_address {
+      font-size: 26upx;;
+      background: #191e2a;
+      border-radius: 8upx;
+      .fl {
+        line-height: 60upx;
+        color: #fff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 107upx);
+        padding: 0 16upx;
+        box-sizing: border-box;
+      }
+      .fr {
+        width: 107upx;
+        height: 60upx;
+        line-height: 60upx;
+        padding: 0;
+        text-align: center;
+        color: #191e2a;
+        background: $fontColor;
+        border: 0;
+        font-size: 26upx;;
+        &::after{
+          display: none;
+        }
+      }
+    }
+    .deposit_tpis {
+      color: #fff;
+      font-size: 26upx;;
+      line-height: 58upx;
+      .uni-icon {
+        margin-left: 10upx;
+      }
+      text {
+        color: #efd105;
+      }
+    }
+    .deposit_code {
+      width: 200upx;
+      height: 200upx;
+      margin: 40upx auto;
+      background: #fff;
+    }
+  }
+}

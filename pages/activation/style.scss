@@ -1,0 +1,47 @@
+.activation{
+  padding: 20rpx;
+  .authentication_lv{
+    .lv_top{
+      background: $maskBg;
+      border-radius: 8upx;
+      height: 369upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #acaeb1;
+      font-size: 26upx;;
+      text{
+        line-height: 1.5;
+      }
+    }
+    .lv_buttom{
+      font-size: 26upx;;
+      
+      margin-top: 67upx;
+      button{
+        background: $maskBg;
+        border-radius: 8upx;
+        border: 0;
+        color: #fff;
+        font-size: 26upx;;
+        height: 70upx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .2s;
+        &::after{
+          display: none;
+        }
+        &:active{
+          opacity: 0.5;
+        }
+        &.err{
+          background: #03bcc0;
+          color: #191e2a;
+        }
+      }
+    }
+  }
+  
+}

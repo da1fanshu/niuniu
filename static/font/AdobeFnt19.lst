@@ -1,0 +1,26 @@
+%!Adobe-FontList 1.19
+%Locale:0x804
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:iconfont
+FamilyName:iconfont
+StyleName:Regular
+FullName:iconfont
+MenuName:iconfont
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:F:\uniApp\lkex\static\Font\iconfont.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:11180
+FileModTime:1559554343
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,iconfont
+NameArray:0,Win,1,iconfont
+%EndFont
+

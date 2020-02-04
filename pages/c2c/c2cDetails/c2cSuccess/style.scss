@@ -1,0 +1,60 @@
+.c2cSuccess{
+  padding: 1upx 20upx;
+  .tips{
+    margin-top: 33upx;
+    text{
+      display: block;
+      text-align: center;
+      line-height: 40upx;
+      color: #ccc;
+    }
+  }
+  .submits{
+    margin-top: 32upx;
+    button{
+      height: 60upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26upx;;
+      color: $maskBg;
+      background: #02bfc2;
+      border-radius: 8upx;
+      transition: all .1s;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .info{
+    margin-top: 31upx;
+    padding: 0 40upx;
+    background: $maskBg;
+    border-radius: 8upx;
+    color: #02bfc2;
+    padding-bottom: 22upx;
+    .item{
+      line-height: 40upx;
+      font-size: 26upx;;
+      .fl{
+        width: 174upx;
+      }
+      .fr{
+        width: calc(100% - 174upx);
+      }
+    }
+    .title{
+      display: flex;
+      height: 117upx;
+      justify-content: center;
+      align-items: center;
+      font-size: 40upx;
+      text{
+        line-height: 1;
+      }
+    }
+  }
+}

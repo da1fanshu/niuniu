@@ -1,0 +1,129 @@
+.ren_mian{
+    width: 680upx;
+    padding: 17upx 25upx;
+    box-sizing: border-box;
+    background: $maskBg;
+    color: #03bcc0;
+    font-size: 26upx;
+    border-radius: 8upx;
+    .ren_info{
+      position:relative;
+      .share{
+        position: absolute;
+        right: 0rpx;
+        top: 40rpx;
+        button{
+          height: 50rpx;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 24rpx;
+          background: #d14b64;
+          color: #fff;
+          transition: all .1s;
+          border-radius: 6rpx;
+          border: 0;
+          &::after{
+            display: none;
+          }
+          &:active{
+            opacity: 0.5;
+          }
+        }
+      }
+      .user{
+        text-align: center;
+        font-size: 28rpx;
+      }
+      .surplus{
+        margin-bottom: 20rpx;
+      }
+    }
+    .list{
+      height: 550upx;
+      overflow: auto;
+      .item{
+        background: $appBg;
+        margin-bottom: 20rpx;
+        border-radius: 6rpx;
+        padding: 20rpx;
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+.my_bonus {
+  padding: 20rpx;
+  .bonus_list {
+    margin-top: 20rpx;
+    .item {
+      padding: 20rpx;
+      background: $maskBg;
+      border-radius: 8rpx;
+      margin-bottom: 20rpx;
+      color: $fontColor;
+      font-size: 28rpx;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .bonus_text{
+    margin-top: 20rpx;
+    color: $fontColor;
+    line-height: 40rpx;
+  }
+  .bonus_nav {
+    margin-top: 20rpx;
+    display: flex;
+    button {
+      flex: 1;
+      border-radius: 8rpx;
+      background: $appBg;
+      color: $fontColor;
+      font-size: 28rpx;
+      height: 70rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.1s;
+      border: 0;
+      &::after {
+        display: none;
+      }
+      &.active {
+        background: #03bcc0;
+        color: #191d29;
+      }
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+  .created_created {
+    height: 200upx;
+    border-radius: 8upx;
+    background: $maskBg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #03bcc0;
+    flex-direction: column;
+    font-size: 26upx;
+    .puls {
+      background: #03bcc0;
+      width: 60upx;
+      height: 60upx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4upx;
+      .uni-icon {
+        font-weight: 700;
+        font-size: 60upx !important;
+        line-height: 60upx;
+      }
+    }
+  }
+}

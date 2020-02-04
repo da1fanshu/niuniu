@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>K线数据</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html,
+			body {
+				min-height: 100%;
+				background: #191E2A;
+				width: 100%;
+			}
+
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+		<!-- <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_803905_kzejr553d0f.css" /> -->
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css" /> -->
+		<link rel="stylesheet" type="text/css" href="./css/museUi.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/style.css" />
+		<script src="./js/jq.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/museUi.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/moment.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/bigdecimal.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/bignumber.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/nuiWebView.js"></script>
+		<script type="text/javascript" src="./charting_library/charting_library.min.js"></script>
+		<script type="text/javascript" src="./charting_library/datafeed/udf/dist/polyfills.js"></script>
+		<script type="text/javascript" src="./charting_library/datafeed/udf/dist/bundle.js"></script>
+	</head>
+	<body class="kLine">
+		<div id="elApp">
+			<div v-cloak>
+				<div class="kLine_header">
+					<h4>{{symbolText}}</h4>
+					<div class="k_hot_money clear">
+						<span class="h_new_money fl" :style="{color:currentPrice>lastPrice ? '#2eb34b' : '#fa5757'}">
+							<em>{{currentPrice}}</em>
+							<span>{{currentPrice > lastPrice ? '↑' : '↓'}}</span>
+							<!-- <mu-icon :value="':iconfont ' + (currentPrice>lastPrice ? 'icon-top' : 'icon-down')"></mu-icon> -->
+						</span>
+						<span class="h_rmb fl">￥{{convertCNYFilter(currentPrice)}}</span>
+					</div>
+					<div class="h_hour">
+						<div>
+							<em>24h成交量</em>
+							<span>{{cumulative}}</span>
+						</div>
+						<div>
+							<em>24h最高价</em>
+							<span>{{highPrice}}</span>
+						</div>
+						<div>
+							<em>24h最低价</em>
+							<span>{{lowPrice}}</span>
+						</div>
+					</div>
+				</div>
+				<div id="tv_chart_container"></div>
+				<div class="kLine_sell_buy">
+					<div class="k_s_b_nav clear">
+						<p class="fl">
+							<span class="fl">数量</span>
+							<span class="fr">价格({{symbolText.split('/')[1]}})</span>
+						</p>
+						<p class="fr">
+							<span class="fl">价格({{symbolText.split('/')[1]}})</span>
+							<span class="fr">数量</span>
+						</p>
+					</div>
+					<div class="k_s_b_list clear">
+						<ul class="fl buy">
+							<li v-for="item in buyList" :key="item.x">
+								<span class="fl">{{item.count}}</span>
+								<span class="fr">{{item.price}}</span>
+								<span class="list_bg" :style="{'width':item.width}"></span>
+							</li>
+						</ul>
+						<ul class="fr sell">
+							<li v-for="item in sellList" :key="item.x">
+								<span class="fl">{{item.price}}</span>
+								<span class="fr">{{item.count}}</span>
+								<span class="list_bg" :style="{'width':item.width}"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="fixed_nav" v-if="app!='0'">
+					<mu-button class="buyto" color="success">买入</mu-button>
+					<mu-button class="sellto" color="#fa5757">卖出</mu-button>
+					<mu-button @click="goBack" color="#424242">返回</mu-button>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			let type = getQueryString('type');
+			let title = getQueryString('title');
+			let coin = getQueryString('coin');
+			let symbol = getQueryString('symbol');
+			let app = getQueryString('app');
+			console.log(app)
+			// #ifdef APP-PLUS
+
+			if (app != 0) {
+				document.addEventListener('UniAppJSBridgeReady', function() {
+					document.querySelector('.buyto').addEventListener('click', function(evt) {
+						uni.navigateTo({
+							url: `../quotation/quotation?type=${type}&title=${title}&coin=${coin}&symbol=${symbol}&sale=BUY`
+						});
+					});
+				});
+				document.addEventListener('UniAppJSBridgeReady', function() {
+					document.querySelector('.sellto').addEventListener('click', function(evt) {
+						uni.navigateTo({
+							url: `../quotation/quotation?type=${type}&title=${title}&coin=${coin}&symbol=${symbol}&sale=SELL`
+						});
+					});
+				});
+			}
+
+			// #endif
+			var baseUrl = 'https://lkex.co/';
+
+			function getQueryString(name) {
+				var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) {
+					return unescape(r[2]);
+				}
+				return null;
+			}
+
+			let filter = {};
+			filter.floorFix = (str, length) => { // 去尾后保留多少位小数
+					//修正乘法的精度问题
+					let accMul = function(arg1, arg2) {
+						let m = 0,
+							s1 = arg1.toString(),
+							s2 = arg2.toString();
+						try {
+							m += s1.split(".")[1].length
+						} catch (e) {}
+						try {
+							m += s2.split(".")[1].length
+						} catch (e) {}
+						return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+					};
+					/**
+					 * 保留小数位
+					 * @param name
+					 * @param str
+					 * @param length
+					 * @returns {string}
+					 */
+					let fix = function(name, str, length) {
+						let PRECISION = 6;
+						str = isNaN(parseFloat(str)) ? 0 : parseFloat(str);
+						length = isNaN(parseInt(length)) ? PRECISION : parseInt(length);
+						let pow = Math.pow(10, length);
+						//修正小数乘一个整数出小数的情况,乘完之后再进行四舍五入取0位小数
+						return ((Math[name](accMul(str, pow))) / pow).toFixed(length);
+					};
+					return fix('floor', str, length);
+					// return this.floorFixPrice(str, length);
+				},
+				filter.floorFixPrice = (str, length) => {
+					let PRECISION = 6;
+					// 计算小数精度不准确的问题
+					// 如0.230022200000001 => 0.2300002
+					str = isNaN(parseFloat(str)) ? 0 : parseFloat(str).toFixed(length);
+					length = isNaN(parseInt(length)) ? PRECISION : parseInt(length);
+					return tool(str, length);
+
+					function tool(number, precision) {
+						let num = Math.pow(10, precision);
+						let price = new BigNumber(number).mul(num).floor().div(num);
+						// console.log('the price is:' + price);
+						price = new BigDecimal('' + price).toPlainString();
+						// console.log('the last price is:' + price);
+						// console.log('floorFixPrice is: ' + price);
+						return formatZeroSuffix(price, precision);
+					}
+
+					/**
+					 * 补零
+					 * @param num
+					 * @param len
+					 * @returns {*}
+					 */
+					function formatZeroSuffix(num, len) {
+						let arrs = (num + '').split('.');
+
+						let d = arrs[1];
+						let l;
+
+						// 没有小数点
+						if (d === undefined) {
+							if (len === 0) {
+								return num;
+							} else {
+								return num + '.' + getZeros(len, 0);
+							}
+						} else if (d === '') { // 最后一位是小数点
+							return num + getZeros(len, 0);
+						} else {
+							l = d.length;
+							return num + getZeros(len, l);
+						}
+
+						function getZeros(len, l) {
+							let zeros = '';
+							for (let i = 0; i < len - l; i++) {
+								zeros = zeros + '0';
+							}
+							return zeros;
+						}
+					}
+				}
+			new Vue({
+				el: '#elApp',
+				data() {
+					return {
+						loading: false,
+						loadings: true,
+						bar: {},
+						bars: {},
+						loadingOpts: {
+							fontSize: '20px',
+							text: 'loading',
+							color: '#dddddd',
+							textColor: '#dddddd',
+							maskColor: 'rgba(0, 0, 0, 0.8)',
+							zlevel: 2,
+						},
+						list: [],
+						ohlc: [],
+						volume: [],
+						data: [],
+						period: '15m',
+						periodText: '15Mins',
+						ZONE: 8,
+						sellList: [],
+						buyList: [],
+						symbol: 'UDC_ETH',
+						symbolText: 'ETH/UDC',
+						highPrice: '0.00000000',
+						lowPrice: '0.00000000',
+						cumulative: '0.00000000',
+						currentPrice: '0.00000000',
+						priceRMB: '0.00000000',
+						lastPrice: '0.00000000',
+						open: false,
+						time: '',
+						category: '',
+						series0: '',
+						series1: '',
+						depths: false,
+						timeInterval: '',
+						RMB: 0,
+						Times: null,
+						app: "",
+					}
+				},
+				created() {
+					let that = this;
+					this.symbol = getQueryString('type');
+					this.RMB = getQueryString('money');
+					this.symbolText = this.symbol.split('_')[1] + '/' + this.symbol.split('_')[0];
+					this.getMoneyInfo();
+					this.app = getQueryString('app');
+					this.getBuySell();
+					this.Times = setInterval(() => {
+						this.getBuySell();
+						this.getMoneyInfo();
+					}, 5000);
+				},
+				mounted() {
+					this.KLine(this.symbol);
+				},
+				//跳转之前关闭定时器
+				beforeDestroy() {
+					this.Times && clearInterval(this.Times);
+				},
+				methods: {
+					goPage(page) {
+						uni.navigateTo({
+							url: page
+						})
+					},
+					goBack() {
+						// #ifdef APP-PLUS
+						uni.navigateBack();
+						// #endif
+						history.back(-1)
+					},
+					buyTo() {
+						console.log('1')
+						window.location.href = "http://localhost:8580/#/pages/exchange/quotation/quotation"
+						uni.navigateTo({
+							url: "../quotation/quotation"
+						})
+					},
+					sellTo() {
+						// #ifdef APP-PLUS
+						uni.navigateBack();
+						// #endif
+						history.back(-1)
+					},
+					KLine(symbol) {
+						var widget = new TradingView.widget({
+							// debug: true, // uncomment this line to see Library errors and warnings in the console
+							width: '100%',
+							height: '400',
+							// fullscreen:true,
+							// autosize:true,
+							symbol: symbol,
+							interval: '15',
+							container_id: "tv_chart_container",
+							//	BEWARE: no trailing slash is expected in feed URL
+							datafeed: new Datafeeds.UDFCompatibleDatafeed(location.origin),
+							library_path: "./charting_library/",
+							locale: "zh",
+							disabled_features: ["use_localstorage_for_settings"],
+							enabled_features: ["study_templates"],
+							charts_storage_url: 'https://saveload.tradingview.com',
+							charts_storage_api_version: "1.1",
+							client_id: 'tradingview.com',
+							user_id: 'public_user_id',
+							timezone: 'Asia/Shanghai',
+							theme: "Dark",
+							disabled_features: [
+								"header_symbol_search",
+								"caption_buttons_text_if_possible",
+								"header_settings",
+								"header_indicators",
+								"header_compare",
+								"header_undo_redo",
+								"header_fullscreen_button",
+								"header_saveload",
+								"header_screenshot",
+								"left_toolbar",
+								"timeframes_toolbar",
+								"go_to_date",
+								"edit_buttons_in_legend",
+								"symbol_info",
+								"header_interval_dialog_button",
+								"volume_force_overlay",
+								"adaptive_logo",
+								"use_localstorage_for_settings",
+							],
+							enabled_features: [
+								// "side_toolbar_in_fullscreen_mode"
+								//                        "keep_left_toolbar_visible_on_small_screens"
+							],
+							overrides: {
+								"symbolWatermarkProperties.color": "rgba(0,0,0,0)",
+								'paneProperties.legendProperties.showStudyArguments': false,
+								'paneProperties.legendProperties.showStudyTitles': false,
+								'paneProperties.legendProperties.showStudyValues': false,
+								'paneProperties.legendProperties.showSeriesTitle': false,
+								'paneProperties.legendProperties.showSeriesOHLC': true,
+								'paneProperties.legendProperties.showLegend': false,
+								'paneProperties.legendProperties.showBarChange': false,
+								'paneProperties.legendProperties.showOnlyPriceSource': false,
+								"paneProperties.background": "#212121",
+								"paneProperties.vertGridProperties.color": "#343535",
+								"paneProperties.horzGridProperties.color": "#343535",
+
+								"mainSeriesProperties.candleStyle.upColor": "#ff4622",
+								"mainSeriesProperties.candleStyle.downColor": "#17a21d",
+								"mainSeriesProperties.candleStyle.drawBorder": false,
+								"mainSeriesProperties.candleStyle.wickUpColor": "#ff4622",
+								"mainSeriesProperties.candleStyle.wickDownColor": "#17a21d",
+								"mainSeriesProperties.candleStyle.borderUpColor": "#ff4622",
+								"mainSeriesProperties.candleStyle.borderDownColor": "#17a21d",
+
+								"paneProperties.topMargin": 1,
+
+								"scalesProperties.lineColor": "#555555",
+								"scalesProperties.textColor": "#666666",
+								"scalesProperties.backgroundColor": "#212121",
+								"scalesProperties.showSeriesPrevCloseValue": true,
+								"volumePaneSize": "small" //large/medium/small/tiny
+							},
+							studies_overrides: {
+								"volume.volume.color.0": "#17a21d",
+								"volume.volume.color.1": "#ff4622",
+								"Moving Average.precision": 8
+							},
+							toolbar_bg: "#212121",
+							custom_css_url: '/hybrid/html/charting_library/static/css/chat.css'
+						})
+						widget.onChartReady(function() {
+							//移动平均线
+							this.chart().createStudy("Moving Average", false, false, [5], null, {
+								"Plot.color": "#692d87",
+								"Plot.linewidth": 3
+							});
+							this.chart().createStudy("Moving Average", false, false, [10], null, {
+								"Plot.color": "#386c87",
+								"Plot.linewidth": 3
+							});
+							this.chart().createStudy("Moving Average", false, false, [20], null, {
+								"Plot.color": "#87811f",
+								"Plot.linewidth": 3
+							});
+							this.chart().createStudy("Moving Average", false, false, [30], null, {
+								"Plot.color": "#878787",
+								"Plot.linewidth": 3
+							});
+							this.chart().createStudy("Awesome Oscillator", false, false);
+						});
+					},
+					//查询买卖盘
+					getBuySell() {
+						let that = this;
+						$.get(baseUrl + '/trade/trade', {
+							symbol: this.symbol
+						}, function(data) {
+							that.loadings = false;
+							that.sellList = that._getFinalItem(data.sell instanceof Array ? data.sell.reverse() : new Array());
+							that.buyList = that._getFinalItem(data.buy instanceof Array ? data.buy : new Array());
+						})
+					},
+					//查询最新价格涨跌
+					getMoneyInfo() {
+						let that = this;
+						$.get(baseUrl + '/trade/info', {
+							symbol: this.symbol
+						}, function(data) {
+							_doResult(data)
+						})
+
+						function _doResult(rep) {
+							if (rep) {
+								let pr_ne = rep['order'] && rep['order'][0].price; // 最新價
+								that.highPrice = filter.floorFixPrice(rep['24high'], that.ZONE); //最高价
+								that.lowPrice = filter.floorFixPrice(rep['24low'], that.ZONE); //最低价
+								that.cumulative = filter.floorFix(rep['24Total'], that.ZONE); //累计
+								that.currentPrice = filter.floorFixPrice(pr_ne, that.ZONE);
+								let assetCode = that.symbol.split('_')[0];
+								that.priceRMB = filter.floorFixPrice(that.currentEthPrice * pr_ne * that.RMB, 4);
+								if (rep['order'] && rep['order'][1]) {
+									that.lastPrice = rep['order'][1].price;
+								}
+							}
+						}
+					},
+					//转换RMB价格
+					convertCNYFilter(val) {
+						let that = this;
+						return filter.floorFixPrice(val * that.RMB, 4);
+					},
+					//格式化数据
+					_getFinalItem(prevArr) {
+						let that = this;
+						if ($.isEmptyObject(prevArr)) {
+							return [];
+						}
+						if (prevArr.length > 15) {
+							prevArr = prevArr.slice(0, 15);
+						}
+						let max = _.maxBy(prevArr, 1)[1];
+						let newArr_obj = [];
+						prevArr.forEach(function(value, index) {
+							let width = value[1] / max * 100 + '%';
+							if (width < '1.068%') {
+								width = '3px';
+							}
+							let total;
+							total = filter.floorFix(value[0] * value[1], 8)
+							newArr_obj.push({
+								"price": filter.floorFixPrice(new BigDecimal('' + value[0]).toPlainString(), 8),
+								"count": filter.floorFixPrice(value[1], 8),
+								"total": total,
+								"width": width
+							})
+						});
+						return newArr_obj;
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

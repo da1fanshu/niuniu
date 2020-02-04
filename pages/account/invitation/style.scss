@@ -1,0 +1,71 @@
+.invitation{
+  .bg{
+    display: block;
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0upx;
+  }
+  .invitation_main{
+    position: absolute;
+    z-index: 2;
+    top: 50rpx;
+    right: 50rpx;
+    left: 50rpx;
+    bottom: 50rpx;
+    padding: 1rpx;
+    background: url(../../../static/dev/invitation_top.png) no-repeat;
+    background-size: 100% 100%;
+    .main_tips{
+      text-align: center;
+      line-height: 2.2;
+      font-size: 26rpx;
+    }
+    .main_qrcode{
+      margin-top: 80rpx;
+      text-align: center;
+      margin-bottom: 10rpx;
+    }
+    .main_button{
+      height: 70rpx;
+      padding: 40rpx;
+      button{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(right, #6F98FF, #4D67EF);
+        border: 0;
+        width: 48%;
+        font-size: 28rpx;
+        color: #fff;
+        padding: 0;
+        transition: all .1s;
+        &::after{
+          display: none;
+        }
+        &:active{
+          opacity: 0.5;
+        }
+      }
+    }
+    .main_code{
+      margin-top: 30rpx;
+      height: 88rpx;
+      line-height: 88rpx;
+      font-size: 66rpx;
+      color: #4D67EF;
+      text-align: center;
+      font-family: 'Arial'
+    }
+    .main_title{
+      margin-top: 40rpx;
+      text-align: center;
+      color: #7986CB;
+      font-size: 28rpx;
+    }
+  }
+}

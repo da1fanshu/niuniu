@@ -1,0 +1,94 @@
+.c2cAgent {
+  padding: 1upx 20upx;
+  .c2cAgent_Apply_main {
+    margin-top: 20upx;
+    .submits{
+      margin: 40upx 0;
+      button{
+        height: 60upx;
+        line-height: 60upx;
+        font-size: 26upx;;
+        background: #12abb0;
+        border-radius: 8upx;
+        color: #191e2a;
+        transition: all .1s;
+        &::after {
+          display: none;
+        }
+        &:active {
+          opacity: 0.5;
+        }
+      }
+    }
+    .item {
+      font-size: 26upx;;
+      margin-bottom: 20upx;
+      .fl {
+        width: 132upx;
+        line-height: 51upx;
+        color: #12abb0;
+      }
+      .fr {
+        width: calc(100% - 132upx);
+        border-radius: 8upx;
+        background: #2e3442;
+        height: 51upx;
+        color: #12abb0;
+        input {
+          padding: 0 24upx;
+          height: 51rpx;
+        }
+        .copy{
+          display: flex;
+          input{
+            flex: 1;
+          }
+          button{
+            flex: 1;
+            max-width: 104upx;
+            padding: 0;
+            height: 51upx;
+            font-size: 26upx;;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            border: none;
+            &::after{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .c2cAgent_Apply {
+    margin-top: 20upx;
+    border-radius: 8upx;
+    background: #2e3442;
+    color: #03bcbf;
+    .tpis {
+      padding: 20upx;
+    }
+  }
+  .c2cAgent_isVip {
+    margin-top: 20upx;
+    border-radius: 8upx;
+    padding: 20upx;
+    background: #2e3442;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .iconfont {
+      font-size: 80upx;
+    }
+    color: #03bcbf;
+    .text {
+      text {
+        color: #ec5151;
+      }
+    }
+  }
+}

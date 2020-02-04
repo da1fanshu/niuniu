@@ -1,0 +1,135 @@
+.clear:after {
+  content: '';
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+  list-style: none; }
+
+.kLine {
+  height: 100%;
+  background: #0f0f10;
+  overflow: auto; }
+  .kLine .kLine_header {
+    padding: 0 16px; }
+    .kLine .kLine_header h4 {
+      color: #fff;
+      margin: 0;
+      line-height: 30px;
+      font-size: 14px; }
+    .kLine .kLine_header .k_hot_money {
+      color: #fff; }
+      .kLine .kLine_header .k_hot_money .h_new_money em {
+        font-size: 16px;
+        font-weight: 500;
+        height: 25px;
+        line-height: 25px; }
+      .kLine .kLine_header .k_hot_money .h_new_money .iconfont {
+        font-size: 14px; }
+      .kLine .kLine_header .k_hot_money .h_rmb {
+        margin-left: 8px;
+        margin-top: 5px; }
+    .kLine .kLine_header .h_hour {
+      display: flex; }
+      .kLine .kLine_header .h_hour div {
+        flex: 1;
+        color: #fff; }
+        .kLine .kLine_header .h_hour div em,
+        .kLine .kLine_header .h_hour div span {
+          display: block; }
+        .kLine .kLine_header .h_hour div em {
+          color: #8f8f94; }
+        .kLine .kLine_header .h_hour div:nth-child(2) {
+          text-align: center; }
+        .kLine .kLine_header .h_hour div:last-child {
+          text-align: right; }
+  .kLine .tab_nav {
+    margin-top: 8px;
+    height: 40px;
+    background: #23262d;
+    border-bottom: 1px solid #3d4455;
+    padding: 0 16px; }
+    .kLine .tab_nav .btns {
+      height: 40px;
+      font-size: 12px;
+      color: #fff; }
+      .kLine .tab_nav .btns .mu-icon {
+        font-size: 20px; }
+    .kLine .tab_nav .active {
+      border-bottom: 1px solid #fff; }
+  .kLine .kLine_echarts {
+    height: 250px !important; }
+  .kLine .kLine_sell_buy {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 16px;
+    background: #23262d;
+    border-bottom: 1px solid #3d4455; }
+    .kLine .kLine_sell_buy .k_s_b_nav p {
+      width: 48.5%;
+      font-size: 12px;
+      margin-bottom: 0;
+      color: #fff; }
+    .kLine .kLine_sell_buy .k_s_b_list {
+      margin-bottom: 40px; }
+      .kLine .kLine_sell_buy .k_s_b_list ul {
+        width: 48.5%; }
+        .kLine .kLine_sell_buy .k_s_b_list ul li {
+          overflow: hidden;
+          position: relative;
+          height: 20px;
+          line-height: 20px;
+          font-size: 10px; }
+          .kLine .kLine_sell_buy .k_s_b_list ul li .list_bg {
+            position: absolute;
+            top: 0;
+            bottom: 0; }
+      .kLine .kLine_sell_buy .k_s_b_list .buy {
+        color: #2eb34b; }
+        .kLine .kLine_sell_buy .k_s_b_list .buy .list_bg {
+          right: 0;
+          background-color: rgba(26, 95, 44, 0.41); }
+      .kLine .kLine_sell_buy .k_s_b_list .sell {
+        color: #fa5757; }
+        .kLine .kLine_sell_buy .k_s_b_list .sell .list_bg {
+          left: 0;
+          background-color: rgba(95, 29, 29, 0.41); }
+  .kLine .fixed_nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex; }
+    .kLine .fixed_nav button {
+      flex: 1;
+      height: 40px;
+      font-size: 12px;
+      box-shadow: none; }
+
+.t_l_p {
+  background: none; }
+  .t_l_p .mu-list {
+    background: #23262d;
+    padding: 0; }
+    .t_l_p .mu-list li .mu-item-wrapper .mu-item {
+      height: 40px;
+      line-height: 40px; }
+      .t_l_p .mu-list li .mu-item-wrapper .mu-item .mu-item-title {
+        height: inherit;
+        line-height: inherit;
+        font-size: 12px;
+        color: #8f8f94; }

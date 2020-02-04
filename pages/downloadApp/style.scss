@@ -1,0 +1,68 @@
+.downloadApp{
+  background: url(../../static/app_bg.png) no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  .downloadApp_main{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .dwon_text{
+      padding: 120rpx 0;
+      font-size: 24rpx;
+      color: #1ca8aa;
+      position: relative;
+      text-align: center;
+      &::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translate(50%,-50%);
+        left: 54rpx;
+        display: block;
+        width: 15%;
+        height: 1rpx;
+        transform: scaleY(0.5);
+        background-color: #1ca8aa;
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translate(50%,-50%);
+        right: 54rpx;
+        display: block;
+        width: 15%;
+        height: 1rpx;
+        transform: scaleY(0.5);
+        background-color: #1ca8aa;
+      }
+    }
+    .down_type{
+      a{
+        color:#000;
+      }
+      .d_app{
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 455rpx;
+        height: 90rpx;
+        margin: 0 auto;
+        background: #23c7c9;
+        border-radius: 90rpx;
+        font-size: 30rpx;
+        transition: all .1s;
+        margin-top: 50rpx;
+        &:active{
+          opacity: 0.5;
+        }
+        .iconfont{
+          font-size: 60rpx;
+        }
+      }
+    }
+  }
+}

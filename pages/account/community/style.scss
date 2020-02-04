@@ -1,0 +1,118 @@
+
+.community{
+  padding: 20rpx;
+  .community_modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+    .modal_main{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: #2e3441;
+      width: 650rpx;
+      border-radius: 10rpx;
+      padding-bottom: 100rpx;
+      .modal_code{
+        text-align: center;
+        image{
+          height: 400rpx;
+          width: 400rpx;
+        }
+      }
+      .modal_title_tip{
+        color: #03bcc0;
+        font-size: 26rpx;
+        text-align: center;
+        margin-bottom: 20rpx;
+      }
+      .modal_title{
+        position: relative;
+        height: 80rpx;
+        text-align: center;
+        color: #fff;
+        line-height: 80rpx;
+        font-size: 26rpx;
+        button{
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          background: none;
+          border: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &::after{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .community_main_list {
+    background: $maskBg;
+    padding: 0 20upx;
+    margin-bottom: 12upx;
+    border-radius: 8upx;
+    .community_main_list_item {
+      transition: all 0.2s;
+      &:active {
+        opacity: 0.5;
+      }
+      height: 87upx;
+      position: relative;
+      &::before{
+        display: block;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1upx;
+        background: #6d717a;
+        transform: scaleY(0.5);
+      }
+      &:last-child {
+        &::before{
+          display: none;
+        }
+      }
+      .fl {
+        color: #fff;
+        height: 87upx;
+        font-size: 26upx;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        text {
+          margin-left: 30upx;
+        }
+      }
+      .fr {
+        height: 87upx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #03bcc0;
+        font-size: 26rpx;
+        .messages{
+          background: #ff0000;
+          height: 34upx;
+          width: 34upx;
+          border-radius: 34upx;
+          margin-right: 20upx;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18upx;
+        }
+      }
+    }
+  }
+}

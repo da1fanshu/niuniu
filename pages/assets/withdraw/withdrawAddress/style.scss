@@ -1,0 +1,48 @@
+.withdrawAddress{
+  box-sizing: border-box;
+  padding: 20rpx;
+  .withdrawAddress_list{
+    .item{
+      background: #2e3441;
+      padding: 30rpx;
+      border-radius: 8rpx;
+      margin-bottom: 20rpx;
+      position: relative;
+      .del{
+        position: absolute;
+        top: 20rpx;
+        right: 20rpx;
+      }
+      text{
+        display: block;
+        color: #fff;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+  .withdrawAddress_add{
+    position: absolute;
+    bottom: 20rpx;
+    left: 20rpx;
+    right: 20rpx;
+    button{
+      height: 80rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28rpx;
+      background: #03bcc0;
+      border: 0;
+      transition: all .1s;
+      border-radius: 8rpx;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+}

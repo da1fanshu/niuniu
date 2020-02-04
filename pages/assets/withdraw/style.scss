@@ -1,0 +1,89 @@
+.withdraw{
+  padding: 20upx;
+  .withdraw_tpis{
+    padding: 12upx 24upx;
+    background: $maskBg;
+    border-radius: 8upx;
+  }
+  .submits{
+    margin: 20upx 0;
+    button{
+      height: 70upx;
+      line-height: 70upx;
+      border-radius: 8upx;
+      background: #12abb0;
+      color: #191e2a;
+      font-size: 26upx;;
+      transition: all .2s;
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .withdraw_form{
+    padding: 24upx 24upx 1upx;
+    background: $maskBg;
+    border-radius: 8upx;
+    .item{
+      color: #04cbcf;
+      margin-bottom: 20upx;
+      font-size: 26upx;;
+      .fl{
+        line-height: 60upx;
+        width: 122upx;
+      }
+      .fr{
+        height: 60upx;
+        width: calc(100% - 122upx);
+        padding: 0 23upx;
+        box-sizing: border-box;
+        background: #1e2432;
+        border-radius: 8upx;
+        input{
+          line-height: 60rpx;
+        }
+        button{
+          float: left;
+          padding: 0;
+          height: 60upx;
+          line-height: 60upx;
+          border: 0;
+          text-align: center;
+          font-size: 26upx;;
+          background: none;
+          color: #04cbcf;
+          &::after{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .withdraw_nav{
+    background: $maskBg;
+    border-radius: 8upx;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+     margin-bottom: 24upx;
+    button{
+      flex: 1;
+      padding: 0;
+      height: 64upx;
+      line-height: 64upx;
+      background: none;
+      font-size: 26upx;;
+      border: 0;
+      border-radius: 8upx;
+      color: #03bcc0;
+      transition: all .2s;
+      &::after{
+        display: none;
+      }
+      &.active{
+        background: #03bcc0;
+        color: #191e2a;
+      }
+    }
+  }
+}

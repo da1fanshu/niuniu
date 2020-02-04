@@ -1,0 +1,110 @@
+.appeal{
+  padding: 0 20upx;
+  .submits{
+    padding: 20upx 0;
+    button{
+      border: 0;
+      background: #03bcc0;
+      color: #191e2a;
+      border-radius: 8upx;
+      font-size: 26upx;;
+      height: 55upx;
+      line-height: 55upx;
+      transition: all .1s;
+      &::after{
+        display: none;
+      }
+      &:active{
+        opacity: 0.5;
+      }
+    }
+  }
+  .appeal_main{
+    padding:13upx 25upx 1upx;
+    background: $maskBg;
+    color: #03bcc0;
+    border-radius: 8upx;
+    .item{
+      font-size: 26upx;;
+      margin-bottom: 30upx;
+      .fl{
+        width: 153upx;
+        line-height: 58upx;
+      }
+      .fr{
+        width: calc(100% - 153upx);
+        height: 58upx;
+        padding: 0 16upx;
+        box-sizing: border-box;
+        border: 1upx solid #118f96;
+        border-radius: 5upx;
+        font-size: 26upx;;
+        position: relative;
+        picker{
+          .uni-input{
+            height: 100%;
+            line-height: 56upx;
+            padding: 0;
+            font-size: 26upx;;
+            background: none;
+          }
+        }
+        .downs{
+          position: absolute;
+          top: 0;
+          right: 16upx;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+    .item_remarks{
+      .fr{
+        padding: 16upx;
+        height: 185upx;
+      }
+    }
+    .item_upload{
+      .fr{
+        border: 0;
+        padding: 0;
+        height: auto;
+        image{
+          max-width: 100%;
+          display: block;
+        }
+        .btn_upload{
+          margin-top: 20upx;
+          overflow: hidden;
+          button{
+            float: left;
+            width: 114upx;
+            font-size: 26upx;;
+            padding: 0upx;
+            border: 0;
+            background: #03bcc0;
+            color: #191e2a;
+            border-radius: 8upx;
+            &::after{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .appeal_titll{
+    margin: 20upx 0;
+    padding: 12upx 25upx;
+    border-radius: 8upx;
+    background: $maskBg;
+    color: #03bcc0;
+    font-size: 26upx;;
+    line-height: 45upx;
+    text{
+      display: block;
+    }
+  }
+}

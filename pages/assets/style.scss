@@ -1,0 +1,198 @@
+.assets_list {
+  padding: 0 20upx;
+  .list_main {
+    .list_main_item {
+      background: #3b4250;
+      border-radius: 8upx;
+      overflow: hidden;
+      margin-bottom: 20upx;
+      .list_main_item_fun {
+        height: 59upx;
+        display: flex;
+        &.type_coin {
+          .flex {
+            .fun_coin {
+              background: #03bcc0;
+            }
+          }
+        }
+        &.type_game {
+          .flex {
+            .fun_coin {
+              background: #00c0e9;
+            }
+          }
+        }
+        &.type_shop {
+          .flex {
+            .fun_coin {
+              background: #eabb77;
+            }
+          }
+        }
+        .flex {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.2s;
+          &:active {
+            background: $maskBg;
+          }
+          .fun_coin {
+            height: 32upx;
+            width: 32upx;
+            border-radius: 32upx;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          text {
+            margin-left: 13upx;
+            color: #fff;
+            font-size: 23upx;
+          }
+        }
+      }
+      .list_main_item_coin {
+        padding: 21upx 17upx;
+        background: $maskBg;
+        border-radius: 8upx;
+        .clear {
+          color: #fff;
+          &.coins{
+            height: 40upx;
+            line-height: 40upx;
+          }
+          .fl {
+            .icon-cion {
+              float: left;
+              height: 40upx;
+              width: 40upx;
+              border-radius: 40upx;
+              display: block;
+              margin-right: 15upx;
+              background-color: #fff;
+            }
+          }
+          .fr{
+            font-size: 28upx;;
+            color: #03bcc0;
+          }
+        }
+      }
+    }
+  }
+  .account_list_nav {
+    height: 81upx;
+    line-height: 81upx;
+    font-size: 23upx;
+    color: #a8a9ab;
+    padding: 0 12upx;
+  }
+  .assets_detailed {
+    margin-top: 22upx;
+    height: 38upx;
+    line-height: 38upx;
+    padding: 0 12upx;
+    overflow: hidden;
+    view {
+      line-height: 38upx;
+    }
+    .fr {
+      height: 39upx;
+      overflow: hidden;
+      .checkbox {
+        float: left;
+        margin-top: 8upx;
+        height: 20upx;
+        width: 20upx;
+        color: #fff;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3upx;
+        border: 1px solid #03bcc0;
+        .uni-icon {
+          font-size: 30upx !important;
+        }
+        &.coin{
+          background: #03bcc0;
+          border: 1upx solid #03bcc0;
+        }
+        &.game{
+          background: #00c0e9;
+          border: 1upx solid #00c0e9;
+        }
+        &.shop{
+          background: #eabb77;
+          border: 1upx solid #eabb77;
+        }
+        &.nobg{
+          background: none;
+        }
+      }
+    }
+  }
+  .assets_list_money {
+    margin: 0 2upx;
+    margin-top: -29upx;
+    height: 160upx;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 8upx;
+    background: #03bcc0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 29upx 42upx 15upx;
+    transition: all 0.2s;
+    text {
+      color: #fff;
+      line-height: 1.4;
+    }
+  }
+}
+.account_select {
+  padding: 0 10upx;
+  background: #2e3442;
+  height: 117upx;
+  .account_select_nav {
+    background: #191e2a;
+    border-radius: 71upx;
+    height: 71upx;
+    display: flex;
+    view {
+      color: #fff;
+      flex: 1;
+      display: flex;
+      border-radius: 71px;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s;
+      font-size: 23upx;
+    }
+    .account_select_nav_active {
+      background: #03bcc0;
+    }
+    .account_select_nav_game {
+      background: #00c0e9;
+    }
+    .account_select_nav_shop {
+      background: #eabb77;
+    }
+  }
+}
+.assets_header {
+  height: 173upx;
+  background: #2e3442;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text {
+    display: block;
+    color: #fff;
+  }
+}

@@ -1,0 +1,95 @@
+.record {
+  padding: 20upx;
+  .common_list {
+    background: $maskBg;
+    border-radius: 8upx;
+    margin-bottom: 20upx;
+    
+    .common_list_main {
+      transition: all .1s; 
+      overflow: hidden;
+      .common_list_page{
+        padding: 12upx 25upx;
+      }
+      .c_l_m_list {
+        padding: 0 25upx;
+        .item {
+          display: flex;
+          line-height: 53upx;
+          position: relative;
+
+          &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1upx;
+            line-height: 1upx;
+            content: '';
+            display: block;
+            background: #6d717a;
+            transform: scaleY(0.5);
+          }
+          height: 53upx;
+          text {
+            flex: 1;
+            font-size: 22upx;;
+            color: #fff;
+            font-size: 18upx;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .suc{
+            color: $fontColor;
+          }
+        }
+      }
+      .c_l_m_title {
+        background: $fontColor;
+        height: 60upx;
+        line-height: 60upx;
+        color: #191e2a;
+        border-radius: 8upx;
+        padding: 0 25upx;
+        display: flex;
+        text {
+          flex: 1;
+          font-size: 22upx;;
+        }
+      }
+    }
+    .title {
+      padding: 0 25upx;
+      height: 80upx;
+      line-height: 80upx;
+      color: $fontColor;
+      font-size: 26upx;;
+      .fr {
+        height: 80upx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.l-title {
+	  display: flex;
+	  justify-content: space-between;
+	  margin:10px;
+	  background: #02bcc0;
+	  padding: 8px;
+	  align-items: center;
+	  .m-title {
+		  display: flex;
+		  align-items: center;
+	  }
+	  .sm-title{
+		  color: #fff;
+		  margin-right: 4px;
+	  }
+  }
+ .sel {
+	 border: 1px solid #fff;font-weight: bold;color: #05babe;background: #fff;height: 52upx;
+ }
