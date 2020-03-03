@@ -1,6 +1,6 @@
 let baseUrl = '';
 // #ifdef APP-PLUS
-baseUrl = 'https://lkex.co';//生产服务器域名
+baseUrl = 'http://nnex.io';//生产服务器域名
 // #endif
 
 //格式化请求头

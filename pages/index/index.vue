@@ -4,9 +4,9 @@
 		<view class="status_bar"><view class="top_view"></view></view>
 		<!-- #endif -->
 		<view class="index_header" v-if="isLogin == false">
-			<view class="i_h_logo"><image src="/static/logo.jpg" style="width: 257upx; height: 56upx;margin-left: -32upx;" mode=""></image></view>
+			<view class="i_h_logo"><image src="/static/logo.png" style="width: 80upx; height: 80upx;margin-left: 14upx;" mode=""></image></view>
 			<view class="i_h_login">
-				<button @click="$goPage('../login/login')">登录/注册</button>
+				<view @click="$goPage('../login/login')">登录/注册</view>
 				<!-- <image src="/static/cn.jpg" style="width: 75upx; height: 50upx;margin-top: 2upx; margin-left: 20upx;" mode=""></image> -->
 			</view>
 		</view>
@@ -55,7 +55,7 @@
 			</view>
 		</view>
 		<view class="index_ban" @click="isPower()"><image src="/static/banner.png" mode=""></image></view>
-		<view class="index_news">
+		<!-- <view class="index_news">
 			<view class="uni-timeline">
 				<view class="index_title">最新活动/资讯</view>
 				<block v-for="(item, index) in list" :key="index">
@@ -78,11 +78,92 @@
 			</view>
 			<HMmessages ref="HMmessages" @complete="HMmessages = $refs.HMmessages"></HMmessages>
 			<yomol-upgrade :type="upgradeType" :url="upgradeUrl" title="发现新版本" :content="upgradeContent" ref="yomolUpgrade"></yomol-upgrade>
+		</view> -->
+		<view class="exchange_header">
+			<view class="b_list" :class="pairs == 'optional' ? 'active' : ''" @click="setType('optional')">自选</view>
+			<block v-for="(item, index) in cexchange" :key="index">
+				<view class="b_list" :class="item.name == pairs ? 'active' : ''" @click="setType(item.name)">{{ item.name }}</view>
+			</block>
+		</view>
+		<view class="exchange_main">
+			<view class="exchange_nav">
+				<text style="min-width: 288upx;">名称/成交量</text>
+				<text style="min-width: 179upx;">最新价格</text>
+				<text style="min-width: 127upx;">涨跌</text>
+				<text style="text-align: right;">自选</text>
+			</view>
+			<view class="exchange_list">
+				<view
+					class="item"
+					v-for="(item, index) in list"
+					:key="index"
+					v-if="item.SHOWSTATUS && item.status != 'INIT'"
+					@click="$goPage(`quotation/quotation?type=${item.symbol}&title=${item.title}&coin=${item.assetCode1}&symbol=${item.assetCode2}`)"
+				>
+					<view class="flex" style="min-width: 288upx;">
+						<image class="icon-cion" :src="'../../static/coin/' + item.assetCode2.toLowerCase() + '@2x.png'"></image>
+						<view class="item_coin">
+							<text style="font-size: 28rpx;">{{ item.title }}</text>
+							<text style="font-size: 24upx;color: #A4A4A4;">24h量：{{ filter.fix(item.trade ? item.trade['24Total'] : 0, 4) | lockNum }}</text>
+						</view>
+					</view>
+					<view class="flex price" style="min-width: 179upx;font-size: 24rpx;">
+						<text class="new">{{ filter.fix(item.trade ? item.trade.newPrice : 0, 4) }}</text>
+						<text class="money" style="font-size: 24rpx;" v-if="tether">
+							￥{{
+								filter.fix(
+									(item.trade ? item.trade.newPrice : 0) *
+										(item.assetCode1 == 'USDT'
+											? tether
+											: item.assetCode1 == 'BTC'
+											? bitcoin
+											: item.assetCode1 == 'ETH'
+											? ethereum
+											: item.assetCode1 == 'DUSD'
+											? digitalusd
+											: 6.58),
+									4
+								)
+							}}
+						</text>
+					</view>
+					<view class="flex gain"  style="font-size: 24rpx;">
+						<text :class="[(item.trade ? item.trade.changeRatioNum : 0) > 0 ? 'rise' : '', (item.trade ? item.trade.changeRatioNum : 0) < 0 ? 'fall' : '']">
+							{{ item.trade ? item.trade.changeRatio : 0 }}%
+						</text>
+					</view>
+					<view class="flex optional" @click.stop="startSymbol(item.symbol)">
+						<text v-if="userStart.includes(item.symbol)" class="iconfont">&#xe658;</text>
+						<text v-else class="iconfont">&#xe657;</text>
+					</view>
+				</view>
+				<view class="item" v-for="(item, index) in list" :key="index" v-if="item.SHOWSTATUS && item.status === 'INIT'">
+					<view class="flex" style="min-width: 288upx;">
+						<image class="icon-cion" :src="'../../static/coin/' + item.assetCode2.toLowerCase() + '@2x.png'"></image>
+						<view class="item_coin">
+							<text>{{ item.title }}</text>
+							<text style="font-size: 24upx;">24h量：--</text>
+						</view>
+					</view>
+					<view class="flex price" style="min-width: 179upx;">
+						<text class="new">--</text>
+						<text class="money" style="font-size: 24rpx;" v-if="tether">￥--</text>
+					</view>
+					<view class="flex gain">
+						<text :class="[(item.trade ? item.trade.changeRatioNum : 0) > 0 ? 'rise' : '', (item.trade ? item.trade.changeRatioNum : 0) < 0 ? 'fall' : '']">--%</text>
+					</view>
+					<view class="flex optional" @click.stop="startSymbol(item.symbol)">
+						<text v-if="userStart.includes(item.symbol)" class="iconfont">&#xe658;</text>
+						<text v-else class="iconfont">&#xe657;</text>
+					</view>
+				</view>
+				<uni-load-more v-if="!list[0]" :status="loading ? 'loading' : !list[0] ? 'noMore' : ''"></uni-load-more>
+			</view>
 		</view>
 		<!-- #ifdef H5 -->
 		<view class="down_app clear" v-if="$store.state.closeDown == false">
 			<text class="fl" @click="$goPage('/pages/downloadApp/downloadApp')">前往下载APP</text>
-			<uni-icon @click="closeDown()" class="fr" type="closeempty" color="#fff" size="30"></uni-icon>
+			<uni-icons @click="closeDown()" class="fr" type="closeempty" color="#fff" size="30"></uni-icons>
 		</view>
 		<!-- #endif -->
 	</view>
@@ -90,36 +171,54 @@
 
 <script>
 import service from './service.js';
+import comSvc from '@/common/comSvc.js';
+import filter from '@/common/filter.js';
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import yomolUpgrade from '@/components/yomol-upgrade/yomol-upgrade.vue';
-import { uniLoadMore, uniIcon } from '@dcloudio/uni-ui';
+import { uniLoadMore } from '@dcloudio/uni-ui';
+import uniIcons from '@/components/uni-icon/uni-icon.vue';
 import { mapGetters, mapActions } from 'vuex';
 export default {
 	components: {
 		HMmessages,
 		uniLoadMore,
 		yomolUpgrade,
-		uniIcon
+		uniIcons
 	},
 	data() {
 		return {
 			isLogin: false,
 			pageNo: 1,
+			filter,
 			pageSize: 10,
 			list: [],
 			loading: true,
 			noData: false,
+			mainList: [],
+			tradeList: [],
+			configList: [],
+			userStart: [],
+			Time: null,
+			tether:0,
+			bitcoin:0,
+			ethereum:0,
+			digitalusd:0,
 			tokens: uni.getStorageSync('TOKEN'),
 			upgradeType: 'pkg', //pkg 整包 wgt 升级包
 			upgradeContent: '', //更新内容
-			upgradeUrl: 'https://lkex.co//download/lkex.apk', //更新地址
-			noticeList: []
+			upgradeUrl: 'http://nnex.io//download/lkex.apk', //更新地址
+			noticeList: [],
+			pairs: 'USDK',
+			cexchange: [{ name: 'USDK' }, { name: 'LKB' }, { name: 'USDT' }]
 		};
 	},
 	computed: {
 		...mapGetters(['IMGLIST', 'APPVERSION', 'USERINFO'])
 	},
 	watch: {
+		pairs(val) {
+		  this.list = this.formatTrade(this.formatData(this.mainList))
+		},
 		'$store.state.appVersion'(val) {
 			// #ifdef APP-PLUS
 			if (this.APPVERSION.renew && this.APPVERSION.renew.version && this.APPVERSION.old.version != this.APPVERSION.renew.version) {
@@ -147,13 +246,72 @@ export default {
 			});
 		}
 	},
+	onUnload() {
+	  clearTimeout(this.Time)
+	  this.$store.commit('setIsExchange',false);
+	},
+	onHide() {
+	  clearTimeout(this.Time)
+	  this.$store.commit('setIsExchange',false);
+	},
 	onShow() {
 		let token = uni.getStorageSync('TOKEN');
 		if (token) {
 			this.isLogin = true;
 		} else {
 			this.isLogin = false;
-		}
+		};
+		this.$store.commit('setIsExchange',true);
+		this.userStart = uni.getStorageSync('userStart') ? JSON.parse(uni.getStorageSync('userStart')) : [];
+		this.loading = true;
+		Promise.all([service.getConfigSymbolRank(), comSvc.getTrade(), service.symbolConfigList()]).then((data) => {
+		  this.loading = false;
+		  if (data[0].data.code == '100200') {
+		    this.mainList = data[0].data.data;
+		    this.tradeList = data[1].data;
+			this.configList = data[2].data.data;
+			let innerObj;
+			for(let key in this.mainList) {
+				for (let i = 0; i < this.configList.length; i++) {
+					innerObj = this.configList[i];
+					if (this.mainList[key].symbol === innerObj.symbol) {
+						this.mainList[key][innerObj.profileKey] = innerObj.profileValue;
+					}
+				}
+			}	
+			console.log(this.mainList)
+		    this.list = this.formatTrade(this.formatData(this.mainList))
+		    this.loopPan()
+		  } else {
+		    this.errors(data[0].data.msg);
+		  }
+		}).catch(err => {
+		  this.loading = false;
+		})
+		service.getUSDT().then(({
+		  data
+		}) => {
+		  if (data.code == '100200') {
+			let regEx = /[^\d|^\.|^\-]/g;
+		    for(let i in data.data){	  
+		      data.data[i] = data.data[i].replace(regEx,"") * 1;
+		    }
+		    this.tether = data.data.tether;
+			this.bitcoin = data.data.bitcoin;
+			this.ethereum = data.data.ethereum;
+			this.digitalusd = data.data.digitalusd;
+		  }
+		})
+	},
+	filters: {
+	  lockNum(value) {
+	    if (value >= 10000) {
+	      value = Math.round(value / 10000 * 100) / 100 + 'w';
+	    } else {
+	      value = value;
+	    }
+	    return value;
+	  }
 	},
 	methods: {
 		closeDown() {
@@ -267,7 +425,97 @@ export default {
 				background: '#74272d',
 				fontColor: '#fff'
 			});
-		}
+		},
+		//轮训盘
+		loopPan() {
+		  if (!this.EXCHANGE) {
+		    clearTimeout(this.Time)
+		    return false;
+		  }
+		  comSvc.getTrade().then(({
+		    data
+		  }) => {
+		    this.tradeList = data;
+		    this.Time = setTimeout(() => {
+		      this.loopPan();
+		    }, 1000)
+		    this.list = this.formatTrade(this.formatData(this.mainList))
+		  })
+		},
+		//自选交易对
+		startSymbol(coin) {
+		  let userStart = uni.getStorageSync('userStart') ? JSON.parse(uni.getStorageSync('userStart')) : null;
+		  if (userStart) {
+		    if (userStart.includes(coin)) {
+		      Array.prototype.indexOfs = function(val) {
+		        for (var i = 0; i < this.length; i++) {
+		          if (this[i] == val) return i;
+		        }
+		        return -1;
+		      };
+		      Array.prototype.remove = function(val) {
+		        var index = this.indexOfs(val);
+		        if (index > -1) {
+		          this.splice(index, 1);
+		        }
+		      }
+		      userStart.remove(coin);
+		      uni.setStorageSync('userStart', JSON.stringify(userStart));
+		    } else {
+		      userStart.push(coin);
+		      uni.setStorageSync('userStart', JSON.stringify(userStart));
+		    }
+		  } else {
+		    uni.setStorageSync('userStart', JSON.stringify([coin]))
+		  }
+		  this.userStart = uni.getStorageSync('userStart') ? JSON.parse(uni.getStorageSync('userStart')) : [];
+		},
+		//设置交易币种
+		setType(name) {
+		  this.pairs = name;
+		},
+		//格式化币种交易数据
+		formatTrade(data) {
+		  data.map((e, index) => {
+		    for (let i in this.tradeList) {
+		      if (e.symbol == i) {
+		        e.trade = this.tradeList[i];
+		        let pr_ne = this.tradeList[i].newPrice ? this.tradeList[i]['newPrice'] * 1 : 0; // 最新價
+		        let pr_op = this.tradeList[i].newPrice ? this.tradeList[i]['24Price'] * 1 : 0; // 開盤價
+		        // 漲跌幅
+		
+		        let distance = pr_ne - pr_op;
+		        let symbol = '';
+		        if (distance < 0) {
+		          symbol = '-'
+		        } else if (distance > 0) {
+		          symbol = '+'
+		        }
+		        if ((this.tradeList[i].newPrice ? this.tradeList[i]['24Price'] * 1 : 0) == 0) {
+		          e.trade.changeRatio = filter.floorFix(0, 2);
+		        } else {
+		          e.trade.changeRatio = symbol + filter.floorFix(filter.abs(distance) / pr_op * 100, 2);
+		        }
+		        e.trade.changeRatioNum = parseFloat(e.trade.newPrice ? e.trade.changeRatio : 0);
+		      }
+		    }
+		  })
+		  return data
+		},
+		//格式化数据
+		formatData(data) {
+		  let arr = [];
+		  data.map((e, i) => {
+		    if (this.pairs == 'optional') {
+		      if (this.userStart.includes(e.symbol) && e.status !== "DELISTED") {
+		        arr.push(e);
+		      }
+		    } else if (e.assetCode1 == this.pairs && e.status !== "DELISTED") {
+		      arr.push(e);
+		    }
+		  })
+		  return arr;
+		},
 	}
 };
 </script>

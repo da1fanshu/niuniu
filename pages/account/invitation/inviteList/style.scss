@@ -3,12 +3,13 @@
   .inviteList_list{
     .list_main{
        padding: 0 26rpx;
-       background: #2e3441;
+       background: #488FD3;
        border-radius: 8rpx;
       .item{
         display: flex;
         font-size: 22rpx;
         position: relative;
+		 border-bottom: 2rpx solid #DCDCDC;
         &:last-child{
           &::after{
             display: none;
@@ -34,28 +35,41 @@
       display: flex;
       padding: 0 26rpx;
       font-size: 24rpx;
+	  border-bottom: 2rpx solid #DCDCDC;
       .flex{
         flex: 1;
         height: 80rpx;
         line-height: 80rpx;
-        color: #fff;
+        color: #A4A4A4;
       }
     }
   }
   .i_header{
-    height: 230rpx;
-    background: #03bcc0;
+    height: 144rpx;
+    background: #488FD3;
     border-radius: 8rpx;
     padding: 1rpx 27rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.cen_border {
+		width: 2rpx;
+		height: 130rpx;
+		background-color: #fff;
+	}
+	.ll {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		flex: 1;
+	}
     .header_number{
-      margin-top: 45rpx;
-      line-height: 1;
+	  color: #fff;
     }
     .header_title{
-      font-size: 28rpx;
-      line-height: 1;
-      color: #191e2a;
-      margin-top: 50rpx;
+      font-size: 24rpx;
+      color: #fff;
     }
   }
 }

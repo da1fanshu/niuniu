@@ -7,7 +7,7 @@
           <button :class="type == 'BUY' ? 'active' : ''" @click="type = 'BUY'">收购展示</button>
         </view>
         <view class="created_created" @click="goPage(type)">
-          <view class="puls"><uni-icon type="plusempty" :color="'#191e2a'"></uni-icon></view>
+          <view class="puls"><uni-icons type="plusempty" :color="'#191e2a'"></uni-icons></view>
           <text style="margin-top: 12upx;">点击添加订单发布</text>
         </view>
         <block v-for="(item, index) in list" :key="index">

@@ -1,138 +1,76 @@
 <template>
 	<view class="content">
-		<view class="record">
-			<view class="common_list">
-				<view class="title clear">
-					<text class="fl">{{ coin }} 活动支出明细</text>
-					<!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
-				</view>
-				<view class="common_list_main">
-					<!-- <view class="common_list_main" :style="{ height: depositHeight + 'px' }"> -->
-					<view id="deposit">
-						<view class="c_l_m_title">
-							<text style="max-width: 225upx;">时间</text>
-							<text>数量</text>
-							<text style="max-width: 150upx;">类型</text>
-						</view>
-						<view class="c_l_m_list">
-							<view class="item" v-for="(item, index) in aList" :key="index">
-								<text style="max-width: 225upx;">{{ $formta(item.createTime, 'yyyy-MM-dd hh:mm') }}</text>
-								<text>{{ filter.fix(item.assetNum, 6) }}</text>
-								<!-- 早起活动 -->
-								<text style="max-width: 150upx; color: #d14b64;" v-if="item.operType == 'SIGNUP'">早起支出</text>
-								<text style="max-width: 150upx; color: #2eb34b;" v-if="item.operType == 'SIGN_PROFIT_ALLOT'">早起收入</text>
-								<text style="max-width: 150upx; color: #2eb34b;" v-if="item.operType == 'INVITE_PROFIT_ALLOT'">早起邀请奖励</text>
-								<!-- VDS活动 -->
-								<text style="max-width: 150upx; color: #d14b64;" v-if="item.operType == 'ACTIVITY_LOCK'">VDS冻结</text>
-								<text style="max-width: 150upx; color: #2eb34b;" v-if="item.operType == 'ACTIVITY_UNLOCK'">VDS解冻</text>
-								<text style="max-width: 150upx; color: #d14b64;" v-if="item.operType == 'ACTIVITY_SUBASSET'">VDS扣减</text>
-								<text style="max-width: 150upx; color: #2eb34b;" v-if="item.operType == 'ACTIVITY_ADDASSET'">VDS增加</text>
-								<text style="max-width: 150upx; color: #2eb34b;" v-if="item.operType == 'ACTIVITY_FEE_BACK'">VDS手续费返还</text>
-							</view>
-						</view>
-						<uniLoadMore v-if="!aList[0]" :status="aloading ? 'loading' : !aList[0] ? 'noMore' : ''"></uniLoadMore>
-						<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'aPageNo')" :total="aTotal * pageSize" :showIcon="true"></uni-pagination></view>
-					</view>
-				</view>
+		<view class="b_top">
+			<view v-for="(item, index) in cexchange" :key="index">
+				<view class="b_list" :class="item.name == pairs ? 'active' : ''" @click="setType(item.name)">{{ item.name }}</view>
 			</view>
-			<view class="common_list">
-				<view class="title clear" @click="setHeight('deposit', 'depositHeight')">
-					<text class="fl">{{ coin }}充币</text>
-					<!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
-				</view>
-				<view class="common_list_main">
-					<!-- <view class="common_list_main" :style="{ height: depositHeight + 'px' }"> -->
-					<view id="deposit">
-						<view class="c_l_m_title">
-							<text style="max-width: 225upx;">时间</text>
-							<text>充币数量（{{ coin }}）</text>
-							<text style="max-width: 62upx;">状态</text>
-						</view>
-						<view class="c_l_m_list">
-							<view class="item" v-for="(item, index) in dList" :key="index">
-								<text style="max-width: 225upx;">{{ $formta(item.updateDate, 'yyyy-MM-dd hh:mm') }}</text>
-								<text>{{ filter.fix(item.amount, 6) }}</text>
-								<text style="max-width: 62upx; color: #2eb34b;" v-if="item.status == 'SUCCESS'">已完成</text>
-								<text style="max-width: 62upx; color: #ff6100;" v-if="item.status == 'REFUSE'">已退还</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'PROCESSING'">进行中</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'WAIT'">进行中</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'UNKNOWN'">进行中</text>
-								<text style="max-width: 62upx; color: #d14b64;" v-if="item.status == 'FAILURE'">失败</text>
-							</view>
-						</view>
-						<uniLoadMore v-if="!dList[0]" :status="dloading ? 'loading' : !dList[0] ? 'noMore' : ''"></uniLoadMore>
-						<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'dPageNo')" :total="dTotal * pageSize" :showIcon="true"></uni-pagination></view>
-					</view>
-				</view>
+		</view>
+		<view class="re_block" v-if="pairs == '充币'">
+			<view class="title">
+				<text>时间</text>
+				<text>UID</text>
+				<text>充币数量({{ coin }})</text>
+				<text>状态</text>
 			</view>
-			<view class="common_list">
-				<view class="title clear" @click="setHeight('withdraw', 'withdrawHeight')">
-					<text class="fl">{{ coin }}提币和站内互转</text>
-					<!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
-				</view>
-				<view class="common_list_main">
-					<!-- <view class="common_list_main" :style="{ height: withdrawHeight + 'px' }"> -->
-					<view id="withdraw">
-						<view class="c_l_m_title">
-							<text style="max-width: 170upx; min-width: 170upx;">时间</text>
-							<text style="max-width: 246upx;min-width: 200upx; padding-right: 12upx;">转出到</text>
-							<text style="padding: 0 12upx;">数量</text>
-							<text style="padding: 0 16upx;">区块费</text>
-							<text style="max-width: 62upx;">状态</text>
-						</view>
-						<view class="c_l_m_list">
-							<view class="item" v-for="(item, index) in wList" :key="index">
-								<text style="max-width: 170upx; min-width: 170upx;">{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm') }}</text>
-								<text style="max-width: 246upx;min-width: 246upx; padding-right: 12upx;">{{ item.transferOutAddress }}</text>
-								<text style="padding: 0 12upx;">{{ filter.fix(item.amount, 4) }}</text>
-								<text style="padding: 0 12upx;">{{ item.fee }}</text>
-								<text style="max-width: 62upx; color: #2eb34b;" v-if="item.status == 'SUCCESS'">已完成</text>
-								<text style="max-width: 62upx; color: #ff6100;" v-if="item.status == 'REFUSE'">已退还</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'PROCESSING'">进行中</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'WAIT'">进行中</text>
-								<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'UNKNOWN'">进行中</text>
-								<text style="max-width: 62upx; color: #d14b64;" v-if="item.status == 'FAILURE'">失败</text>
-							</view>
-							<uniLoadMore v-if="!wList[0]" :status="wloading ? 'loading' : !wList[0] ? 'noMore' : ''"></uniLoadMore>
-						</view>
-						<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'wPageNo')" :total="wTotal * pageSize" :showIcon="true"></uni-pagination></view>
-					</view>
-				</view>
+			<view class="list" v-for="(item, index) in dList" :key="index">
+				<text style="max-width: 225upx;">{{ $formta(item.updateDate, 'yyyy-MM-dd hh:mm') }}</text>
+				<text>2</text>
+				<text>{{ filter.fix(item.amount, 6) }}</text>
+				<text style="max-width: 62upx; color: #4FB869;" v-if="item.status == 'SUCCESS'">已完成</text>
+				<text style="max-width: 62upx; color: #ff6100;" v-if="item.status == 'REFUSE'">已退还</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'PROCESSING'">进行中</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'WAIT'">进行中</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'UNKNOWN'">进行中</text>
+				<text style="max-width: 62upx; color: #488FD3;" v-if="item.status == 'FAILURE'">失败</text>
 			</view>
-			<view class="common_list">
-				<view class="title clear" @click="setHeight('transfer', 'transferHeight')">
-					<text class="fl">{{ coin }}划转</text>
-					<!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
-				</view>
-				<view class="common_list_main">
-					<!-- <view class="common_list_main" :style="{ height: transferHeight + 'px' }"> -->
-					<view id="transfer">
-						<view class="c_l_m_title">
-							<text style="max-width: 170upx; min-width: 170upx;">时间</text>
-							<text>划出账户</text>
-							<text>划入账户</text>
-							<text>数量</text>
-							<text style="max-width: 62upx;">状态</text>
-						</view>
-						<view class="c_l_m_list">
-							<view class="item" v-for="(item, index) in tranList" :key="index">
-								<text style="max-width: 170upx; min-width: 170upx;">{{ $formta(item.createTime, 'yyyy-MM-dd hh:mm') }}</text>
-								<text v-if="item.transType=='TO_CLOUD'">币币账户</text>
-								<text v-if="item.transType=='TO_CLOUD'">算力账户</text>
-								<text v-if="item.transType=='FROM_CLOUD'">算力账户</text>
-								<text v-if="item.transType=='FROM_CLOUD'">币币账号</text>
-								<text>{{ item.quantity }}</text>
-								<text v-if="item.transStatus == 'SUCCESS'" style="max-width: 62upx;" class="suc">已完成</text>
-								<text v-if="item.transStatus == 'FAIL'" style="max-width: 62upx;" class="suc">失败</text>
-								<text v-if="item.transStatus == 'UNKNOW'" style="max-width: 62upx;" class="suc">处理中</text>
-								<text v-if="item.transStatus == 'INIT'" style="max-width: 62upx;" class="suc">处理中</text>
-							</view>
-							<uniLoadMore v-if="!tranList[0]" :status="tranloading ? 'loading' : !tranList[0] ? 'noMore' : ''"></uniLoadMore>
-						</view>
-						<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'tranPageNo')" :total="ttTotal" :showIcon="true"></uni-pagination></view>
-					</view>
-				</view>
+			<uniLoadMore v-if="!dList[0]" :status="dloading ? 'loading' : !dList[0] ? 'noMore' : ''"></uniLoadMore>
+			<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'dPageNo')" :total="dTotal * pageSize" :showIcon="true"></uni-pagination></view>
+		</view>
+		<view class="re_block" v-if="pairs == '提币'">
+			<view class="title">
+				<text>时间</text>
+				<text>转出到</text>
+				<text>数量</text>
+				<text>区块费</text>
+				<text>状态</text>
 			</view>
+			<view class="list" v-for="(item, index) in wList" :key="index">
+				<text>{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm') }}</text>
+				<text>{{ item.transferOutAddress }}</text>
+				<text>{{ filter.fix(item.amount, 4) }}</text>
+				<text>{{ item.fee }}</text>
+				<text style="max-width: 62upx; color: #2eb34b;" v-if="item.status == 'SUCCESS'">已完成</text>
+				<text style="max-width: 62upx; color: #ff6100;" v-if="item.status == 'REFUSE'">已退还</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'PROCESSING'">进行中</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'WAIT'">进行中</text>
+				<text style="max-width: 62upx; color: #ccc;" v-if="item.status == 'UNKNOWN'">进行中</text>
+				<text style="max-width: 62upx; color: #d14b64;" v-if="item.status == 'FAILURE'">失败</text>
+			</view>
+			<uniLoadMore v-if="!wList[0]" :status="wloading ? 'loading' : !wList[0] ? 'noMore' : ''"></uniLoadMore>
+			<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'wPageNo')" :total="wTotal * pageSize" :showIcon="true"></uni-pagination></view>
+		</view>
+		<view class="re_block" v-if="pairs == '划转'">
+			<view class="title">
+				<text>时间</text>
+				<text>划出账户</text>
+				<text>划入账户</text>
+				<text>数量</text>
+				<text style="max-width: 62upx;">状态</text>
+			</view>
+			<view class="list" v-for="(item, index) in tranList" :key="index">
+				<text>{{ $formta(item.createTime, 'yyyy-MM-dd hh:mm') }}</text>
+				<text v-if="item.transType == 'TO_CLOUD'">币币账户</text>
+				<text v-if="item.transType == 'TO_CLOUD'">算力账户</text>
+				<text v-if="item.transType == 'FROM_CLOUD'">算力账户</text>
+				<text v-if="item.transType == 'FROM_CLOUD'">币币账号</text>
+				<text>{{ item.quantity }}</text>
+				<text v-if="item.transStatus == 'SUCCESS'" style="max-width: 62upx;" class="suc">已完成</text>
+				<text v-if="item.transStatus == 'FAIL'" style="max-width: 62upx;" class="suc">失败</text>
+				<text v-if="item.transStatus == 'UNKNOW'" style="max-width: 62upx;" class="suc">处理中</text>
+				<text v-if="item.transStatus == 'INIT'" style="max-width: 62upx;" class="suc">处理中</text>
+			</view>
+			<uniLoadMore v-if="!tranList[0]" :status="tranloading ? 'loading' : !tranList[0] ? 'noMore' : ''"></uniLoadMore>
+			<view class="common_list_page"><uni-pagination @change="setPageNo($event, 'tranPageNo')" :total="ttTotal" :showIcon="true"></uni-pagination></view>
 		</view>
 		<HMmessages ref="HMmessages" @complete="HMmessages = $refs.HMmessages"></HMmessages>
 	</view>
@@ -179,7 +117,9 @@ export default {
 			wloading: true,
 			tloading: true,
 			tranloading: true,
-			aloading: true
+			aloading: true,
+			pairs: '充币',
+			cexchange: [{ name: '充币' }, { name: '提币' }, { name: '划转' }]
 		};
 	},
 	onLoad(option) {
@@ -220,6 +160,10 @@ export default {
 						this.errors(data.msg);
 					}
 				});
+		},
+		//切换
+		setType(name) {
+			this.pairs = name;
 		},
 		//设置页码
 		setPageNo(e, name) {

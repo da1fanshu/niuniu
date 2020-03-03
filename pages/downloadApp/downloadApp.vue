@@ -6,7 +6,7 @@
           <text class="iconfont">&#xe68c;</text>
           <text>IOS版本暂未发布</text>
         </a>
-        <a class="d_app" href="https://lkex.co//download/lkex.apk">
+        <a class="d_app" href="http://nnex.io//download/lkex.apk">
           <text class="iconfont">&#xe71e;</text>
           <text>下载Android版本</text>
         </a>

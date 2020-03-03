@@ -9,7 +9,7 @@
 		      </view>
 		      <view class="fr">
             <text>zhang890906su</text>
-            <!-- <uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon> -->
+            <!-- <uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons> -->
           </view>
 		    </view>
         <view class="community_main_list_item clear" @click="isShowQQ = true">
@@ -54,7 +54,7 @@
         <view class="modal_main">
           <view class="modal_title">
             <text>官方QQ交流群</text>
-            <button><uni-icon type="closeempty" size="30" color="#979aa0"></uni-icon></button>
+            <button><uni-icons type="closeempty" size="30" color="#979aa0"></uni-icons></button>
           </view>
           <view class="modal_title_tip">lkex官方服务群（QQ群：531969541）</view>
           <view class="modal_code">
@@ -66,7 +66,7 @@
         <view class="modal_main">
           <view class="modal_title">
             <text>微信客服</text>
-            <button><uni-icon type="closeempty" size="30" color="#979aa0"></uni-icon></button>
+            <button><uni-icons type="closeempty" size="30" color="#979aa0"></uni-icons></button>
           </view>
           <view class="modal_title_tip">添加客服时需备注：lkex入群</view>
           <view class="modal_code">

@@ -1,94 +1,323 @@
+.content {
+	.b_bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background: url(../../../static/c2c/agent_bg.png) no-repeat;
+		background-size: cover;
+	}
+	.c_bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 560rpx;
+		width: 100%;
+		background: url(../../../static/c2c/vip.jpg) no-repeat;
+		background-size: 100% 100%;
+	}
+}
 .c2cAgent {
-  padding: 1upx 20upx;
-  .c2cAgent_Apply_main {
-    margin-top: 20upx;
-    .submits{
-      margin: 40upx 0;
-      button{
-        height: 60upx;
-        line-height: 60upx;
-        font-size: 26upx;;
-        background: #12abb0;
-        border-radius: 8upx;
-        color: #191e2a;
-        transition: all .1s;
-        &::after {
-          display: none;
-        }
-        &:active {
-          opacity: 0.5;
-        }
-      }
-    }
-    .item {
-      font-size: 26upx;;
-      margin-bottom: 20upx;
-      .fl {
-        width: 132upx;
-        line-height: 51upx;
-        color: #12abb0;
-      }
-      .fr {
-        width: calc(100% - 132upx);
-        border-radius: 8upx;
-        background: #2e3442;
-        height: 51upx;
-        color: #12abb0;
-        input {
-          padding: 0 24upx;
-          height: 51rpx;
-        }
-        .copy{
-          display: flex;
-          input{
-            flex: 1;
-          }
-          button{
-            flex: 1;
-            max-width: 104upx;
-            padding: 0;
-            height: 51upx;
-            font-size: 26upx;;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: none;
-            border: none;
-            &::after{
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
-  .c2cAgent_Apply {
-    margin-top: 20upx;
-    border-radius: 8upx;
-    background: #2e3442;
-    color: #03bcbf;
-    .tpis {
-      padding: 20upx;
-    }
-  }
-  .c2cAgent_isVip {
-    margin-top: 20upx;
-    border-radius: 8upx;
-    padding: 20upx;
-    background: #2e3442;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    .iconfont {
-      font-size: 80upx;
-    }
-    color: #03bcbf;
-    .text {
-      text {
-        color: #ec5151;
-      }
-    }
-  }
+	padding: 1upx 24upx;
+	.agent_NavBar {
+		position: relative;
+		height: 88upx;
+		padding: 0;
+		.title {
+			color: #000;
+			font-size: 36rpx;
+			text-align: center;
+			line-height: 88upx;
+			font-weight: bold;
+		}
+		.back {
+			position: absolute;
+			bottom: 0;
+			top: 0;
+			width: 70upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.vip {
+		font-size: 100rpx;
+		color: #cfbb8b;
+		position: absolute;
+		top: 280rpx;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.cir {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 100rpx 0 460rpx;
+		.status {
+			z-index: 999;
+			width: 162rpx;
+			height: 162rpx;
+			border-radius: 50%;
+			border: 8rpx solid #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			image {
+				width: 46rpx;
+				height: 50rpx;
+			}
+			text {
+				font-size: 26rpx;
+				color: #fff;
+			}
+		}
+	}
+	.gvip {
+		width: 100%;
+		height: 328rpx;
+		margin: auto;
+		background: url(../../../static/c2c/vip_bg.jpg) no-repeat;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.status {			
+			image {
+				display: block;
+				width: 200rpx;
+				height: 168rpx;
+			}
+			view {
+				text-align: center;
+				font-size: 48rpx;
+				color: #fff;
+			}
+		}		
+	}
+	.c2cApply {
+		background: url(../../../static/c2c/d_bg.png) no-repeat;
+		background-size: cover;
+		width: 666upx;
+		height: 620upx;
+		margin: 0 auto;
+		margin-top: 488rpx;
+		.sj_btn {
+			width: 654upx;
+			height: 94upx;
+			background: rgba(72, 143, 211, 1);
+			box-shadow: 0upx 8upx 13upx 0upx rgba(72, 143, 211, 0.27);
+			border-radius: 47upx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 36rpx;
+			margin-top: 60rpx;
+		}
+		.title {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			height: 96rpx;
+			width: 100%;
+			image {
+				height: 8rpx;
+				width: 386rpx;
+			}
+			text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		.list {
+			margin: auto;
+			width: 600upx;
+			height: 479upx;
+			border: 1upx solid rgba(220, 220, 220, 1);
+			border-radius: 10upx;
+			text {
+				font-size: 18rpx;
+			}
+			.top {
+				padding: 0 30rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 2rpx solid #dcdcdc;
+				height: 66rpx;
+			}
+			.bottom {
+				padding: 0 30rpx;
+				height: 40rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 2rpx solid #dcdcdc;
+				text {
+					color: #a3a3a3;
+				}
+			}
+		}
+	}
+	.u_title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		height: 96rpx;
+		width: 100%;
+		image {
+			height: 12rpx;
+			width: 426rpx;
+		}
+		text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 30rpx;
+			color: #488FD3;
+		}
+	}
+	.c2cAgent_Apply_main {
+		margin-top: 20upx;
+		.submits {
+			margin: 40upx 0;
+			button {
+				height: 64upx;
+				line-height: 64upx;
+				font-size: 26upx;
+				background: #488FD3;
+				border-radius: 8upx;
+				color: #fff;
+				transition: all 0.1s;
+				&::after {
+					display: none;
+				}
+				&:active {
+					opacity: 0.5;
+				}
+			}
+		}
+		.item {
+			font-size: 26upx;
+			margin-bottom: 20upx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			text {
+				line-height: 51upx;
+				color: #000;
+				flex: 1;
+			}
+			view {
+				background: #BFBFBF;
+				border-radius: 8rpx;
+				height: 51upx;
+				color: #000;
+				flex: 4;
+				input {
+					padding: 0 24upx;
+					height: 51rpx;
+				}
+				.copy {
+					display: flex;
+					input {
+						flex: 1;
+					}
+					button {
+						flex: 1;
+						max-width: 104upx;
+						padding: 0;
+						height: 51upx;
+						font-size: 26upx;
+						color: #fff;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						background: none;
+						border: none;
+						&::after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	.c2cAgent_Apply {
+		z-index: 999999;
+		position: absolute;
+		width: 92%;
+		left: 4%;
+		.tpis {
+			font-size: 30rpx;
+			color: #333333;
+			text-align: center;
+			font-weight: bold;
+		}
+		.agreement {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 59upx;
+			color: #999999;
+			margin-top: 20rpx;
+			margin-bottom: 70upx;
+			.agreement_main {
+				color: #12abb0;
+			}
+			text {
+				margin: 0 8upx;
+			}
+			.checkbox {
+				height: 20upx;
+				width: 20upx;
+				border: 1upx solid #0a878e;
+				color: #fff;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 3upx;
+				.uni-icons {
+					font-size: 30upx !important;
+				}
+			}
+		}
+		.agree {
+			height: 65upx;
+			background: rgba(72, 143, 211, 1);
+			border-radius: 5upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 36rpx;
+			color: #fff;
+		}
+	}
+	.c2cAgent_isVip {
+		margin-top: 20upx;
+		border-radius: 8upx;
+		padding: 20upx;
+		background: #2e3442;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.iconfont {
+			font-size: 80upx;
+		}
+		color: #03bcbf;
+		.text {
+			text {
+				color: #ec5151;
+			}
+		}
+	}
 }

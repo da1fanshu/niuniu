@@ -1,71 +1,62 @@
 <template>
 	<view class="content">
 		<view class="assets_header">
-			<text style="font-size: 40upx; font-weight: 700;">{{ filter.fix(USDT + power, 4) }} USDT</text>
-			<text style="font-size: 27upx; color: #acaeb1;">≈￥{{ filter.fix((USDT + power) * COINRMB.tether, 2) }}</text>
+			<text style="font-size: 24upx;">总资产估值</text>
+			<text style="font-size: 36upx; font-weight: 700;margin: 32rpx 0 26rpx;">{{ filter.fix(USDT + power, 4) }} USDT</text>
+			<text style="font-size: 24upx; font-weight: 700;">≈￥{{ filter.fix((USDT + power) * COINRMB.tether, 2) }}</text>
+		</view>
+		<view class="list_main_item_fun">
+			<view class="flex" @click="$goPage(`deposit/deposit`)">
+				<image src="/static/recharger.png" mode=""></image>
+				<text>充值</text>
+			</view>
+			<view class="flex" @click="$goPage(`withdraw/withdraw`)">
+				<image src="/static/withdraw.png" mode=""></image>
+				<text>提币</text>
+			</view>
+			<view class="flex" @click="$goPage(`transfer/transfer`)">
+				<image src="/static/transfer.png" mode=""></image>
+				<text>划转</text>
+			</view>
+			<view class="flex" @click="$goPage(`record/record`)">
+				<image src="/static/history.png" mode=""></image>
+				<text>记录</text>
+			</view>
 		</view>
 		<view class="account_select">
 			<view class="account_select_nav">
-				<view :class="type == 'coin' ? 'account_select_nav_active' : ''" @click="setType('coin')">币币账户</view>
-				<view :class="type == 'game' ? 'account_select_nav_game' : ''" @click="setType('game')">比特算力账户</view>
+				<view :class="type == 'coin' ? 'active' : ''" @click="setType('coin')">币币账户</view>
+				<view :class="type == 'game' ? 'active' : ''" @click="setType('game')">算力账户</view>
 			</view>
 		</view>
 		<view class="assets_list" v-show="type == 'coin'">
-			<view class="assets_list_money" :style="{ background: type == 'coin' ? '#03bcc0' : type == 'game' ? '#00c0e9' : type == 'shop' ? '#eabb77' : '' }">
+			<!-- <view class="assets_list_money" :style="{ background: type == 'coin' ? '#03bcc0' : type == 'game' ? '#00c0e9' : type == 'shop' ? '#eabb77' : '' }">
 				<text style="font-size: 40upx; font-weight: 700;">{{ filter.fix(USDT, 4) }} USDT</text>
 				<text style="font-size: 27upx; color: #fff;">≈￥{{ filter.fix(USDT * COINRMB.tether, 2) }}</text>
-			</view>
+			</view> -->
 			<view class="assets_detailed clear">
-				<view class="fl" style="color: #fff; font-size: 23upx; font-weight: 700;">资产明细</view>
 				<view class="fr" @click="isZero = !isZero">
 					<view class="checkbox" :class="[type == 'coin' ? 'coin' : type == 'game' ? 'game' : type == 'shop' ? 'shop' : '', !isZero ? 'nobg' : '']">
-						<uni-icon v-if="isZero" type="checkmarkempty" :color="'#fff'"></uni-icon>
+						<uni-icons v-if="isZero" type="checkmarkempty" :color="'#fff'"></uni-icons>
 					</view>
-					<text style="color: #fff; float: left;margin-left: 28upx;">隐藏资产为0的币种</text>
+					<text style="color:#A4A4A4; float: left;margin-left: 8upx;">隐藏资产为0的币种</text>
 				</view>
 			</view>
-			<view class="account_list_nav clear">
-				<view class="fl">币种/估值</view>
-				<view class="fr">可用/冻结</view>
-			</view>
-			<view class="list_main">
-				<view class="list_main_item" v-for="(item, index) in list" :key="index">
-					<view class="list_main_item_coin">
-						<view class="clear coins">
-							<view class="fl">
-								<text style="float: left; ">{{ item.assetCode }}</text>
-							</view>
-							<text class="fr">可用：{{ filter.fix(item.amountAvailable, 6) }}</text>
-						</view>
-						<view class="clear" style="margin-top: 20upx;">
-							<text class="fl" style="line-height: 30upx;">≈￥{{ filter.fix((item.amountAvailable + item.amountLock) * item.RMB, 2) }}</text>
-							<text class="fr" style="line-height: 30upx; color: #fff;">冻结：{{ filter.fix(item.amountLock, 6) }}</text>
-						</view>
-					</view>
-					<view class="list_main_item_fun" :class="typeClass">
-						<view class="flex" @click="goPage(item, 'deposit')">
-							<view class="fun_coin" :style="{ background: !item.isDeposit ? '#9da1a8' : '' }">
-								<image src="/static/deposit.png" style="width: 17upx; height: 14upx;" mode=""></image>
-							</view>
-							<text>充币</text>
-						</view>
-						<view class="flex" @click="goPage(item, 'withdraw')">
-							<view class="fun_coin" :style="{ background: !item.isWithdraw ? '#9da1a8' : '' }">
-								<image src="/static/withdraw.png" style="width: 17upx; height: 14upx;" mode=""></image>
-							</view>
-							<text>提币</text>
-						</view>
-						<view class="flex" v-if="item.assetCode=='USDK'" @click="$goPage(`transfer/transfer`)">
-							<view class="fun_coin"><image src="/static/transfer.png" style="width: 18upx; height: 14upx;" mode=""></image></view>
-							<text>划转</text>
-						</view>
-						<view class="flex" v-if="item.assetCode!='USDK'">
-							<view class="fun_coin" :style="{ background: '#9da1a8' }"><image src="/static/transfer.png" style="width: 18upx; height: 14upx;" mode=""></image></view>
-							<text>划转</text>
-						</view>
-						<view class="flex" @click="$goPage(`record/record?type=${item.assetCode}`)">
-							<view class="fun_coin"><image src="/static/history.png" style="width: 18upx; height: 17upx;" mode=""></image></view>
-							<text>记录</text>
+			<view class="w_bg">
+				<view class="account_list_nav">
+					<text>币种</text>
+					<text>可用</text>
+					<text>冻结</text>
+					<text>锁仓</text>
+				</view>
+				<view class="list_main">
+					<view class="list_main_item" v-for="(item, index) in list" :key="index">
+						<view class="list_main_item_coin">
+							<text>{{ item.assetCode }}</text>
+							<text>{{ filter.fix(item.amountAvailable, 6) }}</text>
+							<!-- <text class="fl" style="line-height: 30upx;">≈￥{{ filter.fix((item.amountAvailable + item.amountLock) * item.RMB, 2) }}</text> -->
+							<text>{{ filter.fix(item.amountLock, 6) }}</text>
+							<text>{{ filter.fix(item.amountLock, 6) }}</text>
 						</view>
 					</view>
 				</view>
@@ -73,51 +64,35 @@
 			<uni-load-more :status="loading ? 'loading' : 'noMore'"></uni-load-more>
 		</view>
 		<view class="assets_list" v-show="type == 'game'">
-			<view class="assets_list_money" :style="{ background: type == 'coin' ? '#03bcc0' : type == 'game' ? '#00c0e9' : type == 'shop' ? '#eabb77' : '' }">
+			<!-- <view class="assets_list_money" :style="{ background: type == 'coin' ? '#03bcc0' : type == 'game' ? '#00c0e9' : type == 'shop' ? '#eabb77' : '' }">
 				<text style="font-size: 40upx; font-weight: 700;">{{ filter.fix(power, 4) }} USDT</text>
 				<text style="font-size: 27upx; color: #fff;">≈￥{{ filter.fix(power * COINRMB.tether, 2) }}</text>
-			</view>
+			</view> -->
 			<view class="assets_detailed clear">
-				<view class="fl" style="color: #fff; font-size: 23upx; font-weight: 700;">资产明细</view>
 				<view class="fr" @click="isZeroTwo = !isZeroTwo">
 					<view class="checkbox" :class="[type == 'game' ? 'game' : '', !isZeroTwo ? 'nobg' : '']">
-						<uni-icon v-if="isZeroTwo" type="checkmarkempty" :color="'#fff'"></uni-icon>
+						<uni-icons v-if="isZeroTwo" type="checkmarkempty" :color="'#fff'"></uni-icons>
 					</view>
-					<text style="color: #fff; float: left;margin-left: 28upx;">隐藏资产为0的币种</text>
+					<text style="color: #A4A4A4; float: left;margin-left: 28upx;">隐藏资产为0的币种</text>
 				</view>
 			</view>
-			<view class="account_list_nav clear">
-				<view class="fl">币种/估值</view>
-				<view class="fr">可用/冻结</view>
-			</view>
-			<view class="list_main">
-				<view class="list_main_item" v-for="(item, index) in powerList" :key="index">
-					<view class="list_main_item_coin">
-						<view class="clear coins">
-							<view class="fl">
-								<text style="float: left; ">{{ item.coin_name }}</text>
-							</view>
-							<text class="fr">可用：{{ filter.fix(item.available_total, 6) }}</text>
-						</view>
-						<view class="clear" style="margin-top: 20upx;">
-							<text class="fl" style="line-height: 30upx;">≈￥{{ filter.fix((parseFloat(item.available_total) + parseFloat(item.frozen_total)) * item.RMB, 2) }}</text>
-							<text class="fr" style="line-height: 30upx; color: #fff;">冻结：{{ filter.fix(item.frozen_total, 6) }}</text>
+			<view class="w_bg">
+				<view class="account_list_nav">
+					<text>币种</text>
+					<text>可用</text>
+					<text>冻结</text>
+					<text>锁仓</text>
+				</view>
+				<view class="list_main">
+					<view class="list_main_item" v-for="(item, index) in powerList" :key="index">
+						<view class="list_main_item_coin">
+							<text>{{ item.coin_name }}</text>
+							<text>{{ filter.fix(item.available_total, 6) }}</text>
+							<!-- <text class="fl" style="line-height: 30upx;">≈￥{{ filter.fix((item.amountAvailable + item.amountLock) * item.RMB, 2) }}</text> -->
+							<text>{{ filter.fix(item.frozen_total, 6) }}</text>
+							<text>{{ filter.fix(item.frozen_total, 6) }}</text>
 						</view>
 					</view>
-					<view class="list_main_item_fun" :class="typeClass">
-							<view class="flex" v-if="item.coin_name=='USDK'" @click="$goPage(`transfer/transfer`)">
-								<view class="fun_coin"><image src="/static/transfer.png" style="width: 18upx; height: 14upx;" mode=""></image></view>
-								<text>划转</text>
-							</view>
-							<view class="flex" v-if="item.coin_name!='USDK'">
-								<view class="fun_coin" :style="{ background: '#9da1a8' }"><image src="/static/transfer.png" style="width: 18upx; height: 14upx;" mode=""></image></view>
-								<text>划转</text>
-							</view>
-							<view class="flex" @click="$goPage(`record/record?type=${item.coin_name}`)">
-								<view class="fun_coin"><image src="/static/history.png" style="width: 18upx; height: 17upx;" mode=""></image></view>
-								<text>记录</text>
-							</view>
-						</view>					
 				</view>
 			</view>
 			<uni-load-more :status="loading ? 'loading' : 'noMore'"></uni-load-more>
@@ -128,7 +103,8 @@
 
 <script>
 import filter from '@/common/filter.js';
-import { uniIcon, uniLoadMore } from '@dcloudio/uni-ui';
+import uniIcons from '@/components/uni-icon/uni-icon.vue';
+import { uniLoadMore } from '@dcloudio/uni-ui';
 import service from './service.js';
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import comSvc from '@/common/comSvc.js';
@@ -136,7 +112,7 @@ import { mapGetters } from 'vuex';
 import api from '@/common/api.js';
 export default {
 	components: {
-		uniIcon,
+		uniIcons,
 		HMmessages,
 		uniLoadMore
 	},
@@ -158,7 +134,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters(['COINRMB','USERINFO'])
+		...mapGetters(['COINRMB', 'USERINFO'])
 	},
 	onShow() {
 		if (this.$api.isLogin()) {

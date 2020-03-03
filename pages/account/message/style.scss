@@ -1,70 +1,76 @@
-.message{
-  .message_list{
-    height: calc(100% - 114upx);
-    .message_list_main{
-      padding: 0 20upx;
-       .item{
-         background: $maskBg;
-         border-radius: 8upx;
-         color: #fff;
-         font-size: 26upx;;
-         padding: 20upx 26upx;
-         margin-bottom: 20upx;
-         .item_detailed{
-           padding-top: 10upx;
-         }
-         .item_title{
-           .fl{
-             display: flex;
-             align-items: center;
-             line-height: 40upx;
-             text{
-               display: block;
-             }
-             .sign{
-               height: 40upx;
-               border-radius: 6upx;
-               width: 100upx;
-               background: $fontColor;
-               color: #fff;
-               text-align: center;
-               margin-right: 20upx;
-               &.warning{
-                 background: #ff6000;
-               }
-             }
-           }
-           .fr{
-             height: 40upx;
-             line-height: 40upx;
-             color: $fontColor;
-           }
-         }
-       }
-    }
-  }
-  .message_nav{
-    display: flex;
-    padding: 20upx;
-    button{
-      flex: 1;
-      border: 0;
-      background: none;
-      font-size: 26upx;;
-      height: 75upx;
-      line-height: 75upx;
-      color: #fffdfd;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all .1s;
-      &::after{
-        display: none;
-      }
-      &.active{
-        background: $fontColor;
-        color: #191e2a;
-      }
-    }
-  }
+.message {
+	.message_list {
+		height: calc(100% - 114upx);
+		.message_list_main {
+			padding: 0 20upx;
+			.item {
+				color: #000;
+				font-size: 26upx;
+				padding: 20upx 26upx;
+				margin-bottom: 20upx;
+				background: rgba(238,238,238,.5);
+				.item_detailed {
+					padding-top: 10upx;
+				}
+				.item_title {
+					.fl {
+						display: flex;
+						align-items: center;
+						line-height: 40upx;
+						text {
+							display: block;
+						}
+						.sign {
+							height: 40upx;
+							border-radius: 6upx;
+							width: 100upx;
+							background: $fontColor;
+							color: #fff;
+							text-align: center;
+							margin-right: 20upx;
+							&.warning {
+								background: #ff6000;
+							}
+						}
+					}
+					.fr {
+						height: 40upx;
+						line-height: 40upx;
+						color: $fontColor;
+					}
+				}
+			}
+		}
+	}
+	.message_nav {
+		display: flex;
+		padding: 24upx;
+		.ll {
+			border-radius: 23upx 0upx 0upx 23upx;
+		}
+		.rr {
+			border-radius: 0upx 23upx 23upx 0upx;
+		}
+		button {
+			background: rgba(74, 146, 216, .6);
+			box-shadow: 0upx 0upx 0upx 0upx rgba(0, 0, 0, 0.1);
+			flex: 1;
+			border: 0;
+			font-size: 26upx;
+			height: 66rpx;
+			line-height: 66upx;
+			color: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: all 0.1s;
+			border-radius: 0;
+			&::after {
+				display: none;
+			}
+			&.active {
+				background:rgba(74,146,216,1);
+			}
+		}
+	}
 }

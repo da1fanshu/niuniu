@@ -1,597 +1,606 @@
+.content {
+	background: #191d29;
+}
 .quotation {
-  height: 100%;
-  overflow: hidden;
-  /* #ifdef APP-PLUS */
-  height: calc(100% - var(--status-bar-height));
-  /* #endif */
-  .entrust {
-    height: calc(100% - 186upx);
-    box-sizing: border-box;
-    padding-top: 20upx;
-    .entrust_main {
-      padding: 0 20upx 20upx;
-      .entrust_main_list {
-        .item {
-          padding: 14upx 20upx 5upx;
-          border-radius: 8upx;
-          background: $maskBg;
-          color: #03bcc0;
-          font-size: 26upx;;
-          margin-bottom: 12upx;
-          &:last-child {
-            margin-bottom: 0;
-          }
-          .time {
-            line-height: 55upx;
-          }
-          .item_item {
-            display: flex;
-            .left,
-            .right {
-              flex: 1;
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
-              height: 88upx;
-              position: relative;
-              &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: #585d67;
-                transform: scaleY(0.5);
-              }
-              text {
-                line-height: 34upx;
-              }
-            }
-            .right {
-              text-align: right;
-              &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                width: 1px;
-                background: #585d67;
-                transform: scale(0.7);
-              }
-            }
-          }
-          .item_title {
-            position: relative;
-            &::before {
-              content: '';
-              display: block;
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              height: 1px;
-              background: #585d67;
-              transform: scaleY(0.5);
-            }
-            padding-bottom: 16upx;
-            .fl {
-              line-height: 44upx;
-              &.buy {
-                color: #03c936;
-              }
-              &.sell {
-                color: $panSell;
-              }
-            }
-            .fr {
-              padding: 0;
-              text-align: center;
-              width: 82upx;
-              height: 44upx;
-              line-height: 44upx;
-              border-radius: 6upx;
-              border: 0;
-              background: #03bcc0;
-              color: #191e2a;
-              font-size: 26upx;;
-              transition: all 0.1s;
-              &::after {
-                display: none;
-              }
-              &:active {
-                opacity: 0.5;
-              }
-            }
-          }
-        }
-      }
-      .select_time {
-        display: flex;
-        background: $maskBg;
-        border-radius: 8upx;
-        padding: 15upx;
-        box-sizing: border-box;
-        height: 82upx;
-        margin-bottom: 14upx;
-        .start_time,
-        .end_time {
-          height: 100%;
-          flex: 1;
-          color: #03bcc0;
-          border: 1upx solid #03bcc0;
-          border-radius: 6upx;
-          picker {
-            .uni-input {
-              height: 100%;
-              padding: 0;
-              text-align: center;
-              background: none;
-            }
-          }
-        }
-        .division {
-          flex: 1;
-          max-width: 40upx;
-          color: #03bcc0;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-  }
+	height: 100%;
+	overflow: hidden;
+	/* #ifdef APP-PLUS */
+	height: calc(100% - var(--status-bar-height));
+	/* #endif */
+	.entrust {
+		height: calc(100% - 186upx);
+		box-sizing: border-box;
+		padding-top: 20upx;
+		.entrust_main {
+			padding: 0 20upx 20upx;
+			.entrust_main_list {
+				.item {
+					padding: 14upx 20upx 5upx;
+					border-radius: 8upx;
+					background: $maskBg;
+					color: #03bcc0;
+					font-size: 26upx;
+					margin-bottom: 12upx;
+					&:last-child {
+						margin-bottom: 0;
+					}
+					.time {
+						line-height: 55upx;
+					}
+					.item_item {
+						display: flex;
+						.left,
+						.right {
+							flex: 1;
+							display: flex;
+							justify-content: center;
+							flex-direction: column;
+							height: 88upx;
+							position: relative;
+							&::before {
+								content: '';
+								display: block;
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								right: 0;
+								height: 1px;
+								background: #585d67;
+								transform: scaleY(0.5);
+							}
+							text {
+								line-height: 34upx;
+							}
+						}
+						.right {
+							text-align: right;
+							&::after {
+								content: '';
+								display: block;
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								left: 0;
+								width: 1px;
+								background: #585d67;
+								transform: scale(0.7);
+							}
+						}
+					}
+					.item_title {
+						position: relative;
+						&::before {
+							content: '';
+							display: block;
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							right: 0;
+							height: 1px;
+							background: #585d67;
+							transform: scaleY(0.5);
+						}
+						padding-bottom: 16upx;
+						.fl {
+							line-height: 44upx;
+							&.buy {
+								color: #03c936;
+							}
+							&.sell {
+								color: $panSell;
+							}
+						}
+						.fr {
+							padding: 0;
+							text-align: center;
+							width: 82upx;
+							height: 44upx;
+							line-height: 44upx;
+							border-radius: 6upx;
+							border: 0;
+							background: #03bcc0;
+							color: #191e2a;
+							font-size: 26upx;
+							transition: all 0.1s;
+							&::after {
+								display: none;
+							}
+							&:active {
+								opacity: 0.5;
+							}
+						}
+					}
+				}
+			}
+			.select_time {
+				display: flex;
+				background: $maskBg;
+				border-radius: 8upx;
+				padding: 15upx;
+				box-sizing: border-box;
+				height: 82upx;
+				margin-bottom: 14upx;
+				.start_time,
+				.end_time {
+					height: 100%;
+					flex: 1;
+					color: #03bcc0;
+					border: 1upx solid #03bcc0;
+					border-radius: 6upx;
+					picker {
+						.uni-input {
+							height: 100%;
+							padding: 0;
+							text-align: center;
+							background: none;
+						}
+					}
+				}
+				.division {
+					flex: 1;
+					max-width: 40upx;
+					color: #03bcc0;
+					text-align: center;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
+	}
 
-  .quotation_pan {
-    margin-top: 28upx;
-    padding: 0 20upx;
-    .quotation_pan_new {
-      .title {
-        height: 55upx;
-        line-height: 55upx;
-        padding: 0 20upx;
-        border-radius: 6upx;
-        background: $maskBg;
-        color: #03bcc0;
-        font-weight: 700;
-        font-size: 26upx;;
-        margin-bottom: 12upx;
-      }
-      .new_nav {
-        display: flex;
-        text {
-          flex: 1;
-          font-size: 26upx;;
-          color: #03bcc0;
-          line-height: 65upx;
-        }
-      }
-      .new_list {
-        height: calc(100vh - 915upx);
-        /* #ifdef APP-PLUS */
-        height: calc(100vh - 915upx - var(--status-bar-height));
-        /* #endif */
-        overflow: auto;
-        .item {
-          display: flex;
-          text {
-            flex: 1;
-            font-size: 26upx;;
-            color: #03bcc0;
-            line-height: 34upx;
-          }
-          &:active {
-            background: #565b66;
-          }
-          .buy {
-            color: $panBuy;
-          }
-          .sell {
-            color: $panSell;
-          }
-        }
-      }
-    }
-    .quotation_pan_main {
-      .pan_left {
-        float: left;
-        width: 328upx;
-        .pan_buy_sell {
-          .tpis {
-            color: #03bcc0;
-            margin-top: 10upx;
-          }
-          .submits {
-            margin-top: 17upx;
-            button {
-              height: 55upx;
-              line-height: 55upx;
-              font-size: 26upx;;
-              color: #fff;
-              background: $maskBg;
-              border: 0;
-              border-radius: 6upx;
-              transition: all 0.1s;
-              &::after {
-                display: none;
-              }
-              &:active {
-                opacity: 0.5;
-              }
-            }
-            .buy {
-              background: $panBuy;
-            }
-            .sell {
-              background: $panSell;
-            }
-          }
-          .max_min {
-            font-size: 26upx;;
-            line-height: 46upx;
-            .fl {
-              color: #999999;
-            }
-            .fr {
-              color: #03bcc0;
-            }
-          }
-          .percentage {
-            display: flex;
-            margin-top: 30upx;
-            margin-bottom: 13upx;
-            button {
-              flex: 1;
-              height: 30upx;
-              line-height: 28upx;
-              border: 1upx solid #0a878e;
-              background: none;
-              font-size: 22upx;;
-              color: #999999;
-              margin-right: 6upx;
-              border-radius: 4upx;
-              padding: 0;
-              box-sizing: border-box;
-              text-align: center;
-              &:last-child {
-                margin-right: 0;
-              }
-              &::after {
-                display: none;
-              }
-              &:active {
-                opacity: 0.5;
-              }
-            }
-          }
-          .item {
-            background: $maskBg;
-            color: #03bcc0;
-            height: 55upx;
-            padding: 0 12upx;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 7upx;
-            border-radius: 6upx;
-            &:last-child {
-              margin-bottom: 0;
-            }
-            .input {
-              flex: 1;
-              min-width: 60%;
-            }
-            .coin {
-              flex: 1;
-              font-size: 26upx;;
-              text-align: right;
-            }
-          }
-        }
-        .p_l_title {
-          display: block;
-          font-size: 26upx;;
-          line-height: 24upx;
-          color: #03bcc0;
-          font-weight: 700;
-        }
-        .p_l_surplus {
-          display: block;
-          line-height: 24upx;
-          font-size: 26upx;;
-          color: #999999;
-          margin-top: 17upx;
-        }
-        .p_l_surplus_money {
-          display: block;
-          color: #03bcc0;
-          font-size: 26upx;;
-          line-height: 40upx;
-        }
-        &.max_min_buy {
-          .p_l_title {
-            color: $panBuy;
-          }
-          .p_l_surplus_money {
-            color: $panBuy;
-          }
-          .pan_buy_sell {
-            .coin {
-              color: $panBuy;
-            }
-          }
-          .max_min {
-            .fr {
-              color: $panBuy;
-            }
-          }
-        }
-        &.max_min_sell {
-          .p_l_title {
-            color: $panSell;
-          }
-          .p_l_surplus_money {
-            color: $panSell;
-          }
-          .pan_buy_sell {
-            .coin {
-              color: $panSell;
-            }
-          }
-          .max_min {
-            .fr {
-              color: $panSell;
-            }
-          }
-        }
-      }
-      .pan_right {
-        float: right;
-        width: 328upx;
-        .average {
-          margin-bottom: 10upx;
-          height: 55upx;
-          line-height: 55upx;
-          font-size: 26upx;
-          color: #03bcc0;
-          background: #maskBg;
-          border-radius: 6upx;
-        }
-        .p_r_title {
-          font-size: 26upx;;
-          line-height: 24upx;
-          color: #03bcc0;
-          margin-bottom: 9upx;
-        }
-        .pan_sell_list,
-        .pan_buy_list {
-          margin-bottom: 10upx;
-          height: 210upx;
-          overflow: auto;
-          .item {
-            color: #03bcc0;
-            line-height: 43upx;
-            font-size: 26upx;
-            position: relative;
-            .fl {
-              color: #d14b64;
-              position: relative;
-              z-index: 2;
-            }
-            .fr{
-              position: relative;
-              z-index: 2;
-            }
-            .bg{
-              position: absolute;
-              left: 0;
-              top: 0;
-              bottom: 0;
-              background: rgba(166, 46, 46, 0.2);
-            }
-          }
-        }
-        .pan_buy_list {
-          .item {
-            .fl {
-              color: $panBuy;
-            }
-            .bg{
-              background: #253a3f;
-            }
-          }
-        }
-      }
-    }
-  }
-  .quotation_nav {
-    padding: 0 20upx;
-    display: flex;
-    margin-top: 45upx;
-    button {
-      flex: 1;
-      height: 55upx;
-      line-height: 55upx;
-      background: none;
-      border: 0;
-      color: #03bcc0;
-      border-radius: 6upx;
-      font-size: 26upx;;
-      &::after {
-        display: none;
-      }
-      &.active {
-        background: #03bcc0;
-        color: #191e2a;
-      }
-    }
-  }
-  .quotation_NavBar {
-    position: relative;
-    height: 88upx;
-    padding: 0 20upx;
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: #353944;
-      transform: scaleY(0.5);
-    }
-    .quotation_kline {
-      position: absolute;
-      right: 40upx;
-      bottom: 0;
-      top: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #03bcc0;
-      .iconfont {
-        height: 40upx;
-        width: 40upx;
-        text-align: center;
-        line-height: 38upx;
-        font-size: 36upx;
-        border: 1upx solid #03bcc0;
-        border-radius: 8upx;
-        margin-left: 12upx;
-      }
-    }
-    .select_coin {
-      position: absolute;
-      left: 90upx;
-      bottom: 0;
-      top: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #03bcc0;
-      .select_coin_main {
-        height: 40upx;
-        line-height: 38upx;
-        border: 1upx solid #0a878e;
-        border-radius: 8upx;
-        padding: 0 10upx;
-      }
-    }
-    .back {
-      position: absolute;
-      left: 20upx;
-      bottom: 0;
-      top: 0;
-      width: 70upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  .quotation_select {
-    width: 680upx;
-    padding: 17upx 25upx;
-    box-sizing: border-box;
-    background: $maskBg;
-    color: #03bcc0;
-    font-size: 26upx;;
-    border-radius: 8upx;
-    .s_list {
-      height: 550upx;
-      overflow: auto;
-      .fl {
-        width: 33.33%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 87upx;
-        .icon-cion {
-          width: 35upx;
-          height: 35upx;
-          margin-right: 15upx;
-          border-radius: 35upx;
-          background-color: #fff;
-        }
-        text {
-          font-size: 22upx;;
-        }
-      }
-    }
-    .s_nav {
-      display: flex;
-      position: relative;
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: #565b66;
-        transform: scaleY(0.5);
-      }
-      button {
-        flex: 1;
-        height: 60upx;
-        line-height: 60upx;
-        box-sizing: border-box;
-        background: none;
-        border: 0;
-        padding: 0;
-        text-align: center;
-        color: #03bcc0;
-        border-radius: 0;
-        border-bottom: 2upx solid transparent;
-        font-size: 26upx;;
-        &::after {
-          display: none;
-        }
-        &.active {
-          border-color: #03bcc0;
-        }
-      }
-    }
-    .s_header {
-      height: 53upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .left {
-        flex: 1;
-        background: #191e2a;
-        border-radius: 6upx;
-        padding: 0 22upx;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        input {
-          width: calc(100% - 28upx);
-          padding-left: 20upx;
-          box-sizing: border-box;
-        }
-      }
-      .right {
-        flex: 1;
-        max-width: 94upx;
-        height: 100%;
-        line-height: 53upx;
-        border: 0;
-        background: none;
-        font-size: 26upx;;
-        padding: 0;
-        text-align: center;
-        color: #03bcc0;
-        &::after {
-          display: none;
-        }
-      }
-    }
-  }
+	.quotation_pan {
+		margin-top: 28upx;
+		padding: 0 20upx;
+		.quotation_pan_new {
+			.title {
+				height: 55upx;
+				line-height: 55upx;
+				padding: 0 20upx;
+				border-radius: 6upx;
+				background: $maskBg;
+				color: #03bcc0;
+				font-weight: 700;
+				font-size: 26upx;
+				margin-bottom: 12upx;
+			}
+			.new_nav {
+				display: flex;
+				justify-content: space-between;
+				text {
+					font-size: 26upx;
+					color: #488FD3;
+					line-height: 65upx;
+				}
+			}
+			.new_list {
+				height: calc(100vh - 915upx);
+				/* #ifdef APP-PLUS */
+				height: calc(100vh - 915upx - var(--status-bar-height));
+				/* #endif */
+				overflow: auto;
+				.item {
+					display: flex;
+					justify-content: space-between;
+					text {
+						font-size: 26upx;
+						color: #488FD3;
+						line-height: 34upx;
+						text-align: left;
+					}
+					&:active {
+						background: #565b66;
+					}
+					.buy {
+						color: $panBuy;
+					}
+					.sell {
+						color: $panSell;
+					}
+				}
+			}
+		}
+		.quotation_pan_main {
+			.pan_left {
+				float: left;
+				width: 328upx;
+				.pan_buy_sell {
+					.tpis {
+						color: #03bcc0;
+						margin-top: 10upx;
+					}
+					.submits {
+						margin-top: 17upx;
+						button {
+							height: 55upx;
+							line-height: 55upx;
+							font-size: 26upx;
+							color: #fff;
+							background: $maskBg;
+							border: 0;
+							border-radius: 6upx;
+							transition: all 0.1s;
+							&::after {
+								display: none;
+							}
+							&:active {
+								opacity: 0.5;
+							}
+						}
+						.buy {
+							background: $panBuy;
+						}
+						.sell {
+							background: $panSell;
+						}
+					}
+					.max_min {
+						font-size: 26upx;
+						line-height: 46upx;
+						.fl {
+							color: #999999;
+						}
+						.fr {
+							color: #03bcc0;
+						}
+					}
+					.percentage {
+						display: flex;
+						margin-top: 30upx;
+						margin-bottom: 13upx;
+						button {
+							flex: 1;
+							height: 30upx;
+							line-height: 28upx;
+							border: 1upx solid #0a878e;
+							background: none;
+							font-size: 22upx;
+							color: #999999;
+							margin-right: 6upx;
+							border-radius: 4upx;
+							padding: 0;
+							box-sizing: border-box;
+							text-align: center;
+							&:last-child {
+								margin-right: 0;
+							}
+							&::after {
+								display: none;
+							}
+							&:active {
+								opacity: 0.5;
+							}
+						}
+					}
+					.item {
+						background: $maskBg;
+						color: #03bcc0;
+						height: 55upx;
+						padding: 0 12upx;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin-bottom: 7upx;
+						border-radius: 6upx;
+						&:last-child {
+							margin-bottom: 0;
+						}
+						.input {
+							flex: 1;
+							min-width: 60%;
+						}
+						.coin {
+							flex: 1;
+							font-size: 26upx;
+							text-align: right;
+						}
+					}
+				}
+				.p_l_title {
+					display: block;
+					font-size: 26upx;
+					line-height: 24upx;
+					color: #03bcc0;
+					font-weight: 700;
+				}
+				.p_l_surplus {
+					display: block;
+					line-height: 24upx;
+					font-size: 26upx;
+					color: #999999;
+					margin-top: 17upx;
+				}
+				.p_l_surplus_money {
+					display: block;
+					color: #03bcc0;
+					font-size: 26upx;
+					line-height: 40upx;
+				}
+				&.max_min_buy {
+					.p_l_title {
+						color: $panBuy;
+					}
+					.p_l_surplus_money {
+						color: $panBuy;
+					}
+					.pan_buy_sell {
+						.coin {
+							color: $panBuy;
+						}
+					}
+					.max_min {
+						.fr {
+							color: $panBuy;
+						}
+					}
+				}
+				&.max_min_sell {
+					.p_l_title {
+						color: $panSell;
+					}
+					.p_l_surplus_money {
+						color: $panSell;
+					}
+					.pan_buy_sell {
+						.coin {
+							color: $panSell;
+						}
+					}
+					.max_min {
+						.fr {
+							color: $panSell;
+						}
+					}
+				}
+			}
+			.pan_right {
+				float: right;
+				width: 328upx;
+				.average {
+					margin-bottom: 10upx;
+					height: 55upx;
+					line-height: 55upx;
+					font-size: 26upx;
+					color: #03bcc0;
+					background: #maskBg;
+					border-radius: 6upx;
+				}
+				.p_r_title {
+					font-size: 26upx;
+					line-height: 24upx;
+					color: #03bcc0;
+					margin-bottom: 9upx;
+				}
+				.pan_sell_list,
+				.pan_buy_list {
+					margin-bottom: 10upx;
+					height: 210upx;
+					overflow: auto;
+					.item {
+						color: #03bcc0;
+						line-height: 43upx;
+						font-size: 26upx;
+						position: relative;
+						.fl {
+							color: #d14b64;
+							position: relative;
+							z-index: 2;
+						}
+						.fr {
+							position: relative;
+							z-index: 2;
+						}
+						.bg {
+							position: absolute;
+							left: 0;
+							top: 0;
+							bottom: 0;
+							background: rgba(166, 46, 46, 0.2);
+						}
+					}
+				}
+				.pan_buy_list {
+					.item {
+						.fl {
+							color: $panBuy;
+						}
+						.bg {
+							background: #253a3f;
+						}
+					}
+				}
+			}
+		}
+	}
+	.quotation_nav {
+		padding: 0 20upx;
+		display: flex;
+		margin-top: 45upx;
+		button {
+			flex: 1;
+			height: 55upx;
+			line-height: 55upx;
+			background: none;
+			border: 0;
+			color: #488FD3;
+			border-radius: 6upx;
+			font-size: 26upx;
+			&::after {
+				display: none;
+			}
+			&.active {
+				background: #488FD3;
+				color: #fff;
+			}
+		}
+	}
+	.quotation_NavBar {
+		position: relative;
+		height: 88upx;
+		padding: 0 20upx;
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: #353944;
+			transform: scaleY(0.5);
+		}
+		.quotation_kline {
+			position: absolute;
+			right: 40upx;
+			bottom: 0;
+			top: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #488FD3;
+			.iconfont {
+				height: 40upx;
+				width: 40upx;
+				text-align: center;
+				line-height: 38upx;
+				font-size: 36upx;
+				border: 1upx solid #488FD3;
+				border-radius: 8upx;
+				margin-left: 12upx;
+			}
+		}
+		.select_coin {
+			position: absolute;
+			left: 90upx;
+			bottom: 0;
+			top: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #03bcc0;
+			.select_coin_main {
+				height: 40upx;
+				line-height: 38upx;
+				border: 1upx solid #488fd3;
+				border-radius: 8upx;
+				padding: 0 10upx;
+				text {
+					margin-right: 10upx;
+					font-size: 22upx;
+					color: #488fd3;
+				}
+			}
+		}
+		.back {
+			position: absolute;
+			left: 20upx;
+			bottom: 0;
+			top: 0;
+			width: 70upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.quotation_select {
+		width: 680upx;
+		padding: 17upx 25upx;
+		box-sizing: border-box;
+		background: $maskBg;
+		color: #03bcc0;
+		font-size: 26upx;
+		border-radius: 8upx;
+		.s_list {
+			height: 550upx;
+			overflow: auto;
+			.fl {
+				width: 33.33%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 87upx;
+				.icon-cion {
+					width: 35upx;
+					height: 35upx;
+					margin-right: 15upx;
+					border-radius: 35upx;
+					background-color: #fff;
+				}
+				text {
+					font-size: 22upx;
+				}
+			}
+		}
+		.s_nav {
+			display: flex;
+			position: relative;
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 1px;
+				background: #565b66;
+				transform: scaleY(0.5);
+			}
+			button {
+				flex: 1;
+				height: 60upx;
+				line-height: 60upx;
+				box-sizing: border-box;
+				background: none;
+				border: 0;
+				padding: 0;
+				text-align: center;
+				color: #03bcc0;
+				border-radius: 0;
+				border-bottom: 2upx solid transparent;
+				font-size: 26upx;
+				&::after {
+					display: none;
+				}
+				&.active {
+					border-color: #03bcc0;
+				}
+			}
+		}
+		.s_header {
+			height: 53upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.left {
+				flex: 1;
+				background: #191e2a;
+				border-radius: 6upx;
+				padding: 0 22upx;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				input {
+					width: calc(100% - 28upx);
+					padding-left: 20upx;
+					box-sizing: border-box;
+				}
+			}
+			.right {
+				flex: 1;
+				max-width: 94upx;
+				height: 100%;
+				line-height: 53upx;
+				border: 0;
+				background: none;
+				font-size: 26upx;
+				padding: 0;
+				text-align: center;
+				color: #03bcc0;
+				&::after {
+					display: none;
+				}
+			}
+		}
+	}
 }

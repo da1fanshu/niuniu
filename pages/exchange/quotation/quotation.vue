@@ -12,8 +12,8 @@
         </view>
         <view class="select_coin">
           <view class="select_coin_main" @click="showSelect = true">
-            <text style="margin-right: 10upx; font-size: 22upx;;">{{ title }}</text>
-            <uni-icon type="arrowdown" :color="'#03bcc0'"></uni-icon>
+            <text>{{ title }}</text>
+            <uni-icons type="arrowdown" :size="12" :color="'#488fd3'"></uni-icons>
           </view>
         </view>
         <view class="quotation_kline" @click="goKline()">
@@ -105,14 +105,14 @@
             <view class="title">最新成交</view>
             <view class="new_nav">
               <text>价格</text>
-              <text style="text-align: center;">数量</text>
-              <text style="text-align: right;">时间</text>
+              <text>数量</text>
+              <text>时间</text>
             </view>
             <view class="new_list">
               <view class="item" v-for="(item, index) in tradeList" :key="index" @click="setPrice(item.price)">
                 <text :class="item.type == 'BUY' ? 'buy' : 'sell'">{{ filter.fix(item.price, 6) }}</text>
-                <text style="text-align: center;">{{ filter.fix(item.num, 4) }}</text>
-                <text style="text-align: right;">{{ $formta(item.time * 1000, 'hh:mm:ss') }}</text>
+                <text>{{ filter.fix(item.num, 4) }}</text>
+                <text>{{ $formta(item.time * 1000, 'hh:mm:ss') }}</text>
               </view>
               <uni-load-more v-if="!tradeList[0]" status="noMore"></uni-load-more>
             </view>
@@ -188,7 +188,7 @@
         <view class="quotation_select">
           <!-- <view class="s_header">
             <view class="left">
-              <uni-icon type="search" :color="'#03bcc0'"></uni-icon>
+              <uni-icons type="search" :color="'#03bcc0'"></uni-icons>
               <input type="text" placeholder="交易对查询" />
             </view>
             <button class="right">取消</button>
@@ -259,6 +259,6 @@
   };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import './style.scss';
 </style>

@@ -1,3 +1,6 @@
+uni-page-head .uni-btn-icon {
+	overflow: inherit!important;
+}
 .invitation{
   .bg{
     display: block;
@@ -16,18 +19,47 @@
     right: 50rpx;
     left: 50rpx;
     bottom: 50rpx;
-    padding: 1rpx;
-    background: url(../../../static/dev/invitation_top.png) no-repeat;
-    background-size: 100% 100%;
+	.w_title {
+		position: absolute;
+		bottom: 116rpx;
+		 right: 14rpx;
+		 .main_code{
+		   height: 88rpx;
+		   font-size: 48rpx;
+		   color: #fff;
+		   text-align: center;
+		   font-family: 'Arial';
+		   margin: 0 0 48rpx;
+		 }
+		 .main_title{
+		   margin-top: 40rpx;
+		   margin-bottom: 48rpx;
+		   text-align: center;
+		   color: #fff;
+		   font-size: 36rpx;
+		 }
+	}
+	.shar {
+		position: absolute;
+		bottom: 98rpx;
+		 right: 14rpx;
+		 width: 264rpx;
+		 height: 66rpx;
+		 border-radius: 6rpx;
+		 background-color: #fff;
+		 color: #1DB5F6;
+		 text-align: center;
+		 line-height: 66rpx;
+	}
     .main_tips{
       text-align: center;
       line-height: 2.2;
       font-size: 26rpx;
     }
     .main_qrcode{
-      margin-top: 80rpx;
-      text-align: center;
-      margin-bottom: 10rpx;
+      position: absolute;
+	  left: 14rpx;
+	  bottom: 94rpx;
     }
     .main_button{
       height: 70rpx;
@@ -52,20 +84,6 @@
         }
       }
     }
-    .main_code{
-      margin-top: 30rpx;
-      height: 88rpx;
-      line-height: 88rpx;
-      font-size: 66rpx;
-      color: #4D67EF;
-      text-align: center;
-      font-family: 'Arial'
-    }
-    .main_title{
-      margin-top: 40rpx;
-      text-align: center;
-      color: #7986CB;
-      font-size: 28rpx;
-    }
+    
   }
 }

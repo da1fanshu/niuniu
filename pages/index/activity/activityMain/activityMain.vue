@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<web-view v-if="shows" :src="`https://whole.lkex.co/activeWeb/?token=${token}&time=${time}&isAppH5=${isAPP}`"></web-view>
+		<web-view v-if="shows" :src="`http://whole.nnex.io/activeWeb/?token=${token}&time=${time}&isAppH5=${isAPP}`"></web-view>
 	</view>
 </template>
 

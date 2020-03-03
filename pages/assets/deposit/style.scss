@@ -1,5 +1,5 @@
 .deposit {
-  padding: 20upx;
+  padding: 24upx;
   .deposit_sync{
     margin-bottom: 20rpx;
     button{
@@ -20,56 +20,48 @@
       }
     }
   }
+  .tip {
+	  margin: 18rpx 48rpx;
+	  .deposit_tips_one {
+		  color: #488FD3;
+	  }
+	  .deposit_tips_two {
+		  color: #000;
+	  }
+	  view {
+		  margin-bottom: 26rpx;
+		  line-height: 1.2;
+	  }
+  }
   .deposit_main {
-    padding: 1upx 25upx 58upx;
-    background: $maskBg;
-    border-radius: 8upx;
+    width:700upx;
+    height:456upx;
+    background:rgba(255,255,255,1);
+    border-radius:10upx;
     margin-bottom: 20upx;
-    .deposit_tips_one,.deposit_tips_two{
-      color: #d2b916;
-      font-size: 24upx;
-    }
-    .deposit_tips_two{
-      color: #fff;
-    }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
     .deposit_address {
-      font-size: 26upx;;
-      background: #191e2a;
-      border-radius: 8upx;
-      .fl {
-        line-height: 60upx;
-        color: #fff;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: calc(100% - 107upx);
-        padding: 0 16upx;
-        box-sizing: border-box;
-      }
-      .fr {
-        width: 107upx;
-        height: 60upx;
-        line-height: 60upx;
-        padding: 0;
-        text-align: center;
-        color: #191e2a;
-        background: $fontColor;
-        border: 0;
-        font-size: 26upx;;
-        &::after{
-          display: none;
-        }
-      }
+      width:552upx;
+      height:45upx;
+      border:2upx solid rgba(229,229,229,1);
+      border-radius:5upx;
+	  color: #000;
+	  margin: 10rpx 0 20rpx;
     }
+	.copy {
+		width:150rpx;
+		height:50rpx;
+		background:rgba(72,143,211,1);
+		border-radius:3upx;
+		color: #fff;
+		line-height: 50upx;
+		text-align: center;
+	}
     .deposit_tpis {
-      color: #fff;
-      font-size: 26upx;;
-      line-height: 58upx;
-      .uni-icon {
-        margin-left: 10upx;
-      }
       text {
-        color: #efd105;
+        color: #488FD3;
       }
     }
     .deposit_code {

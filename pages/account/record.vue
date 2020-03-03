@@ -4,7 +4,7 @@
       <view class="common_list">
         <view class="title clear">
           <text class="fl">{{ coin }} 活动支出明细</text>
-          <!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
+          <!-- <view class="fr"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view> -->
         </view>
         <view class="common_list_main">
           <!-- <view class="common_list_main" :style="{ height: depositHeight + 'px' }"> -->
@@ -38,7 +38,7 @@
       <view class="common_list">
         <view class="title clear" @click="setHeight('deposit', 'depositHeight')">
           <text class="fl">{{ coin }}充币</text>
-          <!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
+          <!-- <view class="fr"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view> -->
         </view>
         <view class="common_list_main">
           <!-- <view class="common_list_main" :style="{ height: depositHeight + 'px' }"> -->
@@ -68,7 +68,7 @@
       <view class="common_list">
         <view class="title clear" @click="setHeight('withdraw', 'withdrawHeight')">
           <text class="fl">{{ coin }}提币和站内互转</text>
-          <!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
+          <!-- <view class="fr"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view> -->
         </view>
         <view class="common_list_main">
           <!-- <view class="common_list_main" :style="{ height: withdrawHeight + 'px' }"> -->
@@ -102,7 +102,7 @@
       <view class="common_list">
         <view class="title clear" @click="setHeight('transfer', 'transferHeight')">
           <text class="fl">{{ coin }}划转</text>
-          <!-- <view class="fr"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view> -->
+          <!-- <view class="fr"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view> -->
         </view>
         <view class="common_list_main">
           <!-- <view class="common_list_main" :style="{ height: transferHeight + 'px' }"> -->

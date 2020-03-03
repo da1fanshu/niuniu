@@ -31,7 +31,7 @@ export default {
   },
   onNavigationBarButtonTap(e) {
     let text = this.summary;
-    let imgUrl = 'https://lkex.co//' + `${this.shareImg}`;
+    let imgUrl = 'http://nnex.io//' + `${this.shareImg}`;
     let that = this;
     let arr = ['分享到微信好友', '分享到微信朋友圈', '复制资讯链接', '取消分享'];
     // #ifdef H5
@@ -109,7 +109,7 @@ export default {
           }
           this.summary = data.data.summary;
           this.shareImg = data.data.coverImage;
-          this.address = 'https://lkex.co/' + `/#/pages/index/newInfo/newDetails/newDetails?id=${data.data.id}`;
+          this.address = 'http://nnex.io/' + `/#/pages/index/newInfo/newDetails/newDetails?id=${data.data.id}`;
           this.article = data.data.content.replace(new RegExp('/bera-manage/news/image-get', 'g'), `${this.$api.baseUrl}/bera-manage/news/image-get`);
           this.loadings = true;
           uni.setNavigationBarTitle({

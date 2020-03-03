@@ -1,219 +1,223 @@
 .authentication {
-  padding: 20upx;
-  .authentication_lv{
-    .lv_top{
-      background: $maskBg;
-      border-radius: 8upx;
-      height: 369upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: #acaeb1;
-      font-size: 26upx;;
-      text{
-        line-height: 1.5;
-      }
-    }
-    .lv_buttom{
-      font-size: 26upx;;
-      
-      margin-top: 67upx;
-      button{
-        background: $maskBg;
-        border-radius: 8upx;
-        border: 0;
-        color: #fff;
-        font-size: 26upx;;
-        height: 70upx;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all .2s;
-        &::after{
-          display: none;
-        }
-        &:active{
-          opacity: 0.5;
-        }
-        &.err{
-          background: #03bcc0;
-          color: #191e2a;
-        }
-      }
-    }
-  }
-  .authentication_submit {
-    button {
-      background: #04cbcf;
-      color: #191e2a;
-      height: 60upx;
-      line-height: 60upx;
-      font-size: 26upx;;
-      transition: all .1s;
-      &::after{
-        display: none;
-      }
-      &:active{
-        opacity: 0.5;
-      }
-    }
-  }
-  .authentication_promise {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #04cbcf;
-    padding: 0 24upx;
-    height: 145upx;
-    .checkbox {
-      margin-right: 16upx;
-      height: 27upx;
-      width: 27upx;
-      border: 1upx solid #0a878e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 4upx;
-      .uni-icon {
-        font-size: 40upx !important;
-      }
-    }
-  }
-  .authentication_upload {
-    padding: 0 64upx 36upx;
-    background: $maskBg;
-    border-radius: 8upx;
-    margin-top: 20upx;
-    .upload_img {
-      position: relative;
-      height: 317upx;
-      width: 100%;
-      margin-bottom: 16upx;
-      // background: #fff;
-      &.JUST {
-        background: url(../../static/dev/JUST.jpg) #fff no-repeat;
-        background-size: 100% 100%;
-      }
-      &.BACK {
-        background: url(../../static/dev/BACK.jpg) #fff no-repeat;
-        background-size: 100% 100%;
-      }
-      &.HOLD {
-        background: url(../../static/dev/HOLD.jpg) #fff no-repeat;
-        background-size: 100% 100%;
-      }
-      &.ID_PASSPROT{
-        background: url(../../static/dev/PASSPORT.png) #fff no-repeat;
-        background-size: 100% 100%;
-      }
-      .upload_img_submit {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 53upx;
-        line-height: 53upx;
-        border: 0;
-        background: #12abb0;
-        color: #191e2a;
-        font-size: 26upx;;
-        width: 93upx;
-        padding: 0;
-      }
-    }
-    .upload_title {
-      line-height: 70upx;
-      font-size: 26upx;;
-      color: #04cbcf;
-      margin-bottom: 16upx;
-      text-align: center;
-    }
-    .upload_tips {
-      display: block;
-      text-align: center;
-      width: 100%;
-      line-height: 60upx;
-      color: #acaeb1;
-      font-size: 26upx;;
-    }
-  }
-  .authentication_form {
-    padding: 20upx 25upx 8upx;
-    border-radius: 8upx;
-    margin-top: 20upx;
-    background: $maskBg;
-    .item {
-      font-size: 26upx;;
-      margin-bottom: 20upx;
-      .fl {
-        width: 122upx;
-        line-height: 51upx;
-        color: #12abb0;
-      }
-      .fr {
-        width: calc(100% - 122upx);
-        border-radius: 8upx;
-        background: #1e2432;
-        height: 51upx;
-        color: #12abb0;
-        .radios{
-          height: 100%;
-          display: flex;
-          padding-left: 20upx;
-          align-items: center;
-          .radio{
-            display: flex;
-            align-items: center;
-            font-size: 26upx;;
-          }
-          radio{
-            transform: scale(0.6)
-          }
-        }
-        input {
-          padding: 0 24upx;
-        }
-        picker {
-          .uni-input {
-            height: 100%;
-            padding: 0 24upx;
-            line-height: 51upx;
-            background: none;
-          }
-        }
-      }
-    }
-  }
-  .authentication_tip {
-    background: $maskBg;
-    padding: 15upx 25upx;
-    border-radius: 8upx;
-    text {
-      color: #acaeb1;
-      font-size: 26upx;;
-      display: block;
-    }
-    .title {
-      font-size: 31upx;
-      color: #12abb0;
-      font-weight: 800;
-    }
-    .seeMap {
-      color: #12abb0;
-      text-decoration: underline;
-    }
-  }
+	padding-bottom: 20upx;
+	input {
+		font-size: 24rpx!important;
+	}
+	.b_title {
+		padding: 0 24rpx;
+		text {
+			display: block;
+			font-size: 24rpx;
+			margin-bottom: 14rpx;
+		}
+	}
+	.authentication_lv {
+		.lv_top {
+			background: $maskBg;
+			border-radius: 8upx;
+			height: 369upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			color: #acaeb1;
+			font-size: 26upx;
+			text {
+				line-height: 1.5;
+			}
+		}
+		.lv_buttom {
+			font-size: 26upx;
+
+			margin-top: 67upx;
+			button {
+				background: $maskBg;
+				border-radius: 8upx;
+				border: 0;
+				color: #fff;
+				font-size: 26upx;
+				height: 70upx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: all 0.2s;
+				&::after {
+					display: none;
+				}
+				&:active {
+					opacity: 0.5;
+				}
+				&.err {
+					background: #03bcc0;
+					color: #191e2a;
+				}
+			}
+		}
+	}
+	.authentication_submit {
+		button {
+			background: #488FD3;
+			color: #fff;
+			width: 93.6%;
+			height: 66upx;
+			line-height: 66upx;
+			font-size: 26upx;
+			transition: all 0.1s;
+			margin: 40rpx auto 24rpx;
+			&::after {
+				display: none;
+			}
+			&:active {
+				opacity: 0.5;
+			}
+		}
+	}
+	.authentication_promise {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		color: #04cbcf;
+		padding: 0 24upx;
+		height: 145upx;
+		.checkbox {
+			margin-right: 16upx;
+			height: 27upx;
+			width: 27upx;
+			border: 1upx solid #0a878e;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 4upx;
+			.uni-icons {
+				font-size: 40upx !important;
+			}
+		}
+	}
+	.authentication_upload {
+		padding: 24rpx 30rpx;
+		background: #fff;
+		border-radius: 8upx;
+		margin-top: 20upx;
+		.f_flex {
+			display: flex;
+			justify-content: space-between;
+		}
+		.upload_img {
+			position: relative;
+			height: 190rpx;
+			width: 308rpx;
+			margin-bottom: 14upx;
+			// background: #fff;
+			&.JUST {
+				background: url(../../static/dev/JUST.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			&.BACK {
+				background: url(../../static/dev/BACK.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			&.HOLD {
+				background: url(../../static/dev/HOLD.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			&.ID_PASSPROT {
+				background: url(../../static/dev/PASSPORT.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			&.ID_PASSPROTHOLD {
+				background: url(../../static/dev/PASSPORTHOLD.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			.upload_img_submit {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 94rpx;
+				height: 94rpx;
+				padding: 0;
+			}
+		}
+		.upload_title {
+			color: #333;
+			margin-bottom: 30upx;
+			text-align: center;
+			width: 308rpx;
+		}
+		.upload_tips {
+			display: block;
+			text-align: center;
+			width: 100%;
+			line-height: 60upx;
+			color: #acaeb1;
+			font-size: 26upx;
+		}
+	}
+	.authentication_form {
+		margin-top: 24upx;
+		background: #fff;
+		display: flex;
+		justify-content: space-between;
+		padding: 26rpx 24rpx;
+		.item {
+			font-size: 26upx;
+			margin-bottom: 20upx;
+			display: flex;
+			align-items: center;
+			text {
+				display: block;
+				width: 134rpx;
+			}
+			&>view {
+				width:190rpx;
+				height:50rpx;
+				border:2rpx solid rgba(181,181,181,1);
+				border-radius:6rpx;
+				font-size: 24rpx;
+				display: flex;
+				align-items: center;
+			}
+			input {
+				padding-left: 8rpx;
+			}
+			.uni-input {
+				padding-left: 8rpx;
+				background: transparent;
+			}
+			picker view {
+				font-size: 24rpx;
+			}
+		}
+	}
+	.authentication_tip {
+		background: $maskBg;
+		padding: 15upx 25upx;
+		border-radius: 8upx;
+		text {
+			color: #acaeb1;
+			font-size: 26upx;
+			display: block;
+		}
+		.title {
+			font-size: 31upx;
+			color: #12abb0;
+			font-weight: 800;
+		}
+		.seeMap {
+			color: #12abb0;
+			text-decoration: underline;
+		}
+	}
 }
 .cityList {
-  background: $maskBg;
-  width: 500upx;
-  color: #03bcc0;
-  max-height: 400upx;
-  border-radius: 8upx;
-  padding: 20upx 0;
-  .uni-list-item{
-    font-size: 26upx;;
-  }
+	background: $maskBg;
+	width: 500upx;
+	color: #03bcc0;
+	max-height: 400upx;
+	border-radius: 8upx;
+	padding: 20upx 0;
+	.uni-list-item {
+		font-size: 26upx;
+	}
 }

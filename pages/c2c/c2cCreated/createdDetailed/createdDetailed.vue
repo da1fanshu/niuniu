@@ -17,7 +17,7 @@
 						<picker @change="setCity" :value="value" :range="cityList" :range-key="'country'">
 							<view class="uni-input">{{ cityList[value] ? cityList[value].country : '' }}</view>
 						</picker>
-						<view class="downs"><uni-icon type="arrowdown" size="20" :color="'#03bcc0'"></uni-icon></view>
+						<view class="downs"><uni-icons type="arrowdown" size="20" :color="'#03bcc0'"></uni-icons></view>
 					</view>
 				</view>
 				<view class="item clear">
@@ -94,11 +94,11 @@
             <text class="fl">付款方式：</text>
             <view class="fr">
               <view class="pay_alipay fl" @click.stop="setPay('ALIPAY')">
-                <view class="checkbox"><uni-icon v-if="payType.ALIPAY" type="checkmarkempty" :color="'#fff'"></uni-icon></view>
+                <view class="checkbox"><uni-icons v-if="payType.ALIPAY" type="checkmarkempty" :color="'#fff'"></uni-icons></view>
                 <text>支付宝</text>
               </view>
               <view class="pay_bank fl" style="margin-left: 65upx;" @click.stop="setPay('BANK')">
-                <view class="checkbox"><uni-icon v-if="payType.BANK" type="checkmarkempty" :color="'#fff'"></uni-icon></view>
+                <view class="checkbox"><uni-icons v-if="payType.BANK" type="checkmarkempty" :color="'#fff'"></uni-icons></view>
                 <text>银行卡</text>
               </view>
             </view>

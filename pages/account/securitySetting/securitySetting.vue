@@ -1,34 +1,37 @@
 <template>
   <view class="content accountSet">
+	  <!-- <view class="top_border">
+	  	
+	  </view> -->
     <view class="accountSet_main_list">
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/password.png" mode=""></image>
+          <image src="/static/s1.png" mode="aspectFit"></image>
           <text>登录密码</text>
         </view>
         <view class="fr"><button class="btn_active" @click="showResetPwd = true">修改</button></view>
       </view>
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/payword.png" mode=""></image>
+          <image src="/static/s2.png" mode="aspectFit"></image>
           <text>资金密码</text>
         </view>
         <view class="fr">
-          <button class="btn_default" v-if="USERINFO.setPayPassword" @click="isResetPayPwd = true">重置</button>
+          <button class="btn_default" v-if="USERINFO.setPayPassword" @click="isResetPayPwd = true" style="color: #000;">重置</button>
           <button class="btn_active" v-if="USERINFO.setPayPassword" @click="showResetPayPwd = true">修改</button>
           <button class="btn_active" v-if="USERINFO.setPayPassword == false" @click="showResetPayPwd = true">设置</button>
         </view>
       </view>
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/exemption.png" mode=""></image>
+          <image src="/static/s3.png" mode="aspectFit"></image>
           <text>免密交易</text>
         </view>
         <view class="fr"><switch @change="setAvoid" :checked="AVOID == 1 ? true : false" style="transform:scale(0.7);" color="#03bcc0" /></view>
       </view>
       <view class="accountSet_main_list_item clear" v-if="REG_EMAIL.test(USERINFO.account)">
         <view class="fl">
-          <image src="/static/set_phone.png" mode=""></image>
+          <image src="/static/set_phone.png" mode="aspectFit"></image>
           <text>手机号</text>
         </view>
         <view class="fr">
@@ -41,7 +44,7 @@
     <view class="accountSet_main_list">
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/alipay.png" mode=""></image>
+          <image src="/static/s4.png" mode="aspectFit"></image>
           <text>支付宝</text>
         </view>
         <view class="fr">
@@ -51,7 +54,7 @@
       </view>
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/bank.png" mode=""></image>
+          <image src="/static/s5.png" mode="aspectFit"></image>
           <text>银行卡</text>
         </view>
         <view class="fr">
@@ -64,11 +67,11 @@
     <view class="accountSet_main_list">
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/google.png" mode=""></image>
+          <image src="/static/s6.png" mode="aspectFit"></image>
           <text>谷歌验证</text>
         </view>
         <view class="fr">
-          <button class="btn_default" v-if="GOOGLE.isBound && GOOGLE.status == 'ON'" @click="isPCReset = true">重置</button>
+          <button class="btn_default" v-if="GOOGLE.isBound && GOOGLE.status == 'ON'" @click="isPCReset = true"  style="color: #000;">重置</button>
           <switch @change="setGoogleCode" :checked="GOOGLE.status == 'ON' ? true : false" style="transform:scale(0.7);" color="#03bcc0" />
         </view>
       </view>
@@ -78,7 +81,7 @@
     <!-- <view class="accountSet_main_list">
       <view class="accountSet_main_list_item clear">
         <view class="fl">
-          <image src="/static/fingerprint.png" mode=""></image>
+          <image src="/static/fingerprint.png" mode="aspectFit"""></image>
           <text>指纹登录</text>
         </view>
         <view class="fr">
@@ -112,8 +115,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('showResetPwd')">取消</button>
-          <button class="active" @click="resetPwdSubmit()">确定</button>
+          <view @click="closeModal('showResetPwd')">取消</view>
+          <view class="active" @click="resetPwdSubmit()">确定</view>
         </view>
       </view>
     </Modal>
@@ -150,8 +153,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('showResetPayPwd')">取消</button>
-          <button class="active" @click="resetPayPwdSubmit()">确定</button>
+          <view @click="closeModal('showResetPayPwd')">取消</view>
+          <view class="active" @click="resetPayPwdSubmit()">确定</view>
         </view>
       </view>
     </Modal>
@@ -188,8 +191,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isResetPayPwd')">取消</button>
-          <button class="active" @click="ResetPayPwd()">确定</button>
+          <view @click="closeModal('isResetPayPwd')">取消</view>
+          <view class="active" @click="ResetPayPwd()">确定</view>
         </view>
       </view>
     </Modal>
@@ -204,8 +207,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isPayPwd', true)">取消</button>
-          <button class="active" @click="exemptionPayPwd(true)">确定</button>
+          <view @click="closeModal('isPayPwd', true)">取消</view>
+          <view class="active" @click="exemptionPayPwd(true)">确定</view>
         </view>
       </view>
     </Modal>
@@ -220,7 +223,7 @@
               <picker @change="bindPickerChange" :value="values" :range="addressList" :range-key="'cn'">
                 <view class="uni-input">{{ addressList[values].cn }}({{ addressList[values].tel }})</view>
               </picker>
-              <view class="downs"><uni-icon type="arrowdown" size="20" :color="'#fff'"></uni-icon></view>
+              <view class="downs"><uni-icons type="arrowdown" size="20" :color="'#fff'"></uni-icons></view>
             </view>
           </view>
           <view class="item clear">
@@ -239,8 +242,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isSetPhone')">取消</button>
-          <button class="active" @click="setPhone()">确定</button>
+          <view @click="closeModal('isSetPhone')">取消</view>
+          <view class="active" @click="setPhone()">确定</view>
         </view>
       </view>
     </Modal>
@@ -268,13 +271,13 @@
             <view class="fr"><input type="password" v-model="loginPassword" placeholder="请输入登录密码" /></view>
           </view>
           <view class="item clear">
-            <text class="fl">谷歌验证码:</text>
+            <text class="fl">谷歌认证:</text>
             <view class="fr"><input type="number" v-model="googleCode" maxlength="6" placeholder="请输入谷歌验证码" /></view>
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isSetGoogle')">取消</button>
-          <button class="active" @click="bindGoogle()">确定</button>
+          <view @click="closeModal('isSetGoogle')">取消</view>
+          <view class="active" @click="bindGoogle()">确定</view>
         </view>
       </view>
     </Modal>
@@ -299,8 +302,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('closeGoogle')">取消</button>
-          <button class="active" @click="setGoogle()">确定</button>
+          <view @click="closeModal('closeGoogle')">取消</view>
+          <view class="active" @click="setGoogle()">确定</view>
         </view>
       </view>
     </Modal>
@@ -308,8 +311,8 @@
     <!-- 重置谷歌验证码需要到PC进行 -->
     <Modal :title="'重置谷歌验证'" v-if="isPCReset" @close="closeModal('isPCReset')">
       <view class="common_model">
-        <view style="line-height: 80upx; margin-bottom: 20upx; font-size: 28upx; text-align: center;">重置谷歌验证码请到电脑端进行重置操作</view>
-        <view class="common_btn"><button class="active" @click="closeModal('isPCReset')">确定</button></view>
+        <view style="line-height: 80upx; margin-bottom: 20upx; font-size: 28upx; text-align: center;color: #000;">重置谷歌验证码请到电脑端进行重置操作</view>
+        <view class="common_btn"><view class="active" @click="closeModal('isPCReset')">确定</view></view>
       </view>
     </Modal>
 
@@ -331,8 +334,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isSetAlipay')">取消</button>
-          <button class="active" @click="setPayType('ALIPAY')">确定</button>
+          <view @click="closeModal('isSetAlipay')">取消</view>
+          <view class="active" @click="setPayType('ALIPAY')">确定</view>
         </view>
       </view>
     </Modal>
@@ -363,8 +366,8 @@
           </view>
         </view>
         <view class="common_btn">
-          <button @click="closeModal('isSetBank')">取消</button>
-          <button class="active" @click="setPayType('BANK')">确定</button>
+          <view @click="closeModal('isSetBank')">取消</view>
+          <view class="active" @click="setPayType('BANK')">确定</view>
         </view>
       </view>
     </Modal>

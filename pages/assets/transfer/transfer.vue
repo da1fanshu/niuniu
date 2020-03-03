@@ -2,39 +2,54 @@
 	<view class="content">
 		<view class="transfer">
 			<view class="transfer_nav">
-				<button>币币账户</button>
-				<view class="change"><image src="/static/change.png" style="width: 51upx; height: 32upx;" mode=""></image></view>
-				<!-- @click="showList = true" -->
-				<button>
-					比特算力账户
-					<uni-icon type="arrowdown" :size="20" :color="'#191e2a'"></uni-icon>
-				</button>
+				<view class="t_left">
+					<text>从</text>
+					<text class="circle">.........</text>
+					<text>到</text>
+				</view>
+				<view class="t_center">
+					<view class="c_top" @click="showAccount('out')">
+						<text>{{out}}</text>
+						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
+					</view>
+					<view class="c_border"></view>
+					<view class="c_bottom" @click="showAccount('enter')">
+						<text>{{enter}}</text>
+						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
+					</view>
+				</view>
+				<image @click="transTo()" src="../../../static/trans.png" mode=""></image>
 			</view>
-			<view class="transfer_form">
-				<view class="item clear">
-					<text class="fl">划转币种:</text>
-					<view class="fr"><input style="width: 100%; height: 100%;" type="text" value="USDK" disabled /></view>
-				</view>
-				<view class="item clear">
-					<text class="fl">划转数量:</text>
-					<view class="fr">
-						<input v-model="transQuantity" style="float: left; width: calc(100% - 54upx); height: 100%;" type="number" :placeholder="place" />
-						<button style="width: 54upx;" @click="allTo()">全部</button>
+			<view class="transfer_nav">
+				<view class="t_center" style="width: 100%;">
+					<view class="c_top"  @click="showAccount('coin')">
+						<view class="">
+							<text style="color: #A3A3A3;">币种选择</text>
+							<text style="margin-left: 24rpx;">{{coin}}</text>
+						</view>		
+						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
+					</view>
+					<view class="c_border" style="width: 100%;"></view>
+					<view class="c_input">
+						<text style="color: #A3A3A3;">划转数量</text>
+						<input v-model="transQuantity" type="number"/>
 					</view>
 				</view>
-				<view class="item clear">
-					<text class="fl">资金密码:</text>
-					<view class="fr">
-						<input v-model="pwd" style="float: left; width: calc(100% - 180upx); height: 100%;" type="password" placeholder="请输入资金密码" />
-						<!-- <button style="width: 180upx;" @click="$goPage('../../account/securitySetting/securitySetting')">忘记资金密码？</button> -->
-					</view>
+			</view>
+			<view class="btm">
+				<view class="">
+					<text style="color:#A3A3A3">最多可划转：</text>
+					<text>{{place}}BTC</text>
 				</view>
+				<text @click="allTo()" style="color:#488FD3;">全部</text>
 			</view>
 			<view class="submits"><button @click="tranfer()">确认转出</button></view>
 			<uni-popup :show="showList" position="bottom" mode="fixed" @hidePopup="hidePopup()">
 				<view class="transfer_select">
-					<view class="item" @click="setAccount('game')">游戏账户</view>
-					<view class="item" @click="setAccount('shop')">电商账户</view>
+					<view class="item title" >{{title}}</view>
+					<view v-if="name=='out'" v-for="(item,index) in outList" :key="index" class="item" @click="setAccount('out',item)">{{item}}</view>
+					<view v-if="name=='enter'" v-for="(item,index) in enterList" :key="index" class="item" @click="setAccount('enter',item)">{{item}}</view>
+					<view v-if="name=='coin'" v-for="(item,index) in coinList" :key="index" class="item" @click="setAccount('coin',item)">{{item}}</view>
 					<view class="item" @click="hidePopup()">取消</view>
 				</view>
 			</uni-popup>
@@ -45,13 +60,15 @@
 
 <script>
 import { uniPopup } from '@dcloudio/uni-ui';
+import uniIcons from '@/components/uni-icon/uni-icon.vue';
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import service from '../service.js';
 import comSvc from '@/common/comSvc.js';
 export default {
 	components: {
 		uniPopup,
-		HMmessages
+		HMmessages,
+		uniIcons
 	},
 	data() {
 		return {
@@ -60,17 +77,24 @@ export default {
 			coin: 'USDK',
 			place: '',
 			transQuantity: '',
-			pwd: ''
+			pwd: '',
+			out: '资金账户',
+			enter: '币币账户',
+			title: '',
+			name : '',
+			outList: ['资金账户','币币账户'],
+			enterList: ['资金账户','币币账户'],
+			coinList: ['USDT','BTC'],
 		};
 	},
 	onShow() {
 		comSvc.getAssets().then(({ data }) => {
 			if (data.code == '100200') {
-				for (let i=0;i<data.data.length;i++) {	
-					if(data.data[i].assetCode=='USDK') {
+				for (let i = 0; i < data.data.length; i++) {
+					if (data.data[i].assetCode == 'USDK') {
 						this.number = data.data[i].amountAvailable;
-						this.place = '可用：'+data.data[i].amountAvailable
-					}					
+						this.place = '可用：' + data.data[i].amountAvailable;
+					}
 				}
 			}
 		});
@@ -91,8 +115,31 @@ export default {
 			});
 		},
 		//设置划转账户
-		setAccount(name) {
+		setAccount(name,item) {
+			if(this.name == 'out') {
+				this.out = item;
+			}
+			else if(this.name == 'enter') {
+				this.enter = item;
+			} else {
+				this.coin = item
+			}
 			this.showList = false;
+		},
+		//转换
+		transTo() {
+			[this.out,this.enter] = [this.enter,this.out]
+		},
+		//弹出
+		showAccount(name) {
+			this.name = name;
+			if(name == 'out' || name == 'enter') {
+				this.title = '选择账户';
+			}
+			if(name == 'coin') {
+				this.title = '选择币种';
+			}
+			this.showList = true;
 		},
 		hidePopup() {
 			this.showList = false;

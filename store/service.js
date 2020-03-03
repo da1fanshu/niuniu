@@ -1,7 +1,7 @@
 import api from '@/common/api.js';
 export default {
   //服务器存放的配置文件
-  coinUrl:'https://whole.lkex.co/coinConfig.json',//生产环境
+  coinUrl:'http://whole.nnex.io/coinConfig.json',//生产环境
   
   baseUrl:api.baseUrl,
   //获取用户信息

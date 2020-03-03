@@ -5,7 +5,7 @@
         <text style="font-size: 28rpx;">{{item.memo}}</text>
         <text style="font-size: 24rpx; color: #03bcc0;">{{item.address}}</text>
         <view class="del" @click.stop="del(item)">
-          <uni-icon type="clear" size="28" color="#fff"></uni-icon>
+          <uni-icons type="clear" size="28" color="#fff"></uni-icons>
         </view>
       </view>
     </view>

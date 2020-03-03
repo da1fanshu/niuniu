@@ -1,134 +1,127 @@
 .account_logout {
-  padding: 0 20upx;
-  padding-top: 60upx;
-  margin-bottom: 20upx;
-  button {
-    background: $fontColor;
-    color: #fff;
-    border-radius: 8px;
-    height: 80upx;
-    line-height: 80upx;
-    font-size: 28upx;
-    font-weight: 700;
-    transition: all .1s;
-    &::after{
-      display: none;
-    }
-    &:active{
-      opacity: 0.5;
-    }
-  }
-  &.location{
-    position: absolute;
-    bottom: 25upx;
-    left: 0;
-    right: 0;
-    margin-bottom: 0upx; 
-  }
+	padding: 0 20upx;
+	padding-top: 60upx;
+	margin-bottom: 20upx;
+	button {
+		background: #488FD3;
+		color: #fff;
+		border-radius: 6px;
+		height: 64upx;
+		line-height: 64upx;
+		font-size: 24upx;
+		font-weight: 700;
+		transition: all 0.1s;
+		&::after {
+			display: none;
+		}
+		&:active {
+			opacity: 0.5;
+		}
+	}
+	&.location {
+		position: absolute;
+		bottom: 25upx;
+		left: 0;
+		right: 0;
+		margin-bottom: 0upx;
+	}
 }
 .account_mian {
-  padding: 10px 20upx 0;
-  .account_main_list {
-    background: $maskBg;
-    padding: 0 20upx;
-    margin-top: 12upx;
-    border-radius: 8upx;
-    .account_main_list_item {
-      transition: all 0.2s;
-      &:active {
-        opacity: 0.5;
-      }
-      height: 80upx;
-      position: relative;
-      &::before{
-        display: block;
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 1upx;
-        background: #6d717a;
-        transform: scaleY(0.5);
-      }
-      &:last-child {
-        &::before{
-          display: none;
-        }
-      }
-      .fl {
-        color: #fff;
-        height: 80upx;
-        font-size: 23upx;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        image {
-          height: 34upx;
-          width: 34upx;
-        }
-        text {
-          margin-left: 13upx;
-        }
-      }
-      .fr {
-        height: 80upx;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .messages{
-          background: #ff0000;
-          height: 34upx;
-          width: 34upx;
-          border-radius: 34upx;
-          margin-right: 20upx;
-          color: #fff;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 18upx;
-        }
-      }
-    }
-  }
-  .account_mian_header {
-    background: $maskBg;
-    border-radius: 8upx;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-    .m_h_nav {
-      display: flex;
-      height: 96upx;
-      .flex {
-        transition: all 0.2s;
-        &:active {
-          background: #191e2a;
-        }
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding-top: 10upx;
-        text {
-          color: #fff;
-        }
-      }
-    }
-    .m_h_top {
-      height: 247upx;
-      border-radius: 30upx;
-      background: $fontColor;
-      padding: 0 25upx;
-      display: flex;
-      align-items: center;
-      .m_h_account {
-        margin-left: 31upx;
-        width: calc(100% - 108upx);
-        text {
-          display: block;
-        }
-      }
-    }
-  }
+	padding: 0 24upx 0;
+	margin-top: 50upx;
+	.account_main_list {
+		background: #fff;
+		padding: 0 24upx;
+		margin-top: 2rpx;
+		border-radius: 6upx;
+		.account_main_list_item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 84rpx;
+			view {
+				display: flex;
+				align-items: center;
+			}
+			image {
+				height: 30upx;
+				width: 30upx;
+				margin-right: 20rpx;
+			}
+		}
+		
+	}
+}
+.account_mian_header {
+	background: #fff;
+	margin: 0 24upx;
+	border-radius: 10upx;
+	.c_line {
+		width: 4upx;
+		height: 92upx;
+		background: #DCDCDC;
+		border-radius: 2upx;
+		margin-top: 6upx;
+	}
+	.m_h_nav {
+		display: flex;
+		height: 105upx;
+		border-radius: 10upx;
+		box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
+		margin-top: -52upx;
+		.flex {
+			transition: all 0.2s;
+			&:active {
+				background: #191e2a;
+			}
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text {
+				color: #000;
+			}
+			image {
+				width: 28rpx;
+				height: 28rpx;
+				margin-right: 10rpx;
+			}
+		}
+	}
+}
+.m_h_top {
+	height: 490rpx;
+	background: url(/static/my_bg.png) no-repeat;
+	background-size: cover;
+	color: #fff;
+	.top {
+		display: flex;
+		padding-left: 24rpx;
+		image {
+			width: 98upx;
+			height: 98upx;	
+			padding-top: 52rpx;
+		}
+		view {
+			margin-left: 10rpx;
+		}
+		text {
+			display: block;
+		}
+		.sm_wz {
+			font-size: 24rpx;
+		}
+	}
+	.btm {
+		text {
+			display: block;
+			margin: auto;
+			text-align: center;
+			&.one {
+				font-size: 48rpx;
+				margin-top: 80rpx;
+				margin-bottom: 36rpx;
+			}
+		}
+	}
 }

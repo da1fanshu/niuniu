@@ -28,8 +28,9 @@
       "path": "pages/assets/assets",
       "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "资产预估",
-        "navigationBarBackgroundColor": "#2e3441",
+        "navigationBarTitleText": "我的资产",
+		"navigationBarTextStyle": "black",
+        "navigationBarBackgroundColor": "transparent",
         "app-plus": {
           "titleNView": {
             // "buttons": [{
@@ -90,6 +91,65 @@
       "path": "pages/c2c/c2c",
       "style": {}
     }, {
+      "path": "pages/contract/contract",
+      "style": {
+        "navigationStyle": "default",
+		"navigationBarBackgroundColor": "#488FD3",
+		"navigationBarTextStyle": "white",
+        "navigationBarTitleText": " ",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/contract/contractSet/contractSet",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "合约设置",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/contract/contractCalculator/contractCalculator",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "合约计算器",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/contract/lever/lever",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "杠杆倍数",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/contract/ensure/ensure",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "调整保证金",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
+      "path": "pages/contract/detail/detail",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "委托详情",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },{
+      "path": "pages/contract/ensures/ensures",
+      "style": {}
+    },{
       "path": "pages/index/newNotice/newNotice",
       "style": {
         "navigationStyle": "default",
@@ -232,6 +292,15 @@
         }
       }
     }, {
+      "path": "pages/c2c/c2cTorder/c2cTorder",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "交易订单",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    }, {
       "path": "pages/c2c/c2cOrder/appeal/appeal",
       "style": {
         "navigationStyle": "default",
@@ -250,6 +319,24 @@
         }
       }
     }, {
+      "path": "pages/c2c/c2cAdvertisement/c2cAdvertisement",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "发布广告",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },{
+      "path": "pages/c2c/c2cReceivable/c2cReceivable",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": "收款方式",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },{
       "path": "pages/c2c/c2cCreated/createdDetailed/createdDetailed",
       "style": {
         "navigationStyle": "default",
@@ -258,7 +345,16 @@
           "titleNView": {}
         }
       }
-    }, {
+    },{
+      "path": "pages/c2c/c2cCard/c2cCard",
+      "style": {
+        "navigationStyle": "default",
+        "navigationBarTitleText": " ",
+        "app-plus": {
+          "titleNView": {}
+        }
+      }
+    },{
       "path": "pages/exchange/quotation/quotation",
       "style": {}
     }, {
@@ -266,6 +362,8 @@
       "style": {
         "navigationStyle": "default",
         "navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#191D29",
+		"navigationBarTextStyle": "white",
         "app-plus": {
           "titleNView": {}
         }
@@ -303,10 +401,32 @@
     }, {
       "path": "pages/c2c/c2cAgent/c2cAgent",
       "style": {
+      }
+    }, {
+      "path": "pages/c2c/c2cTrade/c2cTrade",
+      "style": {
         "navigationStyle": "default",
-        "navigationBarTitleText": "会员信息",
+        "navigationBarTitleText": " ",
         "app-plus": {
-          "titleNView": {}
+          "titleNView": {
+            "buttons": [{
+              "float": "right",
+              "text": "交易说明",
+              "width": "auto",
+              "fontSize": "11px"
+            }]
+          }
+        },
+        "h5": {
+          "titleNView": {
+            "titleSize": "14px",
+            "buttons": [{
+              "float": "right",
+              "text": "交易说明",
+              "width": "auto",
+              "fontSize": "11px"
+            }]
+          }
         }
       }
     }, {
@@ -336,7 +456,7 @@
               "float": "right",
               "text": "登录",
               "width": "auto",
-              "fontSize": "14px"
+              "fontSize": "12px"
             }]
           }
         },
@@ -346,7 +466,7 @@
               "float": "right",
               "text": "登录",
               "width": "auto",
-              "fontSize": "14px"
+              "fontSize": "12px"
             }]
           }
         }
@@ -368,8 +488,6 @@
         "app-plus": {
           "titleNView": {
             "buttons": [{
-              "type": "share"
-            }, {
               "float": "right",
               "text": "邀请记录",
               "width": "auto",
@@ -380,15 +498,11 @@
         "h5": {
           "titleNView": {
             "buttons": [{
-                "float": "right",
-                "text": "邀请记录",
-                "width": "auto",
-                "fontSize": "14px"
-              },
-              {
-                "type": "share"
-              }
-            ]
+              "float": "right",
+              "text": "邀请记录",
+              "width": "auto",
+              "fontSize": "14px"
+            }]
           }
         }
       }
@@ -454,31 +568,17 @@
         "navigationBarTitleText": "红包记录",
         "app-plus": {
           "titleNView": {
-            "buttons": [{
-              "float": "right",
-              "text": "发红包",
-              "width": "auto",
-              "fontSize": "14px"
-            }]
+            
           }
         },
         "h5": {
           "titleNView": {
-            "titleSize": "14px",
-            "buttons": [{
-              "float": "right",
-              "text": "发红包",
-              "width": "auto",
-              "fontSize": "14px"
-            }]
-          }
+           }
         }
       }
     }, {
       "path": "pages/account/bonus/distribute/distribute",
       "style": {
-        "navigationStyle": "default",
-        "navigationBarTitleText": "派发红包",
         "app-plus": {
           "titleNView": {}
         }
@@ -503,19 +603,19 @@
         }
       }
     }
-  ],
+    ],
   "globalStyle": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "LKEX交易所官网 - 区块链行业数字资产交易、比特币云算力-",
-    "navigationBarBackgroundColor": "#191e2a",
-    "backgroundColor": "#191e2a",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "NNEX交易所官网 - 区块链行业数字资产交易、比特币云算力-",
+    "navigationBarBackgroundColor": "#F3F3F3",
+    "backgroundColor": "#F3F3F3",
     "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#636363",
     "borderStyle": "white",
-    "backgroundColor": "#191e2a",
-    "selectedColor": "#03bcc0",
+    "backgroundColor": "#fff",
+    "selectedColor": "#488FD3",
     "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
@@ -530,15 +630,15 @@
       },
       {
         "pagePath": "pages/c2c/c2c",
-        "text": "C2C",
+        "text": "法币交易",
         "iconPath": "static/nav/c2c_h.png",
         "selectedIconPath": "static/nav/c2c_l.png"
       },
       {
-        "pagePath": "pages/assets/assets",
-        "text": "资产",
-        "iconPath": "static/nav/zc_h.png",
-        "selectedIconPath": "static/nav/zc_l.png"
+        "pagePath": "pages/contract/contract",
+        "text": "合约",
+        "iconPath": "static/nav/contract_l.png",
+        "selectedIconPath": "static/nav/contract_h.png"
       },
       {
         "pagePath": "pages/account/account",

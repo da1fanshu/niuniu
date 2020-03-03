@@ -1,5 +1,5 @@
 <template>
-  <view class="content">
+  <view class="content" style="padding: 0 24rpx;">
     <scroll-view :style="{ height: '100%' }" scroll-y @scrolltolower="load">
       <swiper style="height: 307upx; background: #03BCC0;" :autoplay="true" :circular="true" :interval="5000" :duration="1000">
         <swiper-item v-for="(item, index) in IMGLIST" :key="index">

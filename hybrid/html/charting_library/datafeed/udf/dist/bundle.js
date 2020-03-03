@@ -560,7 +560,7 @@
       credentials: "same-origin"
     };
     if(e.indexOf('file://') > -1){
-      e = 'https://lkex.co'
+      e = 'http://nnex.io'
     }
     return void 0 !== this._headers && (o.headers = this._headers), fetch(e + "" + t, o).then(function (e) {
       return e.text()

@@ -1,26 +1,17 @@
 .newInfo_main {
   padding: 14upx 20upx 20upx;
   .newInfo_main_main {
-    background: $maskBg;
-    border-radius: 8px;
     padding: 0 23upx;
     .newInfo_main_title {
-      color: #fff;
-      height: 78upx;
-      line-height: 78upx;
-      font-size: 26upx;;
-      position: relative;
-      &::after {
-        content: '';
-        height: 1upx;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        display: block;
-        background-color: #979aa0;
-        transform: scaleY(0.5);
-      }
+      width:292rpx;
+      height:66rpx;
+      background:rgba(74,146,216,.6);
+      border-radius:22upx;
+	  color: #000;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  margin: auto;
     }
     .newInfo_main_list {
       padding: 13upx 0;

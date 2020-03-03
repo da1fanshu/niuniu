@@ -60,18 +60,18 @@
             <template v-if="type == 'BUY'">
               <block v-for="(item, index) in form.payType" :key="index">
                 <view class="flex" :class="payType == item ? 'active' : ''" @click="setPayType(item)">
-                  <view class="checkbox"><uni-icon v-if="payType == item" type="checkmarkempty" size="22" color="#fff"></uni-icon></view>
+                  <view class="checkbox"><uni-icons v-if="payType == item" type="checkmarkempty" size="22" color="#fff"></uni-icons></view>
                   <text>{{ item == 'BANK' ? '银行卡' : '支付宝' }}</text>
                 </view>
               </block>
             </template>
             <template v-else>
               <view class="flex" v-if="ALIPAY.noPay" :class="payType == 'ALIPAY' ? 'active' : ''" @click="setPayType('ALIPAY')">
-                <view class="checkbox"><uni-icon v-if="payType == 'ALIPAY'" type="checkmarkempty" size="22" color="#fff"></uni-icon></view>
+                <view class="checkbox"><uni-icons v-if="payType == 'ALIPAY'" type="checkmarkempty" size="22" color="#fff"></uni-icons></view>
                 <text>支付宝</text>
               </view>
               <view class="flex" v-if="BANK.noPay" :class="payType == 'BANK' ? 'active' : ''" @click="setPayType('BANK')">
-                <view class="checkbox"><uni-icon v-if="payType == 'BANK'" type="checkmarkempty" size="22" color="#fff"></uni-icon></view>
+                <view class="checkbox"><uni-icons v-if="payType == 'BANK'" type="checkmarkempty" size="22" color="#fff"></uni-icons></view>
                 <text>银行卡</text>
               </view>
               <view class="flex" v-if="!BANK.noPay && !ALIPAY.noPay" style="color: #f0c61e; text-decoration: underline;" @click="$goPage('../../account/securitySetting/securitySetting')">前往设置收付方式</view>

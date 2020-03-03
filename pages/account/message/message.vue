@@ -1,9 +1,9 @@
 <template>
   <view class="content message">
     <view class="message_nav">
-      <button :class="type == '' ? 'active' : ''" @click="setType('')">全部</button>
+      <button class="ll" :class="type == '' ? 'active' : ''" @click="setType('')">全部</button>
       <button :class="type == 'ASSETS' ? 'active' : ''" @click="setType('ASSETS')">资产</button>
-      <button :class="type == 'SECURITY' ? 'active' : ''" @click="setType('SECURITY')">安全</button>
+      <button class="rr" :class="type == 'SECURITY' ? 'active' : ''" @click="setType('SECURITY')">安全</button>
     </view>
     <scroll-view class="message_list" scroll-y @scrolltolower="load">
       <view class="message_list_main">
@@ -13,7 +13,7 @@
               <text class="sign" :class="item.userMessageCategory == 'SECURITY' ? 'warning' : ''">
                 {{ item.userMessageCategory == 'SECURITY' ? '安全' : item.userMessageCategory == 'ASSETS' ? '资产' : 'C2C' }}
               </text>
-              <text>{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm:ss') }}</text>
+              <text style="color: #A4A4A4;">{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm:ss') }}</text>
             </view>
             <!-- <text class="fr">详情 &gt;&gt;</text> -->
           </view>

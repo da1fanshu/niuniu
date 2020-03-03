@@ -3,31 +3,31 @@
     <view class="allAssets_list">
       <view class="allAssets_list_item clear">
         <view class="fl">充币记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
       <view class="allAssets_list_item clear">
         <view class="fl">充币记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
       <view class="allAssets_list_item clear">
         <view class="fl">充币记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
     </view>
     <view class="allAssets_list" style="margin: 12upx 0; ">
       <view class="allAssets_list_item clear">
         <view class="fl">C2C交易记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
     </view>
     <view class="allAssets_list">
       <view class="allAssets_list_item clear">
         <view class="fl">当前委托记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
       <view class="allAssets_list_item clear">
         <view class="fl">历史委托记录</view>
-        <view class="fr"><uni-icon type="arrowright" :color="'#fff'" size="20"></uni-icon></view>
+        <view class="fr"><uni-icons type="arrowright" :color="'#fff'" size="20"></uni-icons></view>
       </view>
     </view>
   </view>

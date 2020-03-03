@@ -1,17 +1,21 @@
-.ren_mian{
+input {
+		color: #000!important;
+	}
+.ren_mian{	
     width: 680upx;
-    padding: 17upx 25upx;
+    padding: 24upx 0;
     box-sizing: border-box;
-    background: $maskBg;
-    color: #03bcc0;
+    background: #fff;
+    color: #000000;
     font-size: 26upx;
     border-radius: 8upx;
     .ren_info{
       position:relative;
+	  padding:  0 28rpx;
       .share{
         position: absolute;
         right: 0rpx;
-        top: 40rpx;
+        top: 60rpx;
         button{
           height: 50rpx;
           display: flex;
@@ -33,7 +37,8 @@
       }
       .user{
         text-align: center;
-        font-size: 28rpx;
+        font-size: 36rpx;
+		color: #F14747;
       }
       .surplus{
         margin-bottom: 20rpx;
@@ -43,10 +48,10 @@
       height: 550upx;
       overflow: auto;
       .item{
-        background: $appBg;
         margin-bottom: 20rpx;
         border-radius: 6rpx;
-        padding: 20rpx;
+        padding: 28rpx;
+		border-bottom: 2rpx solid #DCDCDC;
         &:last-child{
           margin-bottom: 0;
         }
@@ -54,47 +59,66 @@
     }
   }
 .my_bonus {
-  padding: 20rpx;
+  height: 516rpx;
+  background: url(../../../static/r1.png) no-repeat;
+  background-size: cover;
+  position: relative;
   .bonus_list {
-    margin-top: 20rpx;
+	  margin: 0 24rpx;
+    margin-top: 70rpx;
     .item {
-      padding: 20rpx;
-      background: $maskBg;
-      border-radius: 8rpx;
       margin-bottom: 20rpx;
-      color: $fontColor;
-      font-size: 28rpx;
+      color: #000000;
+      font-size: 24rpx;
+	  border-bottom: 3rpx solid #DCDCDC;
+	  background: #f3f3f3;
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
   .bonus_text{
-    margin-top: 20rpx;
-    color: $fontColor;
-    line-height: 40rpx;
+    color: #fff;
+	font-size: 28rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -54rpx;
+	line-height: 1.5;
   }
-  .bonus_nav {
-    margin-top: 20rpx;
+  .r_boder {
+	  position: absolute;
+	  height: 2rpx;
+	  background: #FFCC00;
+	  top: 516rpx;
+	  width: 100%;
+  }
+  .bonus_nav { 
+    margin-top: 148rpx;
     display: flex;
+	justify-content: space-between;
+	padding: 0 24rpx;
     button {
-      flex: 1;
-      border-radius: 8rpx;
-      background: $appBg;
-      color: $fontColor;
+		font-size: 28rpx;
+		padding: 0;
+      border-radius: 15rpx;
+      background: #E7C38D;
+      color: #5B1010;
       font-size: 28rpx;
-      height: 70rpx;
+      height: 88rpx;
+	  width: 198rpx;
       display: flex;
       justify-content: center;
       align-items: center;
       transition: all 0.1s;
       border: 0;
+	   margin: 0;
       &::after {
         display: none;
       }
       &.active {
-        background: #03bcc0;
-        color: #191d29;
+        background: #FFCC00;
+        color: #5B1010;
       }
       &:active {
         opacity: 0.5;
@@ -102,28 +126,18 @@
     }
   }
   .created_created {
-    height: 200upx;
-    border-radius: 8upx;
-    background: $maskBg;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #03bcc0;
-    flex-direction: column;
-    font-size: 26upx;
-    .puls {
-      background: #03bcc0;
-      width: 60upx;
-      height: 60upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 4upx;
-      .uni-icon {
-        font-weight: 700;
-        font-size: 60upx !important;
-        line-height: 60upx;
-      }
-    }
+    color: #FFF;
+	font-size: 30rpx;
+	margin-left: 160rpx;
+	padding-top: 174rpx;
+	width: 100rpx;
+  }	  
+  .get_red {
+	  position: absolute;
+	color: #FFF;
+	font-size: 30rpx;
+	right: 134rpx;
+	top: 174rpx;  
+	width: 100rpx;
   }
 }

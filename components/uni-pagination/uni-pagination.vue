@@ -2,25 +2,25 @@
   <view class="uni-pagination">
     <view class="uni-pagination__btns">
       <view @click="clickLeft" :class="setLeftBtnClass" :hover-class="setLeftBtnHoverClass" :hover-start-time="20" :hover-stay-time="70">
-        <uni-icon color="#000" size="18" type="arrowleft"></uni-icon>
+        <uni-icons color="#000" size="18" type="arrowleft"></uni-icons>
       </view>
       <view @click="clickRight" :class="setRightBtnClass" :hover-class="setRightBtnHoverClass" :hover-start-time="20" :hover-stay-time="70">
-        <uni-icon color="#000" size="18" type="arrowright"></uni-icon>
+        <uni-icons color="#000" size="18" type="arrowright"></uni-icons>
       </view>
     </view>
     <view class="uni-pagination__num">
       <text class="uni-pagination__num-current">{{ currentIndex }}</text>
-      /{{ maxPage }}
+      <text class="black">/{{ maxPage }}</text> 
     </view>
   </view>
 </template>
 
 <script>
-import { uniIcon } from '@dcloudio/uni-ui';
+import uniIcons from "@/components/uni-icon/uni-icon.vue"
 export default {
   name: 'uni-pagination',
   components: {
-    uniIcon
+    uniIcons
   },
   props: {
     prevText: {
@@ -134,7 +134,9 @@ export default {
   color: rgba(0, 0, 0, 0.6);
   background-color: $uni-bg-color-hover;
 }
-
+.black {
+	color: #000;
+}
 .uni-pagination {
   width: 30%;
   margin-left: auto;

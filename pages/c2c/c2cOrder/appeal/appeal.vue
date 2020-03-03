@@ -16,7 +16,7 @@
             <picker @change="setReason" :value="reason" :range="reasonList">
               <view class="uni-input">{{ reasonList[reason] }}</view>
             </picker>
-            <view class="downs"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view>
+            <view class="downs"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view>
           </view>
         </view>
         <view class="item clear">
@@ -29,7 +29,7 @@
             <picker @change="setPayType" :value="payType" :range="payTypeList">
               <view class="uni-input">{{ payTypeList[payType] }}</view>
             </picker>
-            <view class="downs"><uni-icon type="arrowdown" size="22" :color="'#03bcc0'"></uni-icon></view>
+            <view class="downs"><uni-icons type="arrowdown" size="22" :color="'#03bcc0'"></uni-icons></view>
           </view>
         </view>
         <view class="item clear">

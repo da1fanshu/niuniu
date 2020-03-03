@@ -4,15 +4,19 @@
     <view class="status_bar"><view class="top_view"></view></view>
     <!-- #endif -->
     <view class="exchange">
+	  <view class="b_title">
+		<!-- <image src="/static/logo.jpg" mode=""></image> -->
+	  	<text>行情</text>
+	  </view>
       <view class="exchange_header">
-        <button :class="pairs == 'optional' ? 'active' : ''" @click="setType('optional')">自选</button>
+        <view class="b_list" :class="pairs == 'optional' ? 'active' : ''" @click="setType('optional')">自选</view>
         <block v-for="(item, index) in cexchange" :key="index">
-          <button :class="item.name == pairs ? 'active' : ''" @click="setType(item.name)">{{ item.name }}</button>
+          <view class="b_list" :class="item.name == pairs ? 'active' : ''" @click="setType(item.name)">{{ item.name }}</view>
         </block>
       </view>
       <view class="exchange_main">
         <view class="exchange_nav">
-          <text style="min-width: 288upx;">币种</text>
+          <text style="min-width: 288upx;">名称/成交量</text>
           <text style="min-width: 179upx;">最新价格</text>
           <text style="min-width: 127upx;">涨跌</text>
           <text style="text-align: right;">自选</text>

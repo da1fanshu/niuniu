@@ -1,102 +1,138 @@
-.transfer{
-  padding: 20upx;
-    .transfer_select{
-      background: $maskBg;
-      .item{
-        color: #12abb0;
-        height: 80upx;
-        line-height: 80upx;
-        border-bottom: 1px solid #4a4f5a;
-        text-align: center;
-        transition: all .1s;
-        &:active{
-          opacity: 0.5;
-        }
-        &:last-child{
-          border-bottom: 0;
-        }
-      }
-  }
-  .submits{
-    margin: 20upx 0;
-    button{
-      height: 70upx;
-      line-height: 70upx;
-      border-radius: 8upx;
-      background: #12abb0;
-      color: #191e2a;
-      font-size: 26upx;;
-      transition: all .2s;
-      &:active{
-        opacity: 0.5;
-      }
-    }
-  }
-  .transfer_form{
-    padding: 24upx 24upx 1upx;
-    background: $maskBg;
-    border-radius: 8upx;
-    .item{
-      color: #04cbcf;
-      margin-bottom: 20upx;
-      font-size: 26upx;;
-      .fl{
-        line-height: 60upx;
-        width: 122upx;
-      }
-      .fr{
-        height: 60upx;
-        width: calc(100% - 122upx);
-        padding: 0 23upx;
-        box-sizing: border-box;
-        background: #1e2432;
-        border-radius: 8upx;
-        button{
-          float: left;
-          padding: 0;
-          height: 60upx;
-          line-height: 60upx;
-          border: 0;
-          text-align: center;
-          font-size: 26upx;;
-          background: none;
-          color: #04cbcf;
-          &::after{
-            display: none;
-          }
-        }
-      }
-    }
-  }
-  .transfer_nav{
-    display: flex;
-    margin-bottom: 20upx;
-    button{
-      flex: 1;
-      height: 65upx;
-      line-height: 65upx;
-      font-size: 26upx;;
-      background: $fontColor;
-      color: #191e2a;
-      border-radius: 8upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::after{
-        display: none;
-      }
-      transition: all .1s;
-      &:active{
-        opacity: 0.5;
-      }
-    }
-    .change{
-      max-width: 156upx;
-      flex: 1;
-      height: 65upx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+.transfer {
+	padding: 24upx;
+	.transfer_select {
+		background: #fff;
+		.item {
+			color: #000;
+			height: 80upx;
+			line-height: 80upx;
+			text-align: center;
+			transition: all 0.1s;
+			&.title {
+				font-size: 36rpx;
+				color: #488FD3;
+				border-bottom: 2rpx solid #DCDCDC;
+			}
+			&:active {
+				opacity: 0.5;
+			}
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+	.submits {
+		margin: 40rpx 0;
+		button {
+			height: 66rpx;
+			line-height: 66upx;
+			border-radius: 8upx;
+			background: #488FD3;
+			color: #fff;
+			font-size: 28upx;
+			transition: all 0.2s;
+			&:active {
+				opacity: 0.5;
+			}
+		}
+	}
+	.btm {
+		display: flex;
+		justify-content: space-between;
+		padding: 14rpx 22rpx 0;
+		text {
+			font-size: 24rpx;
+			}
+	}
+	.transfer_form {
+		padding: 24upx 24upx 1upx;
+		background: $maskBg;
+		border-radius: 8upx;
+		.item {
+			color: #04cbcf;
+			margin-bottom: 20upx;
+			font-size: 26upx;
+			.fl {
+				line-height: 60upx;
+				width: 122upx;
+			}
+			.fr {
+				height: 60upx;
+				width: calc(100% - 122upx);
+				padding: 0 23upx;
+				box-sizing: border-box;
+				background: #1e2432;
+				border-radius: 8upx;
+				button {
+					float: left;
+					padding: 0;
+					height: 60upx;
+					line-height: 60upx;
+					border: 0;
+					text-align: center;
+					font-size: 26upx;
+					background: none;
+					color: #04cbcf;
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.transfer_nav {
+		height: 208rpx;
+		background: #fff;
+		border-radius: 10rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 24rpx;
+		.t_left {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text {
+				color: #A3A3A3;
+			}
+			.circle {
+				width: 6rpx;
+				margin-top: 10rpx;
+				margin-bottom: 20rpx;
+				line-height: 6rpx;
+				font-size: 24rpx;
+				word-wrap: break-word;
+				color: #A3A3A3;
+			}
+		}
+		.t_center {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: column;
+			height: 138rpx;
+			.c_top,.c_bottom {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.c_border {
+				height: 1px;
+				width: 496rpx;
+				background: #DCDCDC;
+			}
+			.c_input {
+				display: flex;
+				align-items: center;
+				input {
+					font-size: 24rpx;
+					margin-left: 24rpx;
+				}
+			}
+		}
+		image {
+			width: 62rpx;
+			height: 62rpx;
+		}
+	}
 }

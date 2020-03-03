@@ -3,18 +3,23 @@
     <scroll-view scroll-y style="height: 100%;" @scrolltolower="load">
       <view class="my_bonus">
         <view class="created_created" @click="showRed = true">
-          <view class="puls"><uni-icons type="scan" :color="'#191e2a'"></uni-icons></view>
-          <text style="margin-top: 12upx;">领取红包</text>
+          <text>领红包</text>
         </view>
+		<view class="get_red" @click="$goPage('../bonus/distribute/distribute')">
+		  <text>发红包</text>
+		</view>
         <view class="bonus_nav">
-          <button :class="type == 'receive' ? 'active' : ''" @click="type = 'receive'">我收到的</button>
-          <button :class="type == 'issue' ? 'active' : ''" @click="type = 'issue'">我发出的</button>
+          <button :class="type == 'receive' ? 'active' : ''" @click="type = 'receive'">我收到的红包</button>
+		  <view class="bonus_text">
+		    <text style="margin-top: 12upx;" v-if="type == 'receive'">累计收到</text>
+		    <text style="margin-top: 12upx;" v-else>累计发出</text>
+			<text style="font-size: 36rpx;">{{ total }}</text>
+		    <text>个红包</text>
+		  </view>
+          <button :class="type == 'issue' ? 'active' : ''" @click="type = 'issue'">我发出的红包</button>
         </view>
-        <view class="bonus_text">
-          <text style="margin-top: 12upx;" v-if="type == 'receive'">累计收到</text>
-          <text style="margin-top: 12upx;" v-else>累计发出</text>
-          <text style="color: #d14b64; margin-left: 30rpx;">{{ total }} 个红包</text>
-        </view>
+		<view class="r_boder">	
+		</view>
         <view class="bonus_list">
           <view class="item" v-for="(item, index) in list" :key="index" @click="getAllrecord(type == 'receive' ? item.redPaperGain.paperId : item.id)">
             <template v-if="type == 'receive'">
@@ -32,7 +37,7 @@
                 </view>
               </view>
               <view class="clear">
-                <view class="fl">{{ $formta(type == 'receive' ? item.redPaperGain.createTime : '', 'yyyy-MM-dd hh:mm:ss') }}</view>
+                <view class="fl" style="color: #CDCDCD;">{{ $formta(type == 'receive' ? item.redPaperGain.createTime : '', 'yyyy-MM-dd hh:mm:ss') }}</view>
               </view>
             </template>
             <template v-else>
@@ -50,7 +55,7 @@
           </view>
         </view>
       </view>
-      <uni-load-more :status="loading ? 'loading' : noData ? 'noMore' : 'more'"></uni-load-more>
+     <uni-load-more :status="loading ? 'loading' : noData ? 'noMore' : 'more'"></uni-load-more>
     </scroll-view>
     <HMmessages ref="HMmessages" @complete="HMmessages = $refs.HMmessages"></HMmessages>
     <!-- 添加地址 -->
@@ -100,7 +105,7 @@
               <view class="fr" style="color: #d14b64;">+{{ item.gainAsset }}</view>
             </view>
             <view class="clear">
-              <view class="fl">{{ $formta(item.createTime, 'yyyy-MM-dd hh:mm:ss') }}</view>
+              <view class="fl" style="color: #CDCDCD;">{{ $formta(item.createTime, 'yyyy-MM-dd hh:mm:ss') }}</view>
             </view>
           </view>
           <uni-load-more v-if="!receiveList[0]" status="noMore"></uni-load-more>
@@ -219,13 +224,13 @@ export default {
           const d = await getSharePoster({
             type: 'testShareType',
             // #ifdef APP-PLUS
-            backgroundImage: 'https://whole.lkex.co/redWin.jpg',
+            backgroundImage: 'http://whole.nnex.io/redWin.jpg',
             // #endif
             posterCanvasId: this.canvasId,
             qrCodeArray: ({ bgObj, type, bgScale }) => {
               return [
                 {
-                  text: `https://lkex.co/#/?redCode=${that.launchUser.id}&type=red`,//生产环境
+                  text: `http://nnex.io/#/?redCode=${that.launchUser.id}&type=red`,//生产环境
                   size: bgObj.width * 0.3,
                   dx: bgObj.width * 0.05,
                   dy: bgObj.height - bgObj.width * 0.35,

@@ -1,132 +1,160 @@
 .exchange {
-  padding: 20upx;
-  .exchange_main {
-    .exchange_list {
-      background: $maskBg;
-      border-radius: 8upx;
-      padding: 0 20upx;
-      .item {
-        display: flex;
-        color: #03bcc0;
-        position: relative;
-        padding: 24upx 0;
-        &::after{
-          display: block;
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          height: 1upx;
-          transform: scaleY(0.5);
-          background: #585d67;
-        }
-        &:last-child{
-          &::after{
-            display: none;
-          }
-        }
-        .flex {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          font-size: 26upx;;
-          .icon-cion {
-            width: 43upx;
-            height: 43upx;
-            border-radius: 43upx;
-            background-color: #fff;
-            margin-right: 15upx;
-          }
-          .item_coin {
-            text {
-              display: block;
-              line-height: 34upx;
-            }
-          }
-          &.price{
-            flex-direction: column;
-            text{
-              display: block;
-              width: 100%;
-              line-height: 34upx;
-            }
-            .new{
-              font-weight: 700;
-            }
-            .money{
-              font-size: 22upx;;
-            }
-          }
-          &.gain{
-            min-width: 127upx;
-            text{
-              display: block;
-              height: 43upx;
-              line-height: 43upx;
-              background: #ccc;
-              width: 100%;
-              color: #fff;
-              text-align: center;
-              font-size: 24upx;;
-              border-radius: 8upx;
-            }
-            .rise{
-              background: #009237;
-            }
-            .fall{
-              background: #a62e2e;
-            }
-          }
-          &.optional{
-            justify-content: flex-end;
-            .iconfont{
-              font-size: 50upx;
-              line-height: 50upx;
-            }
-          }
-        }
-      }
-    }
-    .exchange_nav {
-      margin-bottom: 20upx;
-      color: #03bcc0;
-      display: flex;
-      background: $maskBg;
-      border-radius: 8upx;
-      padding: 0 20upx;
-      font-size: 26upx;;
-      text {
-        flex: 1;
-        height: 67upx;
-        line-height: 67upx;
-      }
-    }
-  }
-  .exchange_header {
-    display: flex;
-    margin-bottom: 20upx;
-    button {
-      flex: 1;
-      height: 60upx;
-      line-height: 60upx;
-      background: none;
-      color: #03bcc0;
-      font-size: 26upx;;
-      padding: 0;
-      text-align: center;
-      margin-right: 30upx;
-      transition: all 0.1s;
-      &:last-child {
-        margin-right: 0;
-      }
-      &::after {
-        display: none;
-      }
-      &.active {
-        background: #03bcc0;
-        color: #191e2a;
-      }
-    }
-  }
+	padding: 20upx;
+	.b_title {
+		position: relative;
+		text-align: center;
+		image {
+			//  height: 90upx;
+			position: absolute;
+		}
+		text {
+			font-size: 36upx;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
+	.exchange_main {
+		.exchange_list {
+			border-radius: 8upx;
+			padding: 0 20upx;
+			.item {
+				display: flex;
+				color: #434343;
+				position: relative;
+				padding: 24upx 0;
+				&::after {
+					display: block;
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					height: 1upx;
+					transform: scaleY(0.5);
+					background: #E5E5E5;
+				}
+				.flex {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					font-size: 26upx;
+					.icon-cion {
+						width: 43upx;
+						height: 43upx;
+						border-radius: 43upx;
+						background-color: #fff;
+						margin-right: 15upx;
+					}
+					.item_coin {
+						text {
+							display: block;
+							line-height: 34upx;
+						}
+					}
+					&.price {
+						flex-direction: column;
+						text {
+							display: block;
+							width: 100%;
+							line-height: 34upx;
+						}
+						.new {
+							font-weight: 700;
+						}
+						.money {
+							font-size: 22upx;
+						}
+					}
+					&.gain {
+						min-width: 127upx;
+						text {
+							display: block;
+							height: 43upx;
+							line-height: 43upx;
+							background: #ccc;
+							width: 100%;
+							color: #fff;
+							text-align: center;
+							font-size: 24upx;
+							border-radius: 8upx;
+						}
+						.rise {
+							background: #009237;
+						}
+						.fall {
+							background: #a62e2e;
+						}
+					}
+					&.optional {
+						justify-content: flex-end;
+						.iconfont {
+							font-size: 50upx;
+							line-height: 50upx;
+						}
+					}
+				}
+			}
+		}
+		.exchange_nav {
+			margin-bottom: 20upx;
+			color: #A4A4A4;
+			display: flex;
+			border-radius: 8upx;
+			padding: 0 20upx;
+			font-size: 26upx;
+			position: relative;
+			&::after {
+				display: block;
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				height: 1upx;
+				transform: scaleY(0.5);
+				background: #E5E5E5;
+			}
+			text {
+				flex: 1;
+				height: 67upx;
+				line-height: 67upx;
+			}
+		}
+	}
+	.exchange_header {
+		display: flex;
+		margin-top: 50upx;
+		margin-bottom: 20upx;
+		border-bottom: 2upx solid #7d7d7d;
+		.b_list {
+			height: 60upx;
+			line-height: 60upx;
+			background: none;
+			color: #434343;
+			font-size: 26upx;
+			padding: 0;
+			text-align: center;
+			margin-right: 24upx;
+			transition: all 0.1s;
+			&:last-child {
+				margin-right: 0;
+			}
+			&.active::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				background: #488FD3;
+				width: 20upx;
+				height: 5upx;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			&.active {
+				position: relative;
+				color: #488fd3;
+				display: flex;
+				justify-content: center;
+			}
+		}
+	}
 }

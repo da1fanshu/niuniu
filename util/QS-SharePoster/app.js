@@ -18,7 +18,7 @@ let _app = {
 						break;
 					default:
 						
-						image = 'https://whole.lkex.co/redWin.jpg';
+						image = 'http://whole.nnex.io/redWin.jpg';
 						break;
 				}
 			if (image)

@@ -7,8 +7,8 @@
 
 /*通用 */
 view{
-	font-size:24upx; 
-	line-height:1.8;
+	font-size:28upx; 
+	line-height:1;
 }
 progress, checkbox-group{
 	width: 100%;
@@ -171,7 +171,7 @@ radio-group label, checkbox-group label{
 	flex-wrap:nowrap; 
 	background:#FFFFFF;
 }
-.uni-form-item .with-fun .uni-icon{
+.uni-form-item .with-fun .uni-icons{
 	width:40px; 
 	height:80upx; 
 	line-height:80upx; 
@@ -1046,9 +1046,9 @@ radio-group label, checkbox-group label{
 	}
   
   
-/* uni-icon */
+/* uni-icons */
 
-.uni-icon {
+.uni-icons {
 	font-family: uniicons;
 	font-size: 24px;
 	font-weight: normal;
@@ -1059,363 +1059,363 @@ radio-group label, checkbox-group label{
 	-webkit-font-smoothing: antialiased;
 }
 
-.uni-icon.uni-active {
+.uni-icons.uni-active {
 	color: #007aff;
 }
 
-.uni-icon-contact:before {
+.uni-icons-contact:before {
 	content: '\e100';
 }
 
-.uni-icon-person:before {
+.uni-icons-person:before {
 	content: '\e101';
 }
 
-.uni-icon-personadd:before {
+.uni-icons-personadd:before {
 	content: '\e102';
 }
 
-.uni-icon-contact-filled:before {
+.uni-icons-contact-filled:before {
 	content: '\e130';
 }
 
-.uni-icon-person-filled:before {
+.uni-icons-person-filled:before {
 	content: '\e131';
 }
 
-.uni-icon-personadd-filled:before {
+.uni-icons-personadd-filled:before {
 	content: '\e132';
 }
 
-.uni-icon-phone:before {
+.uni-icons-phone:before {
 	content: '\e200';
 }
 
-.uni-icon-email:before {
+.uni-icons-email:before {
 	content: '\e201';
 }
 
-.uni-icon-chatbubble:before {
+.uni-icons-chatbubble:before {
 	content: '\e202';
 }
 
-.uni-icon-chatboxes:before {
+.uni-icons-chatboxes:before {
 	content: '\e203';
 }
 
-.uni-icon-phone-filled:before {
+.uni-icons-phone-filled:before {
 	content: '\e230';
 }
 
-.uni-icon-email-filled:before {
+.uni-icons-email-filled:before {
 	content: '\e231';
 }
 
-.uni-icon-chatbubble-filled:before {
+.uni-icons-chatbubble-filled:before {
 	content: '\e232';
 }
 
-.uni-icon-chatboxes-filled:before {
+.uni-icons-chatboxes-filled:before {
 	content: '\e233';
 }
 
-.uni-icon-weibo:before {
+.uni-icons-weibo:before {
 	content: '\e260';
 }
 
-.uni-icon-weixin:before {
+.uni-icons-weixin:before {
 	content: '\e261';
 }
 
-.uni-icon-pengyouquan:before {
+.uni-icons-pengyouquan:before {
 	content: '\e262';
 }
 
-.uni-icon-chat:before {
+.uni-icons-chat:before {
 	content: '\e263';
 }
 
-.uni-icon-qq:before {
+.uni-icons-qq:before {
 	content: '\e264';
 }
 
-.uni-icon-videocam:before {
+.uni-icons-videocam:before {
 	content: '\e300';
 }
 
-.uni-icon-camera:before {
+.uni-icons-camera:before {
 	content: '\e301';
 }
 
-.uni-icon-mic:before {
+.uni-icons-mic:before {
 	content: '\e302';
 }
 
-.uni-icon-location:before {
+.uni-icons-location:before {
 	content: '\e303';
 }
 
-.uni-icon-mic-filled:before,
-.uni-icon-speech:before {
+.uni-icons-mic-filled:before,
+.uni-icons-speech:before {
 	content: '\e332';
 }
 
-.uni-icon-location-filled:before {
+.uni-icons-location-filled:before {
 	content: '\e333';
 }
 
-.uni-icon-micoff:before {
+.uni-icons-micoff:before {
 	content: '\e360';
 }
 
-.uni-icon-image:before {
+.uni-icons-image:before {
 	content: '\e363';
 }
 
-.uni-icon-map:before {
+.uni-icons-map:before {
 	content: '\e364';
 }
 
-.uni-icon-compose:before {
+.uni-icons-compose:before {
 	content: '\e400';
 }
 
-.uni-icon-trash:before {
+.uni-icons-trash:before {
 	content: '\e401';
 }
 
-.uni-icon-upload:before {
+.uni-icons-upload:before {
 	content: '\e402';
 }
 
-.uni-icon-download:before {
+.uni-icons-download:before {
 	content: '\e403';
 }
 
-.uni-icon-close:before {
+.uni-icons-close:before {
 	content: '\e404';
 }
 
-.uni-icon-redo:before {
+.uni-icons-redo:before {
 	content: '\e405';
 }
 
-.uni-icon-undo:before {
+.uni-icons-undo:before {
 	content: '\e406';
 }
 
-.uni-icon-refresh:before {
+.uni-icons-refresh:before {
 	content: '\e407';
 }
 
-.uni-icon-star:before {
+.uni-icons-star:before {
 	content: '\e408';
 }
 
-.uni-icon-plus:before {
+.uni-icons-plus:before {
 	content: '\e409';
 }
 
-.uni-icon-minus:before {
+.uni-icons-minus:before {
 	content: '\e410';
 }
 
-.uni-icon-circle:before,
-.uni-icon-checkbox:before {
+.uni-icons-circle:before,
+.uni-icons-checkbox:before {
 	content: '\e411';
 }
 
-.uni-icon-close-filled:before,
-.uni-icon-clear:before {
+.uni-icons-close-filled:before,
+.uni-icons-clear:before {
 	content: '\e434';
 }
 
-.uni-icon-refresh-filled:before {
+.uni-icons-refresh-filled:before {
 	content: '\e437';
 }
 
-.uni-icon-star-filled:before {
+.uni-icons-star-filled:before {
 	content: '\e438';
 }
 
-.uni-icon-plus-filled:before {
+.uni-icons-plus-filled:before {
 	content: '\e439';
 }
 
-.uni-icon-minus-filled:before {
+.uni-icons-minus-filled:before {
 	content: '\e440';
 }
 
-.uni-icon-circle-filled:before {
+.uni-icons-circle-filled:before {
 	content: '\e441';
 }
 
-.uni-icon-checkbox-filled:before {
+.uni-icons-checkbox-filled:before {
 	content: '\e442';
 }
 
-.uni-icon-closeempty:before {
+.uni-icons-closeempty:before {
 	content: '\e460';
 }
 
-.uni-icon-refreshempty:before {
+.uni-icons-refreshempty:before {
 	content: '\e461';
 }
 
-.uni-icon-reload:before {
+.uni-icons-reload:before {
 	content: '\e462';
 }
 
-.uni-icon-starhalf:before {
+.uni-icons-starhalf:before {
 	content: '\e463';
 }
 
-.uni-icon-spinner:before {
+.uni-icons-spinner:before {
 	content: '\e464';
 }
 
-.uni-icon-spinner-cycle:before {
+.uni-icons-spinner-cycle:before {
 	content: '\e465';
 }
 
-.uni-icon-search:before {
+.uni-icons-search:before {
 	content: '\e466';
 }
 
-.uni-icon-plusempty:before {
+.uni-icons-plusempty:before {
 	content: '\e468';
 }
 
-.uni-icon-forward:before {
+.uni-icons-forward:before {
 	content: '\e470';
 }
 
-.uni-icon-back:before,
-.uni-icon-left-nav:before {
+.uni-icons-back:before,
+.uni-icons-left-nav:before {
 	content: '\e471';
 }
 
-.uni-icon-checkmarkempty:before {
+.uni-icons-checkmarkempty:before {
 	content: '\e472';
 }
 
-.uni-icon-home:before {
+.uni-icons-home:before {
 	content: '\e500';
 }
 
-.uni-icon-navigate:before {
+.uni-icons-navigate:before {
 	content: '\e501';
 }
 
-.uni-icon-gear:before {
+.uni-icons-gear:before {
 	content: '\e502';
 }
 
-.uni-icon-paperplane:before {
+.uni-icons-paperplane:before {
 	content: '\e503';
 }
 
-.uni-icon-info:before {
+.uni-icons-info:before {
 	content: '\e504';
 }
 
-.uni-icon-help:before {
+.uni-icons-help:before {
 	content: '\e505';
 }
 
-.uni-icon-locked:before {
+.uni-icons-locked:before {
 	content: '\e506';
 }
 
-.uni-icon-more:before {
+.uni-icons-more:before {
 	content: '\e507';
 }
 
-.uni-icon-flag:before {
+.uni-icons-flag:before {
 	content: '\e508';
 }
 
-.uni-icon-home-filled:before {
+.uni-icons-home-filled:before {
 	content: '\e530';
 }
 
-.uni-icon-gear-filled:before {
+.uni-icons-gear-filled:before {
 	content: '\e532';
 }
 
-.uni-icon-info-filled:before {
+.uni-icons-info-filled:before {
 	content: '\e534';
 }
 
-.uni-icon-help-filled:before {
+.uni-icons-help-filled:before {
 	content: '\e535';
 }
 
-.uni-icon-more-filled:before {
+.uni-icons-more-filled:before {
 	content: '\e537';
 }
 
-.uni-icon-settings:before {
+.uni-icons-settings:before {
 	content: '\e560';
 }
 
-.uni-icon-list:before {
+.uni-icons-list:before {
 	content: '\e562';
 }
 
-.uni-icon-bars:before {
+.uni-icons-bars:before {
 	content: '\e563';
 }
 
-.uni-icon-loop:before {
+.uni-icons-loop:before {
 	content: '\e565';
 }
 
-.uni-icon-paperclip:before {
+.uni-icons-paperclip:before {
 	content: '\e567';
 }
 
-.uni-icon-eye:before {
+.uni-icons-eye:before {
 	content: '\e568';
 }
 
-.uni-icon-arrowup:before {
+.uni-icons-arrowup:before {
 	content: '\e580';
 }
 
-.uni-icon-arrowdown:before {
+.uni-icons-arrowdown:before {
 	content: '\e581';
 }
 
-.uni-icon-arrowleft:before {
+.uni-icons-arrowleft:before {
 	content: '\e582';
 }
 
-.uni-icon-arrowright:before {
+.uni-icons-arrowright:before {
 	content: '\e583';
 }
 
-.uni-icon-arrowthinup:before {
+.uni-icons-arrowthinup:before {
 	content: '\e584';
 }
 
-.uni-icon-arrowthindown:before {
+.uni-icons-arrowthindown:before {
 	content: '\e585';
 }
 
-.uni-icon-arrowthinleft:before {
+.uni-icons-arrowthinleft:before {
 	content: '\e586';
 }
 
-.uni-icon-arrowthinright:before {
+.uni-icons-arrowthinright:before {
 	content: '\e587';
 }
 
-.uni-icon-pulldown:before {
+.uni-icons-pulldown:before {
 	content: '\e588';
 }
 
-.uni-icon-scan:before {
+.uni-icons-scan:before {
     content: "\e612";
 }
 
