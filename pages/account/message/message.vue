@@ -1,23 +1,27 @@
 <template>
   <view class="content message">
-    <view class="message_nav">
+<!--    <view class="message_nav">
       <button class="ll" :class="type == '' ? 'active' : ''" @click="setType('')">全部</button>
       <button :class="type == 'ASSETS' ? 'active' : ''" @click="setType('ASSETS')">资产</button>
       <button class="rr" :class="type == 'SECURITY' ? 'active' : ''" @click="setType('SECURITY')">安全</button>
-    </view>
+    </view> -->
+	
+	
     <scroll-view class="message_list" scroll-y @scrolltolower="load">
       <view class="message_list_main">
-        <view class="item" v-for="(item, index) in list" :key="index">
-          <view class="item_title clear">
-            <view class="fl">
-              <text class="sign" :class="item.userMessageCategory == 'SECURITY' ? 'warning' : ''">
-                {{ item.userMessageCategory == 'SECURITY' ? '安全' : item.userMessageCategory == 'ASSETS' ? '资产' : 'C2C' }}
-              </text>
-              <text style="color: #A4A4A4;">{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm:ss') }}</text>
-            </view>
-            <!-- <text class="fr">详情 &gt;&gt;</text> -->
-          </view>
-          <view class="item_detailed">{{ item.content }}</view>
+        <view class="m_block" v-for="(item, index) in list" :key="index">
+        	<view class="time">
+        		{{ $formta(item.createDate, 'yyyy-MM-dd hh:mm:ss') }}
+        	</view>
+        	<view class="block">
+        		<view class="top">
+        			{{ item.content }}
+        		</view>
+        		<view class="btm">
+        			<text>了解详情</text>
+        			<uni-icons type="arrowright" size="20" color="#C5CFD5"></uni-icons>
+        		</view>
+        	</view>
         </view>
       </view>
       <uni-load-more :status="loading ? 'loading' : noData ? 'noMore' : 'more'"></uni-load-more>
@@ -29,9 +33,10 @@
 <script>
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import service from '../service.js';
+import uniIcons from '@/components/uni-icon/uni-icon.vue';
 import { uniLoadMore } from '@dcloudio/uni-ui';
 export default {
-  components: { HMmessages, uniLoadMore },
+  components: { HMmessages, uniLoadMore ,uniIcons },
   data() {
     return {
       list: [],

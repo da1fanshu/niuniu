@@ -1,62 +1,75 @@
 <template>
 	<view class="content">
+		<!-- #ifdef APP-PLUS -->
+		<view class="status_bar"><view class="top_view"></view></view>
+		<!-- #endif -->
+		<view class="index_header">
+			<image class="i_h_logo" src="/static/index/logo.png" mode=""></image>
+			<text>资产</text>
+		</view>
+		<view class="exchange_header">
+			<view class="b_list" v-for="(item,index) in typeList" :key="index" :class="type == item.account ? 'active' : ''" @click="setType(item.account,index)">{{item.name}}</view>
+		</view>
 		<view class="assets_header">
-			<text style="font-size: 24upx;">总资产估值</text>
-			<text style="font-size: 36upx; font-weight: 700;margin: 32rpx 0 26rpx;">{{ filter.fix(USDT + power, 4) }} USDT</text>
-			<text style="font-size: 24upx; font-weight: 700;">≈￥{{ filter.fix((USDT + power) * COINRMB.tether, 2) }}</text>
+			<view class="top">
+				<text>{{typeList[inde].name}}</text>
+				<image v-if="open" @click="open=false" src="../../static/open.png" mode=""></image>
+				<image v-if="!open" @click="open=true" src="../../static/close.png" mode=""></image>
+			</view>
+			<view class="title">总资产折合（USDT）</view>
+			<text v-if="open" class="my">{{ filter.fix(USDT + power, 4) }} USDT</text>
+			<text v-if="open" class="rmb">≈￥{{ filter.fix((USDT + power) * COINRMB.tether, 2) }}</text>
+			<text v-if="!open" class="my">****</text>
+			<text v-if="!open" class="rmb">≈￥****</text>
 		</view>
 		<view class="list_main_item_fun">
 			<view class="flex" @click="$goPage(`deposit/deposit`)">
-				<image src="/static/recharger.png" mode=""></image>
+				<image style="width: 56rpx;height: 44rpx;" src="../../static/index/i1.png"></image>
 				<text>充值</text>
 			</view>
 			<view class="flex" @click="$goPage(`withdraw/withdraw`)">
-				<image src="/static/withdraw.png" mode=""></image>
+				<image style="width: 56rpx;height: 44rpx;" src="../../static/index/i2.png"></image>
 				<text>提币</text>
 			</view>
 			<view class="flex" @click="$goPage(`transfer/transfer`)">
-				<image src="/static/transfer.png" mode=""></image>
+				<image style="width: 48rpx;height: 44rpx;" src="/static/transfer.png" mode=""></image>
 				<text>划转</text>
 			</view>
-			<view class="flex" @click="$goPage(`record/record`)">
-				<image src="/static/history.png" mode=""></image>
+			<view class="flex" @click="$goPage(`assetsRecord/assetsRecord`)">
+				<image style="width: 44rpx;height: 44rpx;" src="/static/history.png" mode=""></image>
 				<text>记录</text>
 			</view>
 		</view>
-		<view class="account_select">
-			<view class="account_select_nav">
-				<view :class="type == 'coin' ? 'active' : ''" @click="setType('coin')">币币账户</view>
-				<view :class="type == 'game' ? 'active' : ''" @click="setType('game')">算力账户</view>
-			</view>
-		</view>
 		<view class="assets_list" v-show="type == 'coin'">
-			<!-- <view class="assets_list_money" :style="{ background: type == 'coin' ? '#03bcc0' : type == 'game' ? '#00c0e9' : type == 'shop' ? '#eabb77' : '' }">
-				<text style="font-size: 40upx; font-weight: 700;">{{ filter.fix(USDT, 4) }} USDT</text>
-				<text style="font-size: 27upx; color: #fff;">≈￥{{ filter.fix(USDT * COINRMB.tether, 2) }}</text>
-			</view> -->
-			<view class="assets_detailed clear">
+			<view class="assets_detailed">
+				<view class="search">
+					<image src="../../static/search.png" mode=""></image>
+					<input v-model="sCoin" placeholder-class="pla" type="text" placeholder="搜索币种" />
+				</view>
 				<view class="fr" @click="isZero = !isZero">
 					<view class="checkbox" :class="[type == 'coin' ? 'coin' : type == 'game' ? 'game' : type == 'shop' ? 'shop' : '', !isZero ? 'nobg' : '']">
 						<uni-icons v-if="isZero" type="checkmarkempty" :color="'#fff'"></uni-icons>
 					</view>
-					<text style="color:#A4A4A4; float: left;margin-left: 8upx;">隐藏资产为0的币种</text>
+					<text style="color:#C5CFD5;font-size: 24rpx; float: left;margin-left: 8upx;">隐藏资产为0的币种</text>
 				</view>
 			</view>
 			<view class="w_bg">
-				<view class="account_list_nav">
-					<text>币种</text>
-					<text>可用</text>
-					<text>冻结</text>
-					<text>锁仓</text>
-				</view>
 				<view class="list_main">
-					<view class="list_main_item" v-for="(item, index) in list" :key="index">
-						<view class="list_main_item_coin">
-							<text>{{ item.assetCode }}</text>
-							<text>{{ filter.fix(item.amountAvailable, 6) }}</text>
-							<!-- <text class="fl" style="line-height: 30upx;">≈￥{{ filter.fix((item.amountAvailable + item.amountLock) * item.RMB, 2) }}</text> -->
-							<text>{{ filter.fix(item.amountLock, 6) }}</text>
-							<text>{{ filter.fix(item.amountLock, 6) }}</text>
+					<view class="list_main_item">
+						<view class="list_main_item_coin" v-for="(item, index) in list" :key="index" v-if="item.assetCode.indexOf(sCoin) > -1">
+							<view class="b_title">
+								{{ item.assetCode }}
+							</view>
+							<view class="top">
+								<text style="width: 200rpx;">可用</text>
+								<text style="width: 200rpx;">冻结</text>
+								<text style="width: 180rpx;">折合(CNY)</text>
+							</view>
+							<view class="block">
+								<text style="width: 200rpx;">{{ filter.fix(item.amountAvailable, 6) }}</text>
+								<text style="width: 200rpx;">{{ filter.fix(item.amountLock, 6) }}</text>
+								<text style="width: 180rpx;">{{ filter.fix(item.amountLock, 6) }}</text>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -122,6 +135,21 @@ export default {
 			coinImgUrl: api.coinImgUrl,
 			type: 'coin',
 			typeClass: 'type_coin',
+			sCoin: '',
+			typeList: [
+				{
+					account: 'coin',
+					name: '币币账户'
+				},
+				{
+					account: 'currency',
+					name: '法币账户'
+				},
+				{
+					account: 'power',
+					name: '算力账户'
+				},
+			],
 			list: [],
 			powerList: [],
 			powerListCopy: [],
@@ -130,7 +158,9 @@ export default {
 			isZeroTwo: false,
 			USDT: 0,
 			power: 0,
-			loading: true
+			loading: true,
+			open: true,
+			inde: 0,
 		};
 	},
 	computed: {
@@ -313,30 +343,10 @@ export default {
 				position: 'bottom'
 			});
 		},
-		//设置颜色
-		setColor(name) {
-			switch (name) {
-				case 'coin':
-					return (this.typeClass = 'type_coin');
-				case 'game':
-					return (this.typeClass = 'type_game');
-				case 'shop':
-					return (this.typeClass = 'type_shop');
-				default:
-					return (this.typeClass = '');
-			}
-		},
 		//切换账户
-		setType(name) {
+		setType(name,index) {
 			this.type = name;
-			// this.USDT = 0;
-			//    if (name == 'coin') {
-			//      this.getAssets();
-			//    }
-			// if (name == 'game') {
-			//   this.assetDetail();
-			// }
-			this.setColor(this.type);
+			this.inde = index;
 		}
 	}
 };

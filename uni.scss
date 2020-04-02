@@ -13,12 +13,18 @@
  */
 
 /* 颜色变量 */
-$panSell: #F14747; //卖盘红色 -
-$panBuy: #4FB869; //买盘绿色 +
-$panwz: #A3A3A3; //文字
-$appBg: #F3F3F3; //APP背景色
-$blue: #488FD3;
-$gray: #A3A3A3;
+$panSell: #D14B64; //卖盘红色
+$panBuy: #03AD8F; //买盘绿色
+$fall: #D14B64; //-
+$rise: #03AD8F; //+
+$sell: #D14B64; //-
+$buy: #03AD8F; //+
+$panwz: #1F3F59; //文字
+$appBg: #ffffff; //APP背景色
+$blue: #1882D4;
+$gray: #8C9FAD;
+$lgray: #C5CFD5; //浅灰色
+$word: #1F3F59;
 $fontColor: #03bcc0; //APP字体颜色
 $maskBg: #2e3441; //例如首页的资讯背景色和某些按钮的字体颜色
 
@@ -32,7 +38,7 @@ $uni-color-error: #dd524d;
 $uni-text-color:#333;//基本色
 $uni-text-color-inverse:#fff;//反色
 $uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
-$uni-text-color-placeholder: #808080;
+$uni-text-color-placeholder: #C5CFD5;
 $uni-text-color-disable:#c0c0c0;
 
 /* 背景颜色 */

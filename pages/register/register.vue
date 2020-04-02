@@ -6,20 +6,15 @@
 		<view class="register">
 			<view class="register_main">
 				<view class="top_bg">
-					<view class="w_bg"><image src="/static/logo.png" mode="aspectFit"></image></view>
-					<view class="top_title">
-						NNEX
-					</view>
+					<image src="../../static/login_bg.png" mode=""></image>
 				</view>
 				<view class="sm_b">
-					<!-- <view class="register_nav">
-						<button :class="type == 'phone' ? 'active' : ''" @click="type = 'phone'">手机注册</button>
-						<button :class="type == 'email' ? 'active' : ''" @click="type = 'email'">邮箱注册</button>
-					</view> -->
 					<template v-if="type == 'phone'">
-						<view class="item phone clear">
+						<view class="item phone clear block">
 							<view class="i_left">
-								<image class="img_left" src="/static/login_user.png" mode="aspectFit"></image>
+								<view class="img">
+									<image style="width: 26rpx;height: 32rpx;" class="img_left" src="/static/login_user.png" mode="aspectFit"></image>
+								</view>
 								<view>
 								<picker @change="set1" :value="inde" :range="tele" range-key="tel">
 									<view class="flex">
@@ -28,68 +23,61 @@
 									</view>
 								</picker>
 								</view>
+								<view class="m_line"></view>
 							</view>
-							<input type="number" v-model="phone" placeholder="请输入正确手机" />
-						</view>
-						<view class="item imgCode clear">
-							<view class="i_left">
-								<image class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
-								<view>验证码</view>
-							</view>
-							<view class="code" @click="getImgCode()"><image :src="imgUrl" style="width: 100%; height: 54upx;" mode="aspectFit"></image></view>
-							<input v-model="imgCode" type="number" placeholder="请输入图片验证码" maxlength="4" />
+							<input placeholder-class="pla" type="number" v-model="phone" placeholder="请输入正确手机" />
 						</view>
 					</template>
-					<!-- <template v-else>
-						<view class="item clear"><view class="i_left">
-								<image class="img_left" src="/static/reg_email.png" style="width: 26rpx; height: 33rpx" mode="aspectFit"></image>
-								<view>密码</view>
-							</view>
-							<view class="fl"><image src="/static/reg_email.png" style="width: 27rpx; height: 33rpx" mode="aspectFit"></image></view>
-							<input class="fr" v-model="email" type="text" placeholder="请输入邮箱地址" />
-						</view>
-					</template> -->
-					<view class="item clear">
+					<view class="item clear block">
 						<view class="i_left">
-							<image class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
+							<view class="img">
+							<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
+							</view>
 							<view>密码</view>
 						</view>
-						<input v-model="newPwd" type="password" placeholder="登录密码(最小六个字符)" />
+						<input placeholder-class="pla" v-model="newPwd" type="password" placeholder="登录密码(最小六个字符)" />
 					</view>
-					<view class="item clear">
+					<view class="item block clear">
 						<view class="i_left">
-							<image class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
+							<view class="img">
+							<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
+							</view>
 							<view>确认密码</view>
 						</view>
-						<input v-model="cenPwd" type="password" placeholder="确认密码" />
+						<input placeholder-class="pla" v-model="cenPwd" type="password" placeholder="确认密码" />
 					</view>
-					<view class="item clear">
+					<view class="item block clear">
 						<view class="i_left">
-							<image class="img_left" src="/static/invite.png" mode="aspectFit"></image>
+							<view class="img">
+							<image style="width: 30rpx;height: 30rpx;" class="img_left" src="/static/invite.png" mode="aspectFit"></image>
+							</view>
 							<view>邀请码</view>
 						</view>
-						<input v-model="inviteCode" type="text" placeholder="邀请码(选填)" />
+						<input placeholder-class="pla" v-model="inviteCode" type="text" placeholder="邀请码(选填)" />
 					</view>
-					<view class="item imgCode clear">
+					<view class="item imgCode clear block">
 						<view class="i_left">
-							<image class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
+							<view class="img">
+							<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
+							</view>
+							<view>图形验证</view>
+						</view>
+						<view class="code" @click="getImgCode()"><image :src="imgUrl" style="width: 100%; height: 54upx;" mode="aspectFit"></image></view>
+						<input placeholder-class="pla" v-model="imgCode" type="number" placeholder="输入图形验证码" maxlength="4" />
+					</view>
+					<view class="item block imgCode clear">
+						<view class="i_left">
+							<view class="img">
+							<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
+							</view>
 							<view>验证码</view>
 						</view>
-						<input v-model="phoneCode" type="number" maxlength="6" placeholder="请输入手机验证码" />
-						<view v-if="numTime == false" class="code" @click="getCode()"><button plain>发送验证码</button></view>
+						<input placeholder-class="pla" v-model="phoneCode" type="number" maxlength="6" placeholder="输入验证码" />
+						<view v-if="numTime == false" class="code" @click="getCode()"><view plain>发送验证码</view></view>
 						<view v-else class="code">
-							<button plain disabled>{{ numText }}</button>
+							<view plain disabled>{{ numText }}</view>
 						</view>
 					</view>
-					<!-- <view class="agreement" @click="isAgreement = !isAgreement">
-						<view class="checkbox">
-							<template v-if="isAgreement">
-								<icon type="success_no_circle" color="#fff" size="10" />
-							</template>
-						</view>
-						<text>注册即视为同意</text>
-						<view class="agreement_main" @click="$goPage('agreement/agreement')">《用户注册协议》</view>
-					</view> -->
 					<view class="item submit"><button @click="submits()">注册</button></view>
 					<view class="agreement">
 						<text>已经注册？</text>

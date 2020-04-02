@@ -5,7 +5,7 @@ import api from '@/common/api.js'
 export default {
   data() {
     return {
-      pairs: 'USDK',
+      pairs: 'USDT',
       filter,
       coinImgUrl:api.coinImgUrl,
       list: [],
@@ -13,6 +13,7 @@ export default {
       tradeList: [],
 	  configList: [],
       loading: true,
+	  search:false,
       userStart: [],
       Time: null,
 	  tether:0,
@@ -20,10 +21,9 @@ export default {
 	  ethereum:0,
 	  digitalusd:0,
 	  cexchange: [
-		  {name: "USDK"},
-		  {name: "LKB"},
-		  {name: "USDT"},
+		  {name: "USDT",cname:"币币区"},
 	  ],
+	  ssCoin:'',
     };
   },
   onUnload() {
@@ -53,8 +53,8 @@ export default {
 				}
 			}
 		}	
-		console.log(this.mainList)
         this.list = this.formatTrade(this.formatData(this.mainList))
+		console.log(this.list)
         this.loopPan()
       } else {
         this.errors(data[0].data.msg);
@@ -83,6 +83,18 @@ export default {
     }
   },
   methods: {
+	goSwitch(url,type,title,coin,symbol,PRICEPRECISION,AMOUNTPRECISION) {
+		uni.switchTab({
+			url:url
+		})
+		uni.setStorageSync('symbol',type);
+		uni.setStorageSync('title', title);
+		uni.setStorageSync('coin', coin);
+		uni.setStorageSync('type', symbol);
+		uni.setStorageSync('PRICEPRECISION', PRICEPRECISION);
+		uni.setStorageSync('AMOUNTPRECISION', AMOUNTPRECISION);
+		
+	},
     //轮训盘
     loopPan() {
       if (!this.EXCHANGE) {
@@ -101,6 +113,7 @@ export default {
     },
     //自选交易对
     startSymbol(coin) {
+		console.log(coin)
       let userStart = uni.getStorageSync('userStart') ? JSON.parse(uni.getStorageSync('userStart')) : null;
       if (userStart) {
         if (userStart.includes(coin)) {
@@ -167,7 +180,7 @@ export default {
           if (this.userStart.includes(e.symbol) && e.status !== "DELISTED") {
             arr.push(e);
           }
-        } else if (e.assetCode1 == this.pairs && e.status !== "DELISTED") {
+        } else if (e.status !== "DELISTED") {
           arr.push(e);
         }
       })

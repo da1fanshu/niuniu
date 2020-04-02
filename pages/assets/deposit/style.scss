@@ -1,74 +1,119 @@
-.deposit {
-  padding: 24upx;
-  .deposit_sync{
-    margin-bottom: 20rpx;
-    button{
-      height: 60rpx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8rpx;
-      font-size: 28rpx;
-      background: $fontColor;
-      color: #191e2a;
-      transition: all .1s;
-      &::after{
-        display: none;
-      }
-      &:active{
-        opacity: 0.5;
-      }
-    }
-  }
-  .tip {
-	  margin: 18rpx 48rpx;
-	  .deposit_tips_one {
-		  color: #488FD3;
-	  }
-	  .deposit_tips_two {
-		  color: #000;
-	  }
-	  view {
-		  margin-bottom: 26rpx;
-		  line-height: 1.2;
-	  }
-  }
-  .deposit_main {
-    width:700upx;
-    height:456upx;
-    background:rgba(255,255,255,1);
-    border-radius:10upx;
-    margin-bottom: 20upx;
+.NavBar {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-    .deposit_address {
-      width:552upx;
-      height:45upx;
-      border:2upx solid rgba(229,229,229,1);
-      border-radius:5upx;
-	  color: #000;
-	  margin: 10rpx 0 20rpx;
-    }
-	.copy {
-		width:150rpx;
-		height:50rpx;
-		background:rgba(72,143,211,1);
-		border-radius:3upx;
+	justify-content: space-between;
+	padding: 0 26rpx;
+	height: 88rpx;
+	background-color: rgb(29, 34, 67);
+	color: rgb(255, 255, 255);
+	text {
+		font-size: 32rpx;
+		font-weight: bold;
 		color: #fff;
-		line-height: 50upx;
-		text-align: center;
 	}
-    .deposit_tpis {
-      text {
-        color: #488FD3;
-      }
-    }
-    .deposit_code {
-      width: 200upx;
-      height: 200upx;
-      margin: 40upx auto;
-      background: #fff;
-    }
-  }
+	image {
+		width: 32rpx;
+		height: 32rpx;
+	}
+}
+.deposit {
+	padding: 34rpx 26upx;
+	view,
+	text {
+		font-weight: bold;
+	}
+	.title {
+		margin: 34rpx 0 24rpx 20rpx;
+	}
+	.chain {
+		display: flex;
+		align-items: center;
+		margin-left: 20rpx;
+		view {
+			width: 124rpx;
+			height: 40rpx;
+			margin-right: 50rpx;
+			margin-bottom: 34rpx;
+			background: rgba(248, 249, 251, 1);
+			border-radius: 6rpx;
+			color: #c5cfd5;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			&.active {
+				border: 1px solid rgba(24, 130, 212, 1);
+				color: #1882d4;
+			}
+		}
+	}
+	.deposit_main {
+		background-color: #f8f9fb;
+		padding-bottom: 34rpx;
+		.deposit_code {
+			margin-top: 36rpx;
+			margin-bottom: 56rpx;
+		}
+		.deposit_tpis {
+			text-align: center;
+			margin-bottom: 10rpx;
+			font-size: 24rpx;
+			text {
+				color: $blue;
+			}
+		}
+		.deposit_address {
+			padding: 12rpx 10rpx;
+			background: rgba(231, 235, 238, 1);
+			border-radius: 6rpx;
+			color: #000;
+			font-size: 24rpx;
+			width: fit-content;
+			margin: auto;
+		}
+		.copy {
+			width: 150rpx;
+			height: 50rpx;
+			background: rgba(24, 130, 212, 1);
+			border-radius: 6rpx;
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 36rpx auto 0;
+		}
+	}
+	.tip {
+		margin: 34rpx 42rpx 20rpx 20rpx;
+		view {
+			color: #c5cfd5;
+			margin-bottom: 24rpx;
+			line-height: 1.2;
+			font-weight: normal;
+		}
+	}
+}
+.Modal_mask {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 1);
+	z-index: 9;
+}
+.c_modal {
+	z-index: 9999;
+	position: fixed;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+}
+.down {
+	z-index: 9999;
+	width: 44rpx;
+	height: 44rpx;
+	position: fixed;
+	bottom: 30rpx;
+	right: 24rpx;
 }

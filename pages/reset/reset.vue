@@ -5,13 +5,14 @@
 		<!-- #endif -->
 		<view class="reset">
 			<view class="top_bg">
-				<view class="w_bg"><image src="/static/logo.png" mode="aspectFit"></image></view>
-				<view class="top_title">NNPOOL</view>
+				<image src="../../static/login_bg.png" mode=""></image>
 			</view>
 			<view class="sm_b">
-				<view class="item clear">
+				<view class="item clear block">
 					<view class="i_left">
-						<image class="img_left" src="/static/login_user.png" mode="aspectFit"></image>
+						<view class="img">
+						<image style="width: 26rpx;height: 32rpx;" class="img_left" src="/static/login_user.png"></image>
+						</view>
 						<view>
 							<picker @change="set1" :value="inde" :range="tele" range-key="tel">
 								<view class="flex">
@@ -20,40 +21,49 @@
 								</view>
 							</picker>
 						</view>
+						<view class="m_line"></view>
 					</view>
-					<input v-model="account" type="text" placeholder="请输入手机号或者邮箱" />
-				</view>
-				<view class="item imgCode clear">
+					<input placeholder-class="pla" v-model="account" type="text" placeholder="请输入手机号或者邮箱" />
+				</view>				
+				<view class="item clear block">
 					<view class="i_left">
-						<image class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
-						<view>验证码</view>
+						<view class="img">
+						<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/login_pwd.png"></image>
+						</view>
+						<view>新密码</view>
+					</view>
+					<input placeholder-class="pla" v-model="newPwd" type="password" placeholder="登录密码(最小六个字符)" />
+				</view>
+				<view class="item clear block">
+					<view class="i_left">
+						<view class="img">
+						<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/login_pwd.png"></image>
+						</view>
+						<view>新密码</view>
+					</view>
+					<input placeholder-class="pla" type="password" v-model="cenPwd" placeholder="再次输入密码" />
+				</view>
+				<view class="item imgCode clear block">
+					<view class="i_left">
+						<view class="img">
+						<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
+						</view>
+						<view>图形验证</view>
 					</view>
 					<view class="code" @click="getImgCode()"><image :src="imgUrl" style="width: 100%; height: 54upx;" mode="aspectFit"></image></view>
-					<input v-model="imgCode" type="number" placeholder="请输入图片验证码" maxlength="4" />
+					<input placeholder-class="pla" v-model="imgCode" type="number" placeholder="输入图形验证码" maxlength="4" />
 				</view>
-				<view class="item clear">
+				<view class="item imgCode block clear">
 					<view class="i_left">
-						<image class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
-						<view>新密码</view>
-					</view>
-					<input v-model="newPwd" type="password" placeholder="登录密码(最小六个字符)" />
-				</view>
-				<view class="item clear">
-					<view class="i_left">
-						<image class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
-						<view>新密码</view>
-					</view>
-					<input type="password" v-model="cenPwd" placeholder="再次输入密码" />
-				</view>
-				<view class="item imgCode clear">
-					<view class="i_left">
-						<image class="img_left" src="/static/reset_emailCode.png" mode="aspectFit"></image>
+						<view class="img">
+						<image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/reset_emailCode.png"></image>
+						</view>
 						<view>验证码</view>
 					</view>
-					<input v-model="phoneCode" type="number" maxlength="6" placeholder="请输入手机验证码" />
-					<view v-if="numTime == false" class="code" @click="getCode()"><button plain>发送验证码</button></view>
+					<input placeholder-class="pla" v-model="phoneCode" type="number" maxlength="6" placeholder="请输入验证码" />
+					<view v-if="numTime == false" class="code" @click="getCode()"><view plain>发送验证码</view></view>
 					<view v-else class="code">
-						<button plain disabled>{{ numText }}</button>
+						<view plain disabled>{{ numText }}</view>
 					</view>
 				</view>
 				<view class="item submit" v-if="loading == false"><button @click="submits()">重置密码</button></view>

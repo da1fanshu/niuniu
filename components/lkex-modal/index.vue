@@ -4,9 +4,6 @@
 		<view class="Modal_Modal">
 			<view class="Modal_title">
 				<text class="title" :style="{ color: color }">{{ title }}</text>
-				<view class="colse">
-					<view @click.stop="closes" :style="{ background: background }"><uni-icons type="closeempty" size="22" color="#fff"></uni-icons></view>
-				</view>
 			</view>
 			<view class="Model_conter"><slot></slot></view>
 		</view>
@@ -69,10 +66,10 @@ export default {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 628rpx;
+	width: 700rpx;
 	background: #fff;
-	border: 2upx solid #B5B5B5;
-	border-radius: 8upx;
+	border-radius: 6upx;
+	overflow: hidden;
 	.Modal_title {
 		position: relative;
 		.title {
@@ -80,35 +77,8 @@ export default {
 			justify-content: center;
 			align-items: center;
 			font-size: 36rpx;
-			font-weight: 500;
-			color: #000;
-			margin-top: 26rpx;
-		}
-		.colse {
-			z-index: 2;
-			position: absolute;
-			height: 30rpx;
-			top: 0;
-			bottom: 0;
-			right: 20upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			view {
-				height: 30upx;
-				width: 30upx;
-				padding: 0;
-				line-height: 30upx;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background: #488fd3;
-				border: none;
-				border-radius: 50upx;
-				&::after {
-					display: none;
-				}
-			}
+			font-weight: bold;
+			margin-top: 32rpx;
 		}
 	}
 }

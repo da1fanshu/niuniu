@@ -1,49 +1,94 @@
-.withdrawAddress{
-  box-sizing: border-box;
-  padding: 20rpx;
-  .withdrawAddress_list{
-    .item{
-      background: #2e3441;
-      padding: 30rpx;
-      border-radius: 8rpx;
-      margin-bottom: 20rpx;
-      position: relative;
-      .del{
-        position: absolute;
-        top: 20rpx;
-        right: 20rpx;
-      }
-      text{
-        display: block;
-        color: #fff;
-        overflow: hidden;
-        text-overflow:ellipsis;
-        white-space: nowrap;
-      }
-    }
-  }
-  .withdrawAddress_add{
-    position: absolute;
-    bottom: 20rpx;
-    left: 20rpx;
-    right: 20rpx;
-    button{
-      height: 80rpx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 28rpx;
-      background: #488FD3;
-	  color: #fff;
-      border: 0;
-      transition: all .1s;
-      border-radius: 8rpx;
-      &::after{
-        display: none;
-      }
-      &:active{
-        opacity: 0.5;
-      }
-    }
-  }
+.withdrawAddress {
+	view,
+	text {
+		font-weight: bold;
+	}
+	.s_line {
+		height: 10rpx;
+		width: 100%;
+		background-color: #F8F9FB;
+		margin-top: 34rpx;
+	}
+	.withdrawAddress_list {
+		.item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 26rpx 52rpx 26rpx 46rpx;
+			border-bottom: 10rpx solid #F8F9FB;
+			text {
+				font-size: 24rpx;
+				display: block;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.gray {
+				color: #C5CFD5;
+				margin-top: 18rpx;
+			}
+			image {
+				width: 44rpx;
+				height: 56rpx;
+			}
+		}
+	}
+	.none {
+		margin: 74rpx auto 76rpx;
+		image {
+			width: 192rpx;
+			height: 190rpx;
+			display: block;
+			margin: auto;
+			margin-left: 300rpx;
+		}
+		view {
+			text-align: center;
+			font-weight: bold;
+			color: #C5CFD5;
+			font-size: 32rpx;
+			margin-top: 48rpx;
+		}
+	}
+	.withdrawAddress_add {
+		view {
+			width: 198rpx;
+			height: 66rpx;
+			background: rgba(255, 255, 255, 1);
+			border: 2rpx solid rgba(197, 207, 213, 1);
+			border-radius: 10rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $blue;
+			font-weight: bold;
+			margin: auto;
+		}
+	}
+	.w_input {
+		margin-top: 20rpx;
+		&.one {
+			margin-top: 32rpx;
+		}
+		.w_title {
+			margin-bottom: 24rpx;
+			margin-left: 20rpx;
+		}
+		.w_block {
+			height:66rpx;
+			background:rgba(248,249,251,1);
+			border-radius:6rpx;
+			padding: 0 20rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			image {
+				width: 32rpx;
+				height: 32rpx;
+			}
+		}
+	}
+	.blue_btn {
+		margin-top: 70rpx;
+	}
 }

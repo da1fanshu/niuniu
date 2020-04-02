@@ -1,69 +1,103 @@
 .authentication {
-	padding-bottom: 20upx;
-	input {
-		font-size: 24rpx!important;
+	padding-bottom: 20rpx;
+	.g_line {
+		height: 10rpx;
+		width: 100%;
+		background: #f8f9fb;
+	}
+	.com_header {
+		padding: 34rpx 0 44rpx;
+		.one {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 22rpx;
+			padding: 0 48rpx;
+			.h_block {
+				image {
+					display: block;
+					width: 90rpx;
+					height: 90rpx;
+				}
+			}
+		}
+		.two {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 38rpx;
+			text {
+				color: $lgray;
+				font-weight: bold;
+				&.active {
+					color: $word;
+				}
+			}
+		}
+		.a_line {
+			width: 176rpx;
+			height: 4rpx;
+			background: rgba(24, 130, 212, 1);
+		}
 	}
 	.b_title {
-		padding: 0 24rpx;
 		text {
 			display: block;
+			padding: 0 26rpx 10rpx;
 			font-size: 24rpx;
-			margin-bottom: 14rpx;
 		}
 	}
 	.authentication_lv {
-		.lv_top {
-			background: $maskBg;
-			border-radius: 8upx;
-			height: 369upx;
+		.lv_top {			
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
-			color: #acaeb1;
-			font-size: 26upx;
+			margin-top: 194rpx;
+			image {
+				width: 128rpx;
+				height: 128rpx;
+				margin-bottom: 20rpx;
+			}
 			text {
 				line-height: 1.5;
+				font-weight: bold;
 			}
 		}
-		.lv_buttom {
-			font-size: 26upx;
-
-			margin-top: 67upx;
-			button {
-				background: $maskBg;
-				border-radius: 8upx;
-				border: 0;
+		.lv_bottom {
+			color: #fff;
+			view {
+				width:400rpx;
+				height:66rpx;
+				background:rgba(24,130,212,1);
+				border-radius:6rpx;
 				color: #fff;
-				font-size: 26upx;
-				height: 70upx;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				transition: all 0.2s;
+				margin: auto;
+				margin-top: 76rpx;
 				&::after {
 					display: none;
 				}
 				&:active {
 					opacity: 0.5;
 				}
-				&.err {
-					background: #03bcc0;
-					color: #191e2a;
-				}
 			}
 		}
 	}
 	.authentication_submit {
-		button {
-			background: #488FD3;
+		view {
+			height:66rpx;
+			background:rgba(24,130,212,1);
+			border-radius:6rpx;
 			color: #fff;
-			width: 93.6%;
-			height: 66upx;
-			line-height: 66upx;
-			font-size: 26upx;
-			transition: all 0.1s;
-			margin: 40rpx auto 24rpx;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 700rpx;
+			margin: 52rpx auto 30rpx;
 			&::after {
 				display: none;
 			}
@@ -89,13 +123,10 @@
 			justify-content: center;
 			align-items: center;
 			border-radius: 4upx;
-			.uni-icons {
-				font-size: 40upx !important;
-			}
 		}
 	}
 	.authentication_upload {
-		padding: 24rpx 30rpx;
+		padding: 36rpx 30rpx;
 		background: #fff;
 		border-radius: 8upx;
 		margin-top: 20upx;
@@ -103,12 +134,19 @@
 			display: flex;
 			justify-content: space-between;
 		}
+		.lst {
+			display: flex;
+			justify-content: center;
+		}
 		.upload_img {
 			position: relative;
-			height: 190rpx;
+			height: 194rpx;
 			width: 308rpx;
-			margin-bottom: 14upx;
-			// background: #fff;
+			margin-bottom: 18upx;
+			.image {
+				height: 194rpx;
+				width: 308rpx;
+			}
 			&.JUST {
 				background: url(../../static/dev/JUST.png) no-repeat;
 				background-size: 100% 100%;
@@ -142,6 +180,7 @@
 		.upload_title {
 			color: #333;
 			margin-bottom: 30upx;
+			font-size: 24rpx;
 			text-align: center;
 			width: 308rpx;
 		}
@@ -155,39 +194,44 @@
 		}
 	}
 	.authentication_form {
-		margin-top: 24upx;
-		background: #fff;
-		display: flex;
-		justify-content: space-between;
-		padding: 26rpx 24rpx;
-		.item {
-			font-size: 26upx;
-			margin-bottom: 20upx;
+		padding: 0 26rpx;
+		.a_input {
+			padding: 0 12rpx;
+			border-bottom: 2rpx solid #E7EBEE;
+			height: 100rpx;
 			display: flex;
 			align-items: center;
-			text {
-				display: block;
-				width: 134rpx;
-			}
-			&>view {
-				width:190rpx;
-				height:50rpx;
-				border:2rpx solid rgba(181,181,181,1);
-				border-radius:6rpx;
-				font-size: 24rpx;
+			justify-content: space-between;
+			.s_input {
 				display: flex;
 				align-items: center;
+				view {
+					font-weight: bold;
+				}
+			}
+			text {
+				font-weight: bold;
+				display: block;
+				width: 168rpx;
 			}
 			input {
-				padding-left: 8rpx;
+				display: block;
+				font-size: 28rpx;
+				width: calc(100% - 168rpx) ;
+				font-weight: bold;
 			}
-			.uni-input {
-				padding-left: 8rpx;
-				background: transparent;
-			}
-			picker view {
-				font-size: 24rpx;
-			}
+		}
+		.next {
+			width:700rpx;
+			height:66rpx;
+			background:rgba(24,130,212,1);
+			border-radius:6rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-weight: bold;
+			margin-top: 52rpx;
 		}
 	}
 	.authentication_tip {

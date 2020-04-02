@@ -5,32 +5,24 @@
 				<view class="ll">
 					<view class="header_title">我的邀请人数</view>
 					<view class="header_number">
-						<text style="font-size: 36rpx; font-weight: bold;">{{ list.length }}</text>
-						<text>人</text>
-					</view>
-				</view>
-				<view class="cen_border"></view>
-				<view class="ll">
-					<view class="header_title">今日邀请人数</view>
-					<view class="header_number">
-						<text style="font-size: 36rpx; font-weight: bold;">{{ list.length }}</text>
+						<text>{{ list.length }}</text>
 						<text>人</text>
 					</view>
 				</view>
 			</view>
 			<view class="inviteList_list">
 				<view class="list_nav">
-					<text class="flex" style="max-width: 150rpx;">UID</text>
+					<text class="flex" style="max-width: 200rpx;">UID</text>
 					<text class="flex">账号</text>
 					<text class="flex" style="text-align: right;">注册时间</text>
 				</view>
-				<view class="list_main">
+				<view class="list_main" v-if="list.length>0">
 					<view class="item" v-for="(item, index) in list" :key="index">
-						<text class="flex" style="max-width: 150rpx;">{{ filter.getFormattedUid(item.uid) }}</text>
+						<text class="flex" style="max-width: 200rpx;">{{ filter.getFormattedUid(item.uid) }}</text>
 						<text class="flex">
 							{{ REG_EMAIL.test(item.account) ? filter.email(item.account) : filter.getSuffixPhone(item.account) }}{{ item.authFlag == 'INIT' ? '(未认证)' : '' }}
 						</text>
-						<text class="flex" style="text-align: right; color: #797979; max-width: 160rpx;">{{ $formta(item.createTime, 'yyyy-MM-dd') }}</text>
+						<text class="flex" style="text-align: right; color: #C5CFD5; max-width: 160rpx;">{{ $formta(item.createTime, 'yyyy-MM-dd') }}</text>
 					</view>
 				</view>
 				<uni-load-more :status="loading ? 'loading' : !list[0] ? 'noMore' : 'noMore'"></uni-load-more>

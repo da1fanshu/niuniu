@@ -16,6 +16,9 @@ progress, checkbox-group{
 form {
 	width: 100%;
 }
+input {
+	font-size: 28upx;
+}
 .uni-flex {
 	display: flex;
 	flex-direction: row;
@@ -32,6 +35,9 @@ form {
 .uni-link{
 	color:#576B95;
 	font-size:26upx;
+}
+view,text {
+	color: #1F3F59;
 }
 .uni-center{
 	text-align:center;
@@ -153,12 +159,11 @@ form {
 	text-indent:20upx;
 }
 .uni-input {
-	height: 50upx;
-	padding: 15upx 25upx;
-	line-height:50upx;
 	font-size:28upx;
-	background:#FFF;
-	flex: 1;
+}
+.uni-place {
+	color: #C5CFD5;
+	font-weight: bold;
 }
 radio-group, checkbox-group{
 	width:100%;

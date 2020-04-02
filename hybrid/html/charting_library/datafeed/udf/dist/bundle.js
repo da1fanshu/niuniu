@@ -487,6 +487,8 @@
         data.description = e;
         data.name = e;
         data.ticker = e;
+		let price = localStorage.getItem('PRICEPRECISION');
+		data.pricescale = Math.pow(10,price);
         void 0 !== data.s ? r("unknown_symbol") : o(data)
       }).catch(function (e) {
         n("UdfCompatibleDatafeed: Error resolving symbol: " + c(e)), r("unknown_symbol")
@@ -560,7 +562,7 @@
       credentials: "same-origin"
     };
     if(e.indexOf('file://') > -1){
-      e = 'http://nnex.io'
+      e = 'http://kakoex.com'
     }
     return void 0 !== this._headers && (o.headers = this._headers), fetch(e + "" + t, o).then(function (e) {
       return e.text()

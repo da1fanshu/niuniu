@@ -110,28 +110,29 @@
 			let coin = getQueryString('coin');
 			let symbol = getQueryString('symbol');
 			let app = getQueryString('app');
-			console.log(app)
 			// #ifdef APP-PLUS
 
 			if (app != 0) {
 				document.addEventListener('UniAppJSBridgeReady', function() {
 					document.querySelector('.buyto').addEventListener('click', function(evt) {
-						uni.navigateTo({
-							url: `../quotation/quotation?type=${type}&title=${title}&coin=${coin}&symbol=${symbol}&sale=BUY`
+						uni.setStorageSync('tradeType','BUY');
+						uni.switchTab({
+							url: `../../coin/coin`
 						});
 					});
 				});
 				document.addEventListener('UniAppJSBridgeReady', function() {
 					document.querySelector('.sellto').addEventListener('click', function(evt) {
-						uni.navigateTo({
-							url: `../quotation/quotation?type=${type}&title=${title}&coin=${coin}&symbol=${symbol}&sale=SELL`
+						uni.setStorageSync('tradeType','SELL')
+						uni.switchTab({
+							url: `../../coin/coin`
 						});
 					});
 				});
 			}
 
 			// #endif
-			var baseUrl = 'http://nnex.io/';
+			var baseUrl = 'http://kakoex.com/';
 
 			function getQueryString(name) {
 				var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -250,7 +251,8 @@
 						data: [],
 						period: '15m',
 						periodText: '15Mins',
-						ZONE: 8,
+						PRICEPRECISION: 4,
+						AMOUNTPRECISION: 4,
 						sellList: [],
 						buyList: [],
 						symbol: 'UDC_ETH',
@@ -275,6 +277,8 @@
 				},
 				created() {
 					let that = this;
+					this.PRICEPRECISION = localStorage.getItem('PRICEPRECISION');
+					this.AMOUNTPRECISION = localStorage.getItem('AMOUNTPRECISION');
 					this.symbol = getQueryString('type');
 					this.RMB = getQueryString('money');
 					this.symbolText = this.symbol.split('_')[1] + '/' + this.symbol.split('_')[0];
@@ -392,35 +396,29 @@
 								"scalesProperties.textColor": "#666666",
 								"scalesProperties.backgroundColor": "#212121",
 								"scalesProperties.showSeriesPrevCloseValue": true,
-								"volumePaneSize": "small" //large/medium/small/tiny
+								"volumePaneSize": "medium" //large/medium/small/tiny
 							},
 							studies_overrides: {
 								"volume.volume.color.0": "#17a21d",
 								"volume.volume.color.1": "#ff4622",
-								"Moving Average.precision": 8
+								"Moving Average.precision": 8,
 							},
 							toolbar_bg: "#212121",
-							custom_css_url: '/hybrid/html/charting_library/static/css/chat.css'
-						})
-						widget.onChartReady(function() {
+							// custom_css_url: '/hybrid/html/charting_library/static/css/chat.css'
+						}).onChartReady(function() {
 							//移动平均线
-							this.chart().createStudy("Moving Average", false, false, [5], null, {
-								"Plot.color": "#692d87",
+							this.chart().createStudy("Moving Average", false, false, [5], {
+								"Plot.color": "#ffffff",
 								"Plot.linewidth": 3
 							});
-							this.chart().createStudy("Moving Average", false, false, [10], null, {
-								"Plot.color": "#386c87",
+							this.chart().createStudy("Moving Average", false, false, [10], {
+								"Plot.color": "yellow",
 								"Plot.linewidth": 3
 							});
-							this.chart().createStudy("Moving Average", false, false, [20], null, {
-								"Plot.color": "#87811f",
+							this.chart().createStudy("Moving Average", false, false, [30], {
+								"Plot.color": "rgba(255, 0, 255, 0.65)",
 								"Plot.linewidth": 3
 							});
-							this.chart().createStudy("Moving Average", false, false, [30], null, {
-								"Plot.color": "#878787",
-								"Plot.linewidth": 3
-							});
-							this.chart().createStudy("Awesome Oscillator", false, false);
 						});
 					},
 					//查询买卖盘
@@ -446,12 +444,13 @@
 						function _doResult(rep) {
 							if (rep) {
 								let pr_ne = rep['order'] && rep['order'][0].price; // 最新價
-								that.highPrice = filter.floorFixPrice(rep['24high'], that.ZONE); //最高价
-								that.lowPrice = filter.floorFixPrice(rep['24low'], that.ZONE); //最低价
-								that.cumulative = filter.floorFix(rep['24Total'], that.ZONE); //累计
-								that.currentPrice = filter.floorFixPrice(pr_ne, that.ZONE);
+								that.highPrice = filter.floorFixPrice(rep['24high'], that.PRICEPRECISION); //最高价
+								that.lowPrice = filter.floorFixPrice(rep['24low'], that.PRICEPRECISION); //最低价
+								that.cumulative = filter.floorFix(rep['24Total'], that.PRICEPRECISION); //累计
+								console.log(that.cumulative)
+								that.currentPrice = filter.floorFixPrice(pr_ne, that.PRICEPRECISION);
 								let assetCode = that.symbol.split('_')[0];
-								that.priceRMB = filter.floorFixPrice(that.currentEthPrice * pr_ne * that.RMB, 4);
+								that.priceRMB = filter.floorFixPrice(that.currentEthPrice * pr_ne * that.RMB, that.PRICEPRECISION);
 								if (rep['order'] && rep['order'][1]) {
 									that.lastPrice = rep['order'][1].price;
 								}
@@ -461,7 +460,7 @@
 					//转换RMB价格
 					convertCNYFilter(val) {
 						let that = this;
-						return filter.floorFixPrice(val * that.RMB, 4);
+						return filter.floorFixPrice(val * that.RMB, that.PRICEPRECISION);
 					},
 					//格式化数据
 					_getFinalItem(prevArr) {
@@ -480,10 +479,10 @@
 								width = '3px';
 							}
 							let total;
-							total = filter.floorFix(value[0] * value[1], 8)
+							total = filter.floorFix(value[0] * value[1], that.AMOUNTPRECISION)
 							newArr_obj.push({
-								"price": filter.floorFixPrice(new BigDecimal('' + value[0]).toPlainString(), 8),
-								"count": filter.floorFixPrice(value[1], 8),
+								"price": filter.floorFixPrice(new BigDecimal('' + value[0]).toPlainString(), that.PRICEPRECISION),
+								"count": filter.floorFixPrice(value[1],that.AMOUNTPRECISION),
 								"total": total,
 								"width": width
 							})

@@ -1,75 +1,42 @@
+.content {
+	background: #F8F9FB;
+}
 .message {
-	.message_list {
-		height: calc(100% - 114upx);
-		.message_list_main {
-			padding: 0 20upx;
-			.item {
-				color: #000;
-				font-size: 26upx;
-				padding: 20upx 26upx;
-				margin-bottom: 20upx;
-				background: rgba(238,238,238,.5);
-				.item_detailed {
-					padding-top: 10upx;
-				}
-				.item_title {
-					.fl {
-						display: flex;
-						align-items: center;
-						line-height: 40upx;
-						text {
-							display: block;
-						}
-						.sign {
-							height: 40upx;
-							border-radius: 6upx;
-							width: 100upx;
-							background: $fontColor;
-							color: #fff;
-							text-align: center;
-							margin-right: 20upx;
-							&.warning {
-								background: #ff6000;
-							}
-						}
-					}
-					.fr {
-						height: 40upx;
-						line-height: 40upx;
-						color: $fontColor;
-					}
-				}
-			}
-		}
+	padding: 34rpx 26rpx;
+	view,text {
+		font-weight: bold;
 	}
-	.message_nav {
+	.m_block {
+		margin-bottom: 34rpx;
+	}
+	.time {
+		width:300rpx;
+		height:30rpx;
+		background:rgba(231,235,238,1);
+		border-radius:4rpx;
+		font-size: 24rpx;
 		display: flex;
-		padding: 24upx;
-		.ll {
-			border-radius: 23upx 0upx 0upx 23upx;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		margin:0 auto 16rpx;
+	}
+	.block {
+		background: #fff;
+		border-radius:6rpx;
+		.top {
+			font-size: 32rpx;
+			border-bottom: 2rpx solid #E7EBEE;
+			padding: 52rpx 0 52rpx 20rpx ;
 		}
-		.rr {
-			border-radius: 0upx 23upx 23upx 0upx;
-		}
-		button {
-			background: rgba(74, 146, 216, .6);
-			box-shadow: 0upx 0upx 0upx 0upx rgba(0, 0, 0, 0.1);
-			flex: 1;
-			border: 0;
-			font-size: 26upx;
-			height: 66rpx;
-			line-height: 66upx;
-			color: #000;
+		.btm {
 			display: flex;
-			justify-content: center;
+			justify-content: space-between;
 			align-items: center;
-			transition: all 0.1s;
-			border-radius: 0;
-			&::after {
-				display: none;
-			}
-			&.active {
-				background:rgba(74,146,216,1);
+			height: 66rpx;
+			padding: 0 10rpx 0 20rpx;
+			text {
+				color: #C5CFD5;
 			}
 		}
 	}

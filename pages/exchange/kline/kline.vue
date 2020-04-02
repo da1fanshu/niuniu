@@ -37,10 +37,16 @@ export default {
 			uni.navigateBack()
 		},
 		buyPage() {
-			this.$goPage(`../quotation/quotation?type=${this.symbolType}&title=${this.title}&coin=${this.coin}&symbol=${this.symbol}&sale=BUY`);
+			uni.setStorageSync('tradeType','BUY');
+			uni.switchTab({
+				url:'../../coin/coin'
+			})
 		},
 		sellPage() {
-			this.$goPage(`../quotation/quotation?type=${this.symbolType}&title=${this.title}&coin=${this.coin}&symbol=${this.symbol}&sale=SELL`);
+			uni.setStorageSync('tradeType','SELL');
+			uni.switchTab({
+				url:'../../coin/coin'
+			})
 		}
 	},
 	onLoad(option) {

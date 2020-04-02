@@ -1,55 +1,69 @@
 <template>
 	<view class="content">
+		<!-- #ifdef APP-PLUS -->
+		<view class="status_bar"><view class="top_view"></view></view>
+		<!-- #endif -->
+		<view class="NavBar">
+			<view class="back" @click="back()"><uni-icons type="arrowleft" :size="28" :color="'#fff'" style="margin-left: -14rpx;"></uni-icons></view>
+			<text>划转</text>
+			<image @click="$goPage(`../transferRecord/transferRecord`)" src="../../../static/record.png" mode=""></image>
+		</view>
 		<view class="transfer">
-			<view class="transfer_nav">
-				<view class="t_left">
-					<text>从</text>
-					<text class="circle">.........</text>
-					<text>到</text>
+			<picker @change="setCoin" :value="coinType" :range="coinList">
+				<view class="tansfer_head">
+					<text class="gray">币种</text>
+					<view class="right">
+						<text>{{ coinList[coinType] }}</text>
+						<uni-icons type="arrowright" size="20" :color="'#C5CFD5'"></uni-icons>
+					</view>
 				</view>
+			</picker>
+			<view class="transfer_nav">
+				<picker @change="setEnter" :value="enter" :range="enterList">
+					<view class="t_top">
+						<view class="left">
+							<text class="word">从</text>
+
+							<text>{{ enterList[enter] }}</text>
+						</view>
+						<uni-icons class="icons" type="arrowright" size="20" :color="'#C5CFD5'"></uni-icons>
+					</view>
+				</picker>
 				<view class="t_center">
-					<view class="c_top" @click="showAccount('out')">
-						<text>{{out}}</text>
-						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
-					</view>
+					<image class="ellipsis" src="../../../static/ddd.png" mode=""></image>
 					<view class="c_border"></view>
-					<view class="c_bottom" @click="showAccount('enter')">
-						<text>{{enter}}</text>
-						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
+					<image @click="transTo()" src="../../../static/trans.png" mode=""></image>
+				</view>
+				<picker @change="setOut" :value="out" :range="outList">
+					<view class="t_top">
+						<view class="left">
+							<text class="word">到</text>
+							<text>{{ outList[out] }}</text>
+						</view>
+						<uni-icons class="icons" type="arrowright" size="20" :color="'#C5CFD5'"></uni-icons>
+					</view>
+				</picker>
+			</view>
+			<view class="num">
+				<view class="title">划转数量</view>
+				<view class="inputs">
+					<input type="text" placeholder-style="color:#C6D0D6" value="" placeholder="请输入划转数量" />
+					<view class="r_input">
+						<text>{{ coinList[coinType] }}</text>
+						<view class="m_line"></view>
+						<text @click="allTo()" class="blue">全部</text>
 					</view>
 				</view>
-				<image @click="transTo()" src="../../../static/trans.png" mode=""></image>
+				<text class="btm_word">可用 {{ place }} {{ coinList[coinType] }}</text>
 			</view>
-			<view class="transfer_nav">
-				<view class="t_center" style="width: 100%;">
-					<view class="c_top"  @click="showAccount('coin')">
-						<view class="">
-							<text style="color: #A3A3A3;">币种选择</text>
-							<text style="margin-left: 24rpx;">{{coin}}</text>
-						</view>		
-						<uni-icons type="arrowright" size="20" :color="'#03bcc0'"></uni-icons>
-					</view>
-					<view class="c_border" style="width: 100%;"></view>
-					<view class="c_input">
-						<text style="color: #A3A3A3;">划转数量</text>
-						<input v-model="transQuantity" type="number"/>
-					</view>
-				</view>
-			</view>
-			<view class="btm">
-				<view class="">
-					<text style="color:#A3A3A3">最多可划转：</text>
-					<text>{{place}}BTC</text>
-				</view>
-				<text @click="allTo()" style="color:#488FD3;">全部</text>
-			</view>
-			<view class="submits"><button @click="tranfer()">确认转出</button></view>
+			<view class="explain">只有将资产划转到对应账户才可进行交易，账户间 的划转不收取手续费</view>
+			<view class="blue_btn" @click="tranfer()">确认转出</view>
 			<uni-popup :show="showList" position="bottom" mode="fixed" @hidePopup="hidePopup()">
 				<view class="transfer_select">
-					<view class="item title" >{{title}}</view>
-					<view v-if="name=='out'" v-for="(item,index) in outList" :key="index" class="item" @click="setAccount('out',item)">{{item}}</view>
-					<view v-if="name=='enter'" v-for="(item,index) in enterList" :key="index" class="item" @click="setAccount('enter',item)">{{item}}</view>
-					<view v-if="name=='coin'" v-for="(item,index) in coinList" :key="index" class="item" @click="setAccount('coin',item)">{{item}}</view>
+					<view class="item title">{{ title }}</view>
+					<view v-if="name == 'out'" v-for="(item, index) in outList" :key="index" class="item" @click="setAccount('out', item)">{{ item }}</view>
+					<view v-if="name == 'enter'" v-for="(item, index) in enterList" :key="index" class="item" @click="setAccount('enter', item)">{{ item }}</view>
+					<view v-if="name == 'coin'" v-for="(item, index) in coinList" :key="index" class="item" @click="setAccount('coin', item)">{{ item }}</view>
 					<view class="item" @click="hidePopup()">取消</view>
 				</view>
 			</uni-popup>
@@ -78,13 +92,14 @@ export default {
 			place: '',
 			transQuantity: '',
 			pwd: '',
-			out: '资金账户',
-			enter: '币币账户',
+			out: 0,
+			enter: 0,
 			title: '',
-			name : '',
-			outList: ['资金账户','币币账户'],
-			enterList: ['资金账户','币币账户'],
-			coinList: ['USDT','BTC'],
+			name: '',
+			coinType: 0,
+			outList: ['资金账户', '币币账户'],
+			enterList: ['资金账户', '币币账户'],
+			coinList: ['USDT', 'BTC']
 		};
 	},
 	onShow() {
@@ -106,6 +121,10 @@ export default {
 		}
 	},
 	methods: {
+		//返回
+		back() {
+			uni.navigateBack();
+		},
 		//错误提示
 		errors(text) {
 			this.HMmessages.show(text, {
@@ -114,29 +133,29 @@ export default {
 				fontColor: '#fff'
 			});
 		},
-		//设置划转账户
-		setAccount(name,item) {
-			if(this.name == 'out') {
-				this.out = item;
-			}
-			else if(this.name == 'enter') {
-				this.enter = item;
-			} else {
-				this.coin = item
-			}
-			this.showList = false;
+		//设置类型
+		setCoin(e) {
+			this.coinType = e.target.value;
+		},
+		//设置类型
+		setEnter(e) {
+			this.enter = e.target.value;
+		},
+		//设置类型
+		setOut(e) {
+			this.out = e.target.value;
 		},
 		//转换
 		transTo() {
-			[this.out,this.enter] = [this.enter,this.out]
+			[this.out, this.enter] = [this.enter, this.out];
 		},
 		//弹出
 		showAccount(name) {
 			this.name = name;
-			if(name == 'out' || name == 'enter') {
+			if (name == 'out' || name == 'enter') {
 				this.title = '选择账户';
 			}
-			if(name == 'coin') {
+			if (name == 'coin') {
 				this.title = '选择币种';
 			}
 			this.showList = true;

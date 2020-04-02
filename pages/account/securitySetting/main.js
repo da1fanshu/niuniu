@@ -176,7 +176,7 @@ export default {
     setGoogleCode(e) {
       if (e.target.value) {
         if (this.GOOGLE.isBound == false) {
-          this.bindAccount = `www.lkex.co(${this.USERINFO.account})`;
+          this.bindAccount = `www.nnex.io(${this.USERINFO.account})`;
           this.isSetGoogle = true;
           service.getGoogelCode().then(({
             data
@@ -328,6 +328,8 @@ export default {
         uni.showModal({
           title: '开启免密支付',
           content: '开启免密支付之后每次在交易中心进行买入/卖无需输入密码',
+		  cancelColor: '#C5CFD5',
+		  confirmColor: '#1F3F59',
           success(res) {
             if (res.confirm) {
               that.$store.commit('setUserState', {

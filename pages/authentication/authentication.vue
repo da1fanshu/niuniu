@@ -1,149 +1,168 @@
 <template>
 	<view class="content">
 		<view class="authentication">
-			<template>
-				<view class="authentication_form">
-					<view class="left">
-						<view class="item clear">
-							<text>姓名:</text>
-							<view><input type="text" v-model="value" placeholder="请输入您的名字" /></view>
-						</view>
-						<view class="item clear">
-							<text>出生日期:</text>
-							<view>
-								<picker mode="date" :value="date" @change="bindDateChange($event, 'date')">
-									<view class="uni-input">{{ date }}</view>
-								</picker>
-							</view>
-						</view>
-						<view class="item clear">
-							<text>证件号码:</text>
-							<view><input type="idcard" v-model="cardNumber" placeholder="请输入证件号码" /></view>
-						</view>
-						<view class="item clear">
-							<text>到期日期:</text>
-							<view>
-								<picker mode="date" :value="endDate" @change="bindDateChange($event, 'endDate')">
-									<view class="uni-input">{{ endDate }}</view>
-								</picker>
-							</view>
-						</view>
+			<view class="com_header">
+				<view class="one">
+					<view @click="step='0'" class="h_block"><image src="../../static/account/id_a1.png" mode=""></image></view>
+					<view class="a_line"></view>
+					<view @click="step='1'" class="h_block">
+						<image v-if="step != '0'" src="../../static/account/id_b1.png" mode=""></image>
+						<image v-if="step == '0'" src="../../static/account/id_b2.png" mode=""></image>
 					</view>
-					<view class="right">
-						<view class="item clear">
-							<text>性别:</text>
-							<view>
-								<radio-group class="radios" @change="setSex">
-									<label class="radio" style="padding-right: 0;">
-										<radio style="transform:scale(0.5);line-height: 2;" color="#488FD3" value="MALE" />
-										男
-									</label>
-									<label class="radio" style="padding-right: 0;">
-										<radio style="transform:scale(0.5);padding-right: 0;line-height: 2;" color="#488FD3" value="FEMALE" />
-										女
-									</label>
-								</radio-group>
-							</view>
-						</view>
-						<view class="item clear">
-							<text>证件类型:</text>
-							<view>
-								<picker @change="setCertificates" :value="certificates" :range="certificatesList" :range-key="'label'">
-									<view class="uni-input">{{ certificatesList[certificates].label }}</view>
-								</picker>
-							</view>
-						</view>
-						<view class="item clear">
-							<text>国家地区:</text>
-							<view>
-								<picker @change="bindPickerChange" :value="values" :range="addressList" :range-key="'cn'">
-									<view class="uni-input">{{ addressList[values].cn }}</view>
-								</picker>
-							</view>
-						</view>
+					<view class="a_line"></view>
+					<view class="h_block">
+						<image v-if="isLevel == true" src="../../static/account/id_c1.png" mode=""></image>
+						<image v-if="isLevel == false" src="../../static/account/id_c2.png" mode=""></image>
 					</view>
 				</view>
-				<view class="authentication_upload">
+				<view class="two">
+					<text class="active">基本信息</text>
+					<text :class="step=='1'?'active':''">证件照上传</text>
+					<text :class="isLevel == true?'active':''">提交审核</text>
+				</view>
+			</view>
+			<view class="g_line"></view>
+			<template v-if="isLevel == false">
+				<view class="authentication_form" v-if="step == '0'">
+					<view class="a_input">
+						<text>姓名：</text>
+						<input class="uni-input" type="text" value="" placeholder-class="uni-place" placeholder="请输入姓名" />
+					</view>
+					<view class="a_input" style="justify-content:start;">
+						<text>性别：</text>
+						<view style="margin-left: -16rpx;">
+							<radio-group class="radios" @change="setSex">
+								<label class="radio" style="padding-right: 40rpx;font-weight: bold;">
+									<radio style="transform:scale(0.6);padding-right: 16rpx;line-height: 2;" color="#488FD3" value="MALE" />
+									男
+								</label>
+								<label class="radio" style="padding-right: 0;font-weight: bold;">
+									<radio style="transform:scale(0.6);padding-right: 16rpx;line-height: 2;" color="#488FD3" value="FEMALE" />
+									女
+								</label>
+							</radio-group>
+						</view>
+					</view>
+					<picker mode="date" :value="date" @change="bindDateChange($event, 'date')">
+						<view class="a_input">
+							<view class="s_input">
+								<text>出生日期：</text>
+								<view>{{ date }}</view>
+							</view>
+							<uni-icons style="margin-right: -11rpx;" type="arrowright" :color="'#C5CFD5'" size="22"></uni-icons>
+						</view>
+					</picker>
+					<picker @change="setCertificates" :value="certificates" :range="certificatesList" :range-key="'label'">
+						<view class="a_input">
+							<view class="s_input">
+								<text>证件类型：</text>
+								<view>{{ certificatesList[certificates].label }}</view>
+							</view>
+							<uni-icons style="margin-right: -11rpx;" type="arrowright" :color="'#C5CFD5'" size="22"></uni-icons>
+						</view>
+					</picker>
+					<view class="a_input">
+						<text>证件号码：</text>
+						<input class="uni-input" type="idcard" placeholder-class="uni-place" v-model="cardNumber" placeholder="请输入证件号码" />
+					</view>
+					<picker mode="date" :value="endDate" @change="bindDateChange($event, 'endDate')">
+					<view class="a_input">
+						<view class="s_input">
+							<text>到期日期：</text>
+							<view>{{ endDate }}</view>
+						</view>
+						<uni-icons style="margin-right: -11rpx;" type="arrowright" :color="'#C5CFD5'" size="22"></uni-icons>
+					</view>
+					</picker>
+					<picker @change="bindPickerChange" :value="values" :range="addressList" :range-key="'cn'">
+					<view class="a_input">
+						<view class="s_input">
+							<text>国家地区：</text>
+							<view>{{ addressList[values].cn }}</view>
+						</view>
+						<uni-icons style="margin-right: -11rpx;" type="arrowright" :color="'#C5CFD5'" size="22"></uni-icons>
+					</view>
+					</picker>
+					<view class="next" @click="step = '1'">下一步</view>
+				</view>
+				<view class="authentication_upload" v-if="step == '1'">
 					<template v-if="certificates == 0">
 						<view class="f_flex">
 							<view>
 								<view class="upload_img" :class="ID_JUST ? '' : 'JUST'">
-									<block v-if="ID_JUST"><image :src="ID_JUST_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
+									<block v-if="ID_JUST"><image :src="ID_JUST_URL" class="image"></image></block>
 									<image class="upload_img_submit" @click="upload('ID_JUST_URL', 'ID_JUST')" src="../../static/dev/phone.png" mode=""></image>
 								</view>
 								<view class="upload_title">请上传身份证正面</view>
 							</view>
 							<view>
 								<view class="upload_img BACK" :class="ID_BACK ? '' : 'BACK'">
-									<block v-if="ID_BACK"><image :src="ID_BACK_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
+									<block v-if="ID_BACK"><image :src="ID_BACK_URL" class="image"></image></block>
 									<image class="upload_img_submit" @click="upload('ID_BACK_URL', 'ID_BACK')" src="../../static/dev/phone.png" mode=""></image>
 								</view>
 								<view class="upload_title">请上传身份证背面</view>
 							</view>
 						</view>
-						
-						<view class="upload_img HOLD" :class="ID_HOLD ? '' : 'HOLD'">
-							<block v-if="ID_HOLD"><image :src="ID_HOLD_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
-							<image class="upload_img_submit" @click="upload('ID_HOLD_URL', 'ID_HOLD')" src="../../static/dev/phone.png" mode=""></image>
+						<view class="lst">
+							<view>
+								<view class="upload_img HOLD" :class="ID_HOLD ? '' : 'HOLD'">
+									<block v-if="ID_HOLD"><image :src="ID_HOLD_URL" class="image"></image></block>
+									<image class="upload_img_submit" @click="upload('ID_HOLD_URL', 'ID_HOLD')" src="../../static/dev/phone.png" mode=""></image>
+								</view>
+								<view class="upload_title">请上传手持身份证照片</view>
+							</view>
 						</view>
-						<view class="upload_title">请上传手持身份证照片</view>
 					</template>
 
 					<template v-else>
 						<view class="f_flex">
 							<view>
 								<view class="upload_img" :class="ID_PASSPROT ? '' : 'ID_PASSPROT'">
-									<block v-if="ID_PASSPROT"><image :src="ID_PASSPROT_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
+									<block v-if="ID_PASSPROT"><image :src="ID_PASSPROT_URL" class="image"></image></block>
 									<image class="upload_img_submit" @click="upload('ID_PASSPROT_URL', 'ID_PASSPROT')" src="../../static/dev/phone.png" mode=""></image>
 								</view>
 								<view class="upload_title">请上传护照证件照</view>
 							</view>
 							<view>
-								<view class="upload_img HOLD" :class="ID_HOLD ? '' : 'PASSPORTHOLD'">
-									<block v-if="ID_HOLD"><image :src="ID_HOLD_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
+								<view class="upload_img HOLD" :class="ID_HOLD ? '' : 'ID_PASSPROTHOLD'">
+									<block v-if="ID_HOLD"><image :src="ID_HOLD_URL" class="image"></image></block>
 									<image class="upload_img_submit" @click="upload('ID_HOLD_URL', 'ID_HOLD')" src="../../static/dev/phone.png" mode=""></image>
 								</view>
 								<view class="upload_title">请上传手持护照证件照</view>
 							</view>
 						</view>
 					</template>
-					<template v-if="certificates == 1">
-						<view class="upload_img" :class="ID_PASSPROT_CN ? '' : 'ID_PASSPROT'">
-							<block v-if="ID_PASSPROT_CN"><image :src="ID_PASSPROT_CN_URL" class="image" style="height: 317upx; width: 100%;"></image></block>
-							<image class="upload_img_submit" @click="upload('ID_PASSPROT_CN_URL', 'ID_PASSPROT_CN')" src="../../static/dev/phone.png" mode=""></image>
-						</view>
-						<view class="upload_title">护照英文翻译件（非必要,选择上传）</view>
-					</template>
 				</view>
-				<view class="authentication_submit">
-					<button v-if="loading == false" @click="submits()">提交</button>
-					<button :loading="true" v-else style="opacity: 0.5;">提交</button>
+				<view class="g_line"></view>
+				<view class="authentication_submit" v-if="step == '1'">
+					<view v-if="loading == false" @click="submits()">提交</view>
+					<view :loading="true" v-else style="opacity: 0.5;">提交</view>
 				</view>
 			</template>
-			<view class="b_title">
-				<text style="color: #488FD3;">请确保证件上传之前满足以下条件：</text>
+			<view class="b_title" v-if="step == '1'">
+				<text style="color: #1882D4;font-size: 28rpx;">请确保证件上传之前满足以下条件：</text>
 				<text>1.ID页面必须为原版数字版本</text>
 				<text>2.它可以为数码相机拍摄的照片或扫描件</text>
 				<text>3.不能超过2MB</text>
-				<text>4.您可以上传JPG/JPEG/PNG/BMP/PDF格式的文件，任何 不清楚、篡改过、低分辨率或质量差的图像都将被拒绝。</text>
+				<text>4.您可以上传JPG/JPEG/PNG/BMP/PDF格式的文件，</text>
+				<text>任何 不清楚、篡改过、低分辨率或质量差的图像都将被拒绝。</text>
 			</view>
 			<template v-if="isLevel == true">
 				<view class="authentication_lv">
 					<view class="lv_top">
-						<image v-if="userInfo.auditStatus == 'INIT'" src="/static/dev/lv_init.png" style="height: 80upx; width: 80upx;" mode=""></image>
-						<image v-else src="/static/dev/lv_fail.png" style="height: 80upx; width: 80upx;" mode=""></image>
-						<text style="font-size: 28upx; line-height: 82upx; color: #03bcc0;">{{ userInfo.auditStatus == 'INIT' ? '提交成功' : '审核失败' }}</text>
+						<image v-if="userInfo.auditStatus == 'INIT'" src="../../static/account/wait.png" mode=""></image>
+						<image v-else src="../../static/account/fail.png" mode=""></image>
 						<template v-if="userInfo.auditStatus == 'INIT'">
-							<text>已转入人工通道效验身份</text>
-							<text>最终验证结果将稍后通知您</text>
+							<text>您提交的信息正在审核中</text>
+							<text>请耐心等候...</text>
 						</template>
 						<template v-else>
-							<text>{{ errText(userInfo.auditMessageId) }}</text>
-							<text>{{ userInfo.auditMessage }}</text>
+							<text>您提交的信息审核不通过</text>
+							<text>请返回重新提交</text>
 						</template>
 					</view>
-					<view class="lv_buttom">
-						<button :class="userInfo.auditStatus != 'INIT' ? 'err' : ''" @click="reset">{{ userInfo.auditStatus == 'INIT' ? '审核中' : '重新认证' }}</button>
+					<view class="lv_bottom">
+						<view @click="reset">重新提交</view>
 					</view>
 				</view>
 			</template>
@@ -159,14 +178,15 @@
 
 <script>
 import address from '../../static/js/tel.js';
-import { uniIcon, uniPopup } from '@dcloudio/uni-ui';
+import { uniPopup } from '@dcloudio/uni-ui';
+import uniIcons from '@/components/uni-icon/uni-icon.vue';
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import service from './service.js';
 import { REG_ID } from '@/common/reg.js';
 import errList from './err.js';
 export default {
 	components: {
-		uniIcon,
+		uniIcons,
 		uniPopup,
 		HMmessages
 	},
@@ -229,9 +249,10 @@ export default {
 			ID_HOLD_URL: '',
 			ID_PASSPROT_URL: '',
 			ID_PASSPROT_CN_URL: '',
-			isLevel: null,
+			isLevel: false,
 			isAgree: true,
-			userInfo: {}
+			userInfo: {},
+			step: '0'
 		};
 	},
 	created() {

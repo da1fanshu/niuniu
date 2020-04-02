@@ -37,6 +37,13 @@ const store = new Vuex.Store({
       exchange:[],
       asset:{}
     },
+	coin: {
+		coin:'',
+		title:'',
+		type:'',
+		symbol:'',
+		symbolType:'',
+	}
   },
   getters: {
     IMGLIST: (state) => {

@@ -4,47 +4,38 @@
 		<view class="status_bar"><view class="top_view"></view></view>
 		<!-- #endif -->
 		<view class="login_mian">
-			<view class="top_bg">
-				<view class="w_bg"><image src="/static/logo.png" mode=""></image></view>
-				<view class="top_title">
-					NNEX
-				</view>
-			</view>
+			<view class="top_bg"><image src="../../static/login_bg.png" mode=""></image></view>
 			<view class="login_form">
-				<view class="item clear">
+				<view class="item clear block">
 					<view class="i_left">
-						<image class="img_left" src="/static/login_user.png" mode="aspectFit"></image>
+						<view class="img"><image style="width: 26rpx;height: 32rpx;" class="img_left" src="/static/login_user.png"></image></view>
 						<view>
-						<picker @change="set1" :value="inde" :range="tele" range-key="tel">
-							<view class="flex">
-								<view class="uni-inputs">+{{ tele[inde].tel }}<view class="thr"></view></view>
-								<view class="triangle"></view>
-							</view>
-						</picker>
+							<picker @change="set1" :value="inde" :range="tele" range-key="tel">
+								<view class="flex">
+									<view class="uni-inputs">
+										+{{ tele[inde].tel }}
+										<view class="thr"></view>
+									</view>
+									<view class="triangle"></view>
+								</view>
+							</picker>
 						</view>
+						<view class="m_line"></view>
 					</view>
-					<input @blur="blurAccount()" v-model="account" type="text" placeholder="请输入手机号/邮箱" />
+					<input placeholder-class="pla" @blur="blurAccount()" v-model="account" type="text" placeholder="请输入您的手机号码" />
 				</view>
-				<view class="item clear">
+				<view class="item clear block">
 					<view class="i_left">
-						<image class="img_left" src="/static/login_pwd.png" mode="aspectFit"></image>
+						<view class="img"><image style="width: 26rpx;height: 34rpx;" class="img_left" src="/static/login_pwd.png"></image></view>
 						<view>密码</view>
 					</view>
-					<input v-model="password" type="password" placeholder="请输入密码" />
+					<input placeholder-class="pla" v-model="password" type="password" placeholder="请输入密码" />
 				</view>
 				<view class="item imgCode clear" v-if="imgCode">
-					<view><image src="/static/login_pwd.png" style="width: 24upx; height: 26upx;" mode=""></image></view>
+					<view><image src="/static/login_pwd.png" style="width: 26rpx;height: 34rpx;"></image></view>
 					<view class="code" @click="getImgCode()"><image :src="imgUrl" style="width: 100%; height: 54upx;" mode=""></image></view>
-					<input class="fr" v-model="code" type="number" placeholder="请输入图片验证码" maxlength="4" />
+					<input placeholder-class="pla" class="fr" v-model="code" type="number" placeholder="请输入图片验证码" maxlength="4" />
 				</view>
-				<!-- <view class="mark" @click="isMark = !isMark">
-					<view class="checkbox">
-						<template v-if="isMark">
-							<icon type="success_no_circle" color="#fff" size="10" />
-						</template>
-					</view>
-					<text>是否记住登录密码</text>
-				</view> -->
 				<view class="item submit" v-if="loading == false"><button @click="submits()">登录</button></view>
 				<view class="item submit" v-else><button disabled :loading="true" style="opacity: 0.5;">登录</button></view>
 				<view class="clear footer">
@@ -61,12 +52,10 @@
 import service from './service.js';
 import HMmessages from '@/components/HM-messages/HM-messages.vue';
 import { REG_EMAIL_PHONE, REG_EMAIL, REG_PHONE } from '@/common/reg.js';
-import uniIcons from '@/components/uni-icon/uni-icon.vue';
 import tel from '../../static/js/tel.js';
 export default {
 	components: {
 		HMmessages,
-		uniIcons
 	},
 	data() {
 		return {
@@ -79,7 +68,7 @@ export default {
 			imgUrl: '',
 			loading: false,
 			inde: 0,
-			tele: [],
+			tele: []
 		};
 	},
 	onBackPress(options) {

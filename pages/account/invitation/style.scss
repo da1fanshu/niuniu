@@ -1,89 +1,176 @@
 uni-page-head .uni-btn-icon {
-	overflow: inherit!important;
+	overflow: inherit !important;
 }
-.invitation{
-  .bg{
-    display: block;
-    width: 100%;
-    height: inherit;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0upx;
-  }
-  .invitation_main{
-    position: absolute;
-    z-index: 2;
-    top: 50rpx;
-    right: 50rpx;
-    left: 50rpx;
-    bottom: 50rpx;
-	.w_title {
-		position: absolute;
-		bottom: 116rpx;
-		 right: 14rpx;
-		 .main_code{
-		   height: 88rpx;
-		   font-size: 48rpx;
-		   color: #fff;
-		   text-align: center;
-		   font-family: 'Arial';
-		   margin: 0 0 48rpx;
-		 }
-		 .main_title{
-		   margin-top: 40rpx;
-		   margin-bottom: 48rpx;
-		   text-align: center;
-		   color: #fff;
-		   font-size: 36rpx;
-		 }
+.Modal_mask {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 1);
+	z-index: 9;
+}
+.c_modal {
+	z-index: 9999;
+	position: fixed;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+}
+.down {
+	z-index: 9999;
+	width: 44rpx;
+	height: 44rpx;
+	position: fixed;
+	bottom: 30rpx;
+	right: 24rpx;
+}
+.invitation {
+	background-color: #f8f9fb;
+	.invite_bg {
+		position: relative;
+		.bg {
+			display: block;
+			width: 100%;
+			height: 418rpx;
+		}
+		.icons {
+			position: absolute;
+			top: 28rpx;
+			left: 16rpx;
+		}
 	}
-	.shar {
-		position: absolute;
-		bottom: 98rpx;
-		 right: 14rpx;
-		 width: 264rpx;
-		 height: 66rpx;
-		 border-radius: 6rpx;
-		 background-color: #fff;
-		 color: #1DB5F6;
-		 text-align: center;
-		 line-height: 66rpx;
+	.invite_code {
+		margin: -28rpx 26rpx 0;
+		padding: 38rpx 24rpx;
+		border: 2rpx solid rgba(231, 235, 238, 1);
+		border-radius: 10rpx;
+		background: #fff;
+		position: relative;
+		z-index: 9;
+		.block {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			&:last-child {
+				margin-top: 36rpx;
+			}
+			text {
+				font-size: 32rpx;
+				font-weight: bold;
+				width: 200rpx;
+			}
+			view {
+				width: 292rpx;
+				background: rgba(231, 235, 238, 1);
+				border-radius: 6rpx;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				word-break: break-all;
+				padding: 12rpx 22rpx;
+				font-size: 24rpx;
+				font-weight: bold;
+			}
+			image {
+				width: 44rpx;
+				height: 48rpx;
+			}
+		}
 	}
-    .main_tips{
-      text-align: center;
-      line-height: 2.2;
-      font-size: 26rpx;
-    }
-    .main_qrcode{
-      position: absolute;
-	  left: 14rpx;
-	  bottom: 94rpx;
-    }
-    .main_button{
-      height: 70rpx;
-      padding: 40rpx;
-      button{
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(right, #6F98FF, #4D67EF);
-        border: 0;
-        width: 48%;
-        font-size: 28rpx;
-        color: #fff;
-        padding: 0;
-        transition: all .1s;
-        &::after{
-          display: none;
-        }
-        &:active{
-          opacity: 0.5;
-        }
-      }
-    }
-    
-  }
+	.b_line {
+		height: 4rpx;
+		background: #1882d4;
+	}
+	.my_invite {
+		margin: 0 26rpx;
+		background: rgba(255, 255, 255, 1);
+		border: 2rpx solid rgba(231, 235, 238, 1);
+		border-radius: 10rpx;
+		overflow: hidden;
+		padding-bottom: 40rpx;
+		margin-top: 26rpx;
+		.title {
+			padding: 18rpx 0;
+			font-weight: bold;
+			text-align: center;
+			font-size: 32rpx;
+			border-bottom: 2rpx solid #e7ebee;
+		}
+		.main_qrcode {
+			display: flex;
+			justify-content: center;
+			margin-top: 26rpx;
+		}
+	}
+	.invite_list {
+		margin: 0 26rpx;
+		background: rgba(255, 255, 255, 1);
+		border: 2rpx solid rgba(231, 235, 238, 1);
+		border-radius: 10rpx;
+		overflow: hidden;
+		padding-bottom: 40rpx;
+		margin-top: 26rpx;
+		.title {
+			padding: 0 24rpx;
+			height: 70rpx;
+			font-weight: bold;
+			text-align: center;
+			font-size: 32rpx;
+			border-bottom: 2rpx solid #e7ebee;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			view {
+				display: flex;
+				align-items: center;
+				.more {
+					color: #1882d4;
+					font-size: 24rpx;
+					font-weight: bold;
+				}
+				.icons {
+					margin-right: -14rpx;
+				}
+			}
+		}
+		.my_block {
+			padding: 24rpx 24rpx 0;
+			.th,
+			.tr {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text {
+					text-align: left;
+				}
+				.one {
+					width: 200rpx;
+				}
+				.two {
+					flex: 1;
+				}
+				.three {
+					width: 136rpx;
+				}
+			}
+			.th {
+				text {
+					color: #c5cfd5;
+					font-size: 24rpx;
+					font-weight: bold;
+				}
+			}
+			.tr {
+				margin-top: 40rpx;
+				text {
+					font-size: 24rpx;
+				}
+				.three {
+					color: #c5cfd5;
+				}
+			}
+		}
+	}
 }

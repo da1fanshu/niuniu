@@ -2,6 +2,15 @@
 	view {
 		line-height: 1;
 	}
+	.Modal_mask {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0, 0, 0, 0.4);
+		z-index: 999;
+	}
 	.index_news {
 		margin-top: 20upx;
 		padding: 0 20upx;
@@ -68,87 +77,215 @@
 		}
 	}
 	.index_fun {
-		margin-top: 58upx;
-		padding: 0 20upx;
-		.fun_mian {
-			border-radius: 6upx;
-			// padding: 41upx 0;
-			.f_m_item {
+		.f_m_item {
+			display: flex;
+			justify-content: space-between;
+			padding: 28rpx 48rpx;
+			.i_flex {
 				display: flex;
-				.i_flex {
-					flex: 1;
-					transition: all 0.2s;
-					margin-top: 22upx;
-					&:active {
-						background: #191e2a;
-					}
+				justify-content: center;
+				flex-direction: column;
+				align-items: center;
+				text {
+					font-weight: 600;
+				}
+				image {
+					margin-bottom: 26rpx;
+				}
+				&.i1 {
 					image {
+						width: 44rpx;
+						height: 36rpx;
 						display: block;
-						height: 68rpx;
-						width: 66rpx;
-						margin: 0 auto;
+					}
+				}
+				&.i2 {
+					image {
+						width: 44rpx;
+						height: 36rpx;
+						display: block;
+					}
+				}
+				&.i3 {
+					image {
+						width: 44rpx;
+						height: 46rpx;
+						display: block;
+					}
+				}
+				&.i4 {
+					image {
+						width: 44rpx;
+						height: 44rpx;
+						display: block;
+					}
+				}
+				&.i5 {
+					image {
+						width: 44rpx;
+						height: 50rpx;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	.g_line {
+		height: 10rpx;
+		background-color: #f8f9fb;
+	}
+	.buy {
+		padding: 30rpx 26rpx;
+		.title {
+			font-size: 32rpx;
+		}
+		.cen {
+			display: flex;
+			justify-content: space-between;
+			margin: 14rpx 0 36rpx;
+			.blue {
+				color: $blue;
+			}
+			text {
+				font-size: 28rpx;
+			}
+			image {
+				width: 25rpx;
+				height: 30rpx;
+			}
+			.rr {
+				display: flex;
+				align-items: center;
+				image {
+					margin-right: 6rpx;
+				}
+			}
+		}
+		.btm {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			.sel {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 62rpx;
+				width: 444rpx;
+				border: 2rpx solid rgba(140, 159, 173, 1);
+				border-radius: 4rpx;
+				.left {
+					margin-left: 18rpx;
+					display: flex;
+					align-items: center;
+					image {
+						width: 32rpx;
+						height: 32rpx;
+						margin-right: 14rpx;
+					}
+				}
+				.right {
+					margin-right: 12rpx;
+				}
+			}
+			.selList {
+				z-index: 9999;
+				position: absolute;
+				left: 0;
+				top: 66rpx;
+				width: 444rpx;
+				background: #fff;
+				border: 2upx solid #f7f7fb;
+				border-radius: 6upx;
+				.block {
+					display: flex;
+					align-items: center;
+					height: 96rpx;
+					padding-left: 18rpx;
+					border-bottom: 2rpx solid #f7f7fb;
+					image {
+						width: 32rpx;
+						height: 32rpx;
+						margin-right: 14rpx;
 					}
 					text {
-						display: block;
-						color: #000;
-						font-size: 28upx;
-						line-height: 34upx;
-						text-align: center;
-						margin-top: 12upx;
+						color: #3d465d;
+					}
+					&:active,
+					&:hover {
+						background: #f7f7fb;
 					}
 				}
-				&.wImg {
-					.i_flex {
-						image {
-							width: 40upx;
-							height: 30upx;
-						}
-					}
+			}
+			.b_btn {
+				width: 238rpx;
+				height: 66rpx;
+				background: rgba(24, 130, 212, 1);
+				border-radius: 4rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				image {
+					width: 32rpx;
+					height: 46rpx;
 				}
+				text {
+					color: #fff;
+				}
+			}
+		}
+	}
+	.q_title {
+		padding: 40rpx 26rpx 26rpx;
+		font-size: 32rpx;
+		font-weight: bold;
+		border-bottom: 2rpx solid #e7ebee;
+	}
+	.q_list {
+		.q_block {
+			display: flex;
+			height: 112rpx;
+			margin: 0 26rpx;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 2rpx solid #f7f7fb;
+			.s_word {
+				color: $gray;
+				font-size: 24rpx;
+				margin-top: 16rpx;
+			}
+			.ss_word {
+				color: $gray;
+				font-size: 20rpx;
+				margin-top: 16rpx;
+			}
+			.rise {
+				width: 134rpx;
+				height: 52rpx;
+				background: $rise;
+				border-radius: 4rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #fff;
+				font-size: 24rpx;
+			}
+			.fall {
+				width: 134rpx;
+				height: 52rpx;
+				border-radius: 4rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #fff;
+				font-size: 24rpx;
+				background: $fall;
 			}
 		}
 	}
 	.index_banner {
 		position: relative;
 		background: #03bcc0;
-		width: 93.6%;
-		margin: auto;
-		margin-top: 24upx;
-		.banner_hot {
-			position: absolute;
-			left: 20upx;
-			right: 20upx;
-			height: 40upx;
-			border-radius: 6upx;
-			border: 2upx solid #EEEEEE;
-			margin-top: 4upx;
-			color: #000;
-			.b_h_left {
-				float: left;
-				height: 20rpx;
-				width: 24rpx;
-				margin-top: 10upx;
-				margin-right: 8rpx;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-			}
-			.b_h_list {
-				float: left;
-				height: 40upx;
-				width: calc(100% - 86upx);
-				box-sizing: border-box;
-				.swiper-item {
-					line-height: 44upx;
-					color: #000;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					font-size: 24upx;
-				}
-			}
-		}
+		margin-top: 88rpx;
 	}
 	.exchange_main {
 		padding: 0 10px;
@@ -294,33 +431,24 @@
 
 	.index_header {
 		height: 88upx;
-		padding: 0 24upx;
-		margin-bottom: -20upx;
+		background: #1d2243;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 99;
 		.i_h_logo {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-left: -14rpx;
+			height: 58rpx;
+			width: 176rpx;
+			padding-left: 26rpx;
 		}
 		.i_h_login {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			button,
-			image {
-				float: left;
-			}
-			view {
-				padding: 14rpx 18rpx;;
-				font-size: 28upx;
-				background: none;
-				color: #000;
-				border: 1upx solid #4a92d8;
-				border-radius: 6rpx;
-			}
+			width: 44rpx;
+			height: 52rpx;
+			padding-right: 26rpx;
 		}
 	}
 }
